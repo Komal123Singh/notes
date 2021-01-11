@@ -1,0 +1,135 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+>>> 
+>>> 
+>>> #sql
+>>> 
+>>> import sqlite3
+>>> 
+>>> a=sqlite3.connect('e:/data.db')
+>>> cu=a.cursor()
+>>> cu.execute('create table student(id int unique,name varchar(50),tech varchar(20),fee float)')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('insert into student (id,name,tech fee) values(1,"abc","python",1234.5)')
+Traceback (most recent call last):
+  File "<pyshell#10>", line 1, in <module>
+    cu.execute('insert into student (id,name,tech fee) values(1,"abc","python",1234.5)')
+sqlite3.OperationalError: near "fee": syntax error
+>>> cu.execute('insert into student (id,name,tech,fee) values(1,"abc","python",1234.5)')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('insert into student values(2,"xabc","cython",2234.5)')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('insert into student values(%d,%r,%r,%f)'%(3,'mnop','java',4563))
+<sqlite3.Cursor object at 0x034F8660>
+>>> 
+>>> cu.execute('insert into student values({},"{}","{}",{})'.format(4,'mnaop','php',1563))
+<sqlite3.Cursor object at 0x034F8660>
+>>> "%s"%"hello"
+'hello'
+>>> print("%s"%"hello")
+hello
+>>> print("%r"%"hello")
+'hello'
+>>> 'hello %s' %"python"
+'hello python'
+>>> 'hello %r' %"python"
+"hello 'python'"
+>>> 'hello %r   ' %"python"
+"hello 'python'   "
+>>> cu.execute("insert into student values({},'{}','{}',{})".format(4,'mnaop','php',1563))
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    cu.execute("insert into student values({},'{}','{}',{})".format(4,'mnaop','php',1563))
+sqlite3.IntegrityError: UNIQUE constraint failed: student.id
+>>> cu.execute("insert into student values({},'{}','{}',{})".format(5,'mnaop','php',1563))
+<sqlite3.Cursor object at 0x034F8660>
+>>> 'insert into student values(%d,%r,%r,%f)'%(3,'mnop','java',4563)
+"insert into student values(3,'mnop','java',4563.000000)"
+>>> 'insert into student values(%d,%s,%s,%f)'%(3,'mnop','java',4563)
+'insert into student values(3,mnop,java,4563.000000)'
+>>> cu.execute('insert into student values(%d,%r,%r,%f)'%(6,'mnopt','java',6563))
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('insert into student values(%d,"%s","%s",%f)'%(7,'abcde','c++',1563))
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('insert into student values(%d,%s,%s,%f)'%(13,r'abcde',r'c++',1563))
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    cu.execute('insert into student values(%d,%s,%s,%f)'%(13,r'abcde',r'c++',1563))
+sqlite3.OperationalError: near ",": syntax error
+>>> 
+>>> 
+>>> cu.execute('select * from student')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchone()
+(1, 'abc', 'python', 1234.5)
+>>> cu.fetchmany()
+[(2, 'xabc', 'cython', 2234.5)]
+>>> cu.fetchmany(3)
+[(3, 'mnop', 'java', 4563.0), (4, 'mnaop', 'php', 1563.0), (5, 'mnaop', 'php', 1563.0)]
+>>> cu.fetchmany(3)
+[(6, 'mnopt', 'java', 6563.0), (7, 'abcde', 'c++', 1563.0)]
+>>> cu.fetchmany(3)
+[]
+>>> cu.execute('select * from student')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(1, 'abc', 'python', 1234.5), (2, 'xabc', 'cython', 2234.5), (3, 'mnop', 'java', 4563.0), (4, 'mnaop', 'php', 1563.0), (5, 'mnaop', 'php', 1563.0), (6, 'mnopt', 'java', 6563.0), (7, 'abcde', 'c++', 1563.0)]
+>>> 
+>>> a.commit()
+>>> 
+>>> a.execute('select * from student where fee>2000')
+<sqlite3.Cursor object at 0x037B22A0>
+>>> cu.fetchall()
+[]
+>>> cu.execute('select * from student where fee>2000')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(2, 'xabc', 'cython', 2234.5), (3, 'mnop', 'java', 4563.0), (6, 'mnopt', 'java', 6563.0)]
+>>> cu.exceute('select * from student where name like "%a%"')
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    cu.exceute('select * from student where name like "%a%"')
+AttributeError: 'sqlite3.Cursor' object has no attribute 'exceute'
+>>> cu.execute('select * from student where name like "%a%"')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(1, 'abc', 'python', 1234.5), (2, 'xabc', 'cython', 2234.5), (4, 'mnaop', 'php', 1563.0), (5, 'mnaop', 'php', 1563.0), (7, 'abcde', 'c++', 1563.0), (8, 'abcdet', 'python', None)]
+>>> cu.execute('select * from student where name like "a%"')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(1, 'abc', 'python', 1234.5), (7, 'abcde', 'c++', 1563.0), (8, 'abcdet', 'python', None)]
+>>> cu.execute('select * from student where name like "a%" and tech=="python"')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(1, 'abc', 'python', 1234.5), (8, 'abcdet', 'python', None)]
+>>> cu.execute('select count(*) from student where name like "a%" and tech=="python"')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.fetchall()
+[(2,)]
+>>> cu.execute('update student set name="hello" where id=1')
+Traceback (most recent call last):
+  File "<pyshell#55>", line 1, in <module>
+    cu.execute('update student set name="hello" where id=1')
+sqlite3.OperationalError: database is locked
+>>> cu.execute('update student set name="hello" where id=1')
+Traceback (most recent call last):
+  File "<pyshell#56>", line 1, in <module>
+    cu.execute('update student set name="hello" where id=1')
+sqlite3.OperationalError: database is locked
+>>> cu.execute('update student set name="hello" where id=1')
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute("delete from student")
+<sqlite3.Cursor object at 0x034F8660>
+>>> cu.execute('select * from student')
+<sqlite3.Cursor object at 0x034F8660>
+>>> list(cu)
+[]
+>>> cu.fetchall()
+[]
+>>> a.rollback()
+>>> cu.execute('select * from student')
+<sqlite3.Cursor object at 0x034F8660>
+>>> list(cu)
+[(1, 'abc', 'python', 1234.5), (2, 'xabc', 'cython', 2234.5), (3, 'mnop', 'java', 4563.0), (4, 'mnaop', 'php', 1563.0), (5, 'mnaop', 'php', 1563.0), (6, 'mnopt', 'java', 6563.0), (7, 'abcde', 'c++', 1563.0), (8, 'abcdet', 'python', None)]
+>>> 

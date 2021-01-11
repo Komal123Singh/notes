@@ -1,0 +1,515 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> d={}
+>>> for i in range(5):
+	d[input('key:')]=input('value:')
+
+	
+value:12
+key:a
+value:13
+key:b
+value:14
+key:c
+value:23
+key:r
+value:56
+key:t
+>>> d
+{'a': '12', 'b': '13', 'c': '14', 'r': '23', 't': '56'}
+>>> 
+>>> 
+>>> d={}
+>>> for i in range(2):
+	k=input('key:')
+	d[k]=input('value:')
+
+	
+key:a
+value:12
+key:e
+value:34
+>>> d
+{'a': '12', 'e': '34'}
+>>> d={}
+>>> for i in range(2):
+	k=input('key:')
+	d[eval(k)]=eval(input('value:'))
+
+	
+key:1
+value:[12,34,56]
+key:2987.9
+value:(11,22,33)
+>>> d
+{1: [12, 34, 56], 2987.9: (11, 22, 33)}
+>>> eval('print("hello")')
+hello
+>>> eval('d.clear()')
+>>> d
+{}
+>>> eval('a')
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    eval('a')
+  File "<string>", line 1, in <module>
+NameError: name 'a' is not defined
+>>> 
+>>> 
+>>> for i in range(2):
+	k=input('key:')
+	d[k]=input('value:')
+
+	
+key:1
+value:[12,34,56]
+key:123.45
+value:(11,22,33)
+>>> d
+{'1': '[12,34,56]', '123.45': '(11,22,33)'}
+>>> d['1']
+'[12,34,56]'
+>>> eval('[12,34,56]')
+[12, 34, 56]
+>>> eval(d['1'])
+[12, 34, 56]
+>>> for i in range(2):
+	k=input('key:')
+	d[eval(k)]=eval(input('value:'))
+
+	
+key:str('apple')
+value:{'color':'red','shape':'oval'}
+key:12
+value:str('numeric')
+>>> d
+{'1': '[12,34,56]', '123.45': '(11,22,33)', 'apple': {'color': 'red', 'shape': 'oval'}, 12: 'numeric'}
+>>> '[1,2,3]+["a","b","c"]'
+'[1,2,3]+["a","b","c"]'
+>>> eval('[1,2,3]+["a","b","c"]')
+[1, 2, 3, 'a', 'b', 'c']
+>>> 
+>>> 
+>>> a=[1, 2, 3, 'a', 'b', 'c']
+>>> 
+>>> d={]
+SyntaxError: invalid syntax
+>>> d={}
+>>> d.fromkeys(range(100,105))
+{100: None, 101: None, 102: None, 103: None, 104: None}
+>>> 
+>>> 
+>>> d
+{}
+>>> d.fromkeys(range(100,105),a)
+{100: [1, 2, 3, 'a', 'b', 'c'], 101: [1, 2, 3, 'a', 'b', 'c'], 102: [1, 2, 3, 'a', 'b', 'c'], 103: [1, 2, 3, 'a', 'b', 'c'], 104: [1, 2, 3, 'a', 'b', 'c']}
+>>> 
+>>> 
+>>> x=d.fromkeys(range(100,105),a)
+>>> x
+{100: [1, 2, 3, 'a', 'b', 'c'], 101: [1, 2, 3, 'a', 'b', 'c'], 102: [1, 2, 3, 'a', 'b', 'c'], 103: [1, 2, 3, 'a', 'b', 'c'], 104: [1, 2, 3, 'a', 'b', 'c']}
+>>> a
+[1, 2, 3, 'a', 'b', 'c']
+>>> id(a)
+63799048
+>>> x[100]
+[1, 2, 3, 'a', 'b', 'c']
+>>> id(x[100])
+63799048
+>>> id(x[101])
+63799048
+>>> id(x[102])
+63799048
+>>> id(x[103])
+63799048
+>>> id(x[104])
+63799048
+>>> 
+>>> x
+{100: [1, 2, 3, 'a', 'b', 'c'], 101: [1, 2, 3, 'a', 'b', 'c'], 102: [1, 2, 3, 'a', 'b', 'c'], 103: [1, 2, 3, 'a', 'b', 'c'], 104: [1, 2, 3, 'a', 'b', 'c']}
+>>> del(a[-3:])
+>>> a
+[1, 2, 3]
+>>> x
+{100: [1, 2, 3], 101: [1, 2, 3], 102: [1, 2, 3], 103: [1, 2, 3], 104: [1, 2, 3]}
+>>> x[100].reverse()
+>>> x
+{100: [3, 2, 1], 101: [3, 2, 1], 102: [3, 2, 1], 103: [3, 2, 1], 104: [3, 2, 1]}
+>>> a
+[3, 2, 1]
+>>> 
+>>> 
+>>> x=d.fromkeys(range(100,105),12)
+>>> x
+{100: 12, 101: 12, 102: 12, 103: 12, 104: 12}
+>>> id(x[100])
+1964401936
+>>> id(x[101])
+1964401936
+>>> id(x[102])
+1964401936
+>>> id(x[103])
+1964401936
+>>> id(x[104])
+1964401936
+>>> b=a
+>>> 
+>>> id(a)
+63799048
+>>> id(b)
+63799048
+>>> x=d.fromkeys(range(100,105),a)
+>>> id(x[100])
+63799048
+>>> id(x[101])
+63799048
+>>> id(x[102])
+63799048
+>>> id(x[104])
+63799048
+>>> id(a)
+63799048
+>>> 
+>>> b=a.copy()
+>>> id(a)
+63799048
+>>> id(b)
+63787976
+>>> x=d.fromkeys(range(100,105),a.copy())
+>>> x
+{100: [3, 2, 1], 101: [3, 2, 1], 102: [3, 2, 1], 103: [3, 2, 1], 104: [3, 2, 1]}
+>>> x[100].clear()
+>>> x
+{100: [], 101: [], 102: [], 103: [], 104: []}
+>>> a
+[3, 2, 1]
+>>> 
+>>> 
+>>> d={'1': '[12,34,56]', '123.45': '(11,22,33)', 'apple': {'color': 'red', 'shape': 'oval'}, 12: 'numeric'}
+>>> d.get('1')
+'[12,34,56]'
+>>> d.get('11')
+>>> d.get('11','bhai nahi hai')
+'bhai nahi hai'
+>>> d.get('1','bhai nahi hai')
+'[12,34,56]'
+>>> d.get('11','bhai nahi hai')
+'bhai nahi hai'
+>>> d.get('1','bhai nahi hai')
+'[12,34,56]'
+>>> d['11']
+Traceback (most recent call last):
+  File "<pyshell#100>", line 1, in <module>
+    d['11']
+KeyError: '11'
+>>> d.get('11',False)
+False
+>>> 
+>>> 
+>>> d['1']
+'[12,34,56]'
+>>> d.get('1')
+'[12,34,56]'
+>>> d['11']
+Traceback (most recent call last):
+  File "<pyshell#106>", line 1, in <module>
+    d['11']
+KeyError: '11'
+>>> d.get('11')
+>>> d.get('11',False)
+False
+>>> if d['1']:
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+key hai
+>>> if d[input()]:
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+1
+key hai
+>>> if d[input()]:
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+11
+Traceback (most recent call last):
+  File "<pyshell#117>", line 1, in <module>
+    if d[input()]:
+KeyError: '11'
+>>> if d.get(input(),False):
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+1
+key hai
+>>> if d.get(input(),False):
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+
+key nahi hai
+>>> if d.get(input(),False):
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+11
+key nahi hai
+>>> d.get('11')
+>>> if d.get(input()):
+	print("key hai")
+else:
+	print("key nahi hai")
+
+	
+111
+key nahi hai
+>>> 
+>>> 
+>>> 
+>>> d['11]
+  
+SyntaxError: EOL while scanning string literal
+>>> d['11']
+Traceback (most recent call last):
+  File "<pyshell#131>", line 1, in <module>
+    d['11']
+KeyError: '11'
+>>> d.get('11')
+>>> bool(d.get('11'))
+False
+>>> bool(d.get('11'))
+False
+>>> bool(d.get('1'))
+True
+>>> 
+>>> d.items()
+dict_items([('1', '[12,34,56]'), ('123.45', '(11,22,33)'), ('apple', {'color': 'red', 'shape': 'oval'}), (12, 'numeric')])
+>>> d={'a':1,'b':2,'c':3,'d':4,'e':5}
+>>> d.items()
+dict_items([('a', 1), ('b', 2), ('c', 3), ('d', 4), ('e', 5)])
+>>> for i in d.items():
+	print(i)
+
+	
+('a', 1)
+('b', 2)
+('c', 3)
+('d', 4)
+('e', 5)
+>>> for i in d.items():
+	print(*i)
+
+	
+a 1
+b 2
+c 3
+d 4
+e 5
+>>> 12,34
+(12, 34)
+>>> a,b=(12, 34)
+>>> for i,j in d.items():
+	print(i,j)
+
+	
+a 1
+b 2
+c 3
+d 4
+e 5
+>>> for i in d.items():
+	a,b=i
+	print(a,b)
+
+	
+a 1
+b 2
+c 3
+d 4
+e 5
+>>> for a,b in d.items():
+	print(a,b)
+
+	
+a 1
+b 2
+c 3
+d 4
+e 5
+>>> a,b=('1', '[12,34,56]')
+>>> a
+'1'
+>>> b
+'[12,34,56]'
+>>> 
+>>> for i in enumerate('abcde'):
+	print(i)
+
+	
+(0, 'a')
+(1, 'b')
+(2, 'c')
+(3, 'd')
+(4, 'e')
+>>> for i in enumerate('abcde',100):
+	print(i)
+
+	
+(100, 'a')
+(101, 'b')
+(102, 'c')
+(103, 'd')
+(104, 'e')
+>>> for i in enumerate('abcde',100):
+	print(*i)
+
+	
+100 a
+101 b
+102 c
+103 d
+104 e
+>>> for i,j in enumerate('abcde',100):
+	print(i,j)
+
+	
+100 a
+101 b
+102 c
+103 d
+104 e
+>>> for i in enumerate(d.items()):
+	print(i)
+
+	
+(0, ('a', 1))
+(1, ('b', 2))
+(2, ('c', 3))
+(3, ('d', 4))
+(4, ('e', 5))
+>>> for i,j,k in enumerate(d.items()):
+	print(i,j,k)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#169>", line 1, in <module>
+    for i,j,k in enumerate(d.items()):
+ValueError: not enough values to unpack (expected 3, got 2)
+>>> for i,(j,k) in enumerate(d.items()):
+	print(i,j,k)
+
+	
+0 a 1
+1 b 2
+2 c 3
+3 d 4
+4 e 5
+>>> 
+>>> 
+>>> d.keys()
+dict_keys(['a', 'b', 'c', 'd', 'e'])
+>>> d.pop()
+Traceback (most recent call last):
+  File "<pyshell#175>", line 1, in <module>
+    d.pop()
+TypeError: pop expected at least 1 arguments, got 0
+>>> d.pop('a')
+1
+>>> d
+{'b': 2, 'c': 3, 'd': 4, 'e': 5}
+>>> d.popitem()
+('e', 5)
+>>> for i in enumerate(d.items(),1,6,-1):
+	print(i)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#180>", line 1, in <module>
+    for i in enumerate(d.items(),1,6,-1):
+TypeError: enumerate() takes at most 2 arguments (4 given)
+>>> for i in enumerate(d.items(),[1,6,-1]):
+	print(i)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#182>", line 1, in <module>
+    for i in enumerate(d.items(),[1,6,-1]):
+TypeError: 'list' object cannot be interpreted as an integer
+>>> enumerate.__doc__
+'Return an enumerate object.\n\n  iterable\n    an object supporting iteration\n\nThe enumerate object yields pairs containing a count (from start, which\ndefaults to zero) and a value yielded by the iterable argument.\n\nenumerate is useful for obtaining an indexed list:\n    (0, seq[0]), (1, seq[1]), (2, seq[2]), ...'
+>>> help(enumerate)
+Help on class enumerate in module builtins:
+
+class enumerate(object)
+ |  enumerate(iterable, start=0)
+ |  
+ |  Return an enumerate object.
+ |  
+ |    iterable
+ |      an object supporting iteration
+ |  
+ |  The enumerate object yields pairs containing a count (from start, which
+ |  defaults to zero) and a value yielded by the iterable argument.
+ |  
+ |  enumerate is useful for obtaining an indexed list:
+ |      (0, seq[0]), (1, seq[1]), (2, seq[2]), ...
+ |  
+ |  Methods defined here:
+ |  
+ |  __getattribute__(self, name, /)
+ |      Return getattr(self, name).
+ |  
+ |  __iter__(self, /)
+ |      Implement iter(self).
+ |  
+ |  __next__(self, /)
+ |      Implement next(self).
+ |  
+ |  __reduce__(...)
+ |      Return state information for pickling.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Static methods defined here:
+ |  
+ |  __new__(*args, **kwargs) from builtins.type
+ |      Create and return a new object.  See help(type) for accurate signature.
+
+>>> for i in enumerate(d.items(),range(len(d),0,-1)):
+	print(i)
+
+	
+Traceback (most recent call last):
+  File "<pyshell#187>", line 1, in <module>
+    for i in enumerate(d.items(),range(len(d),0,-1)):
+TypeError: 'range' object cannot be interpreted as an integer
+>>> 
+>>> 
+>>> d.setdefault('b','python')
+2
+>>> d
+{'b': 2, 'c': 3, 'd': 4}
+>>> d.setdefault('ba','python')
+'python'
+>>> d
+{'b': 2, 'c': 3, 'd': 4, 'ba': 'python'}
+>>> d.update({'b':'cython','jython':'runs on anaconda'})
+>>> d
+{'b': 'cython', 'c': 3, 'd': 4, 'ba': 'python', 'jython': 'runs on anaconda'}
+>>> d.values()
+dict_values(['cython', 3, 4, 'python', 'runs on anaconda'])
+>>> 
+>>> 

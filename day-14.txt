@@ -1,0 +1,260 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a=set([chr(i) for i in range(97,123)])
+>>> a
+{'j', 't', 'm', 'r', 'u', 'a', 'p', 'd', 'i', 'z', 'c', 'w', 'f', 'k', 'x', 's', 'o', 'n', 'v', 'e', 'g', 'b', 'h', 'y', 'q', 'l'}
+>>> sorted(a)
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+>>> if len(a-set(list(input())))>0:
+	print("all is not well")
+else:
+	print("all is well")
+
+	
+kshfjdsghjbmncb hzfdjdnsjkdfghjsfdgh
+all is not well
+>>> if len(a-set(list(input())))>0:
+	print("all is not well")
+else:
+	print("all is well")
+
+	
+abcdefghijklmnopqrstuvwxzylknedjxmgrjhygj6546542374908
+all is well
+>>> a
+{'j', 't', 'm', 'r', 'u', 'a', 'p', 'd', 'i', 'z', 'c', 'w', 'f', 'k', 'x', 's', 'o', 'n', 'v', 'e', 'g', 'b', 'h', 'y', 'q', 'l'}
+>>> a
+{'j', 't', 'm', 'r', 'u', 'a', 'p', 'd', 'i', 'z', 'c', 'w', 'f', 'k', 'x', 's', 'o', 'n', 'v', 'e', 'g', 'b', 'h', 'y', 'q', 'l'}
+>>> 
+>>> 
+>>> l=[]
+>>> for i in range(97,123):
+	l.append(chr(i))
+
+	
+>>> l
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+>>> a=set(l)
+>>> a
+{'j', 't', 'm', 'r', 'u', 'a', 'p', 'd', 'i', 'z', 'c', 'w', 'f', 'k', 'x', 's', 'o', 'n', 'v', 'e', 'g', 'b', 'h', 'y', 'q', 'l'}
+>>> input()
+hello welcome mr wangdu
+'hello welcome mr wangdu'
+>>> list(input())
+abcdefg9872864783
+['a', 'b', 'c', 'd', 'e', 'f', 'g', '9', '8', '7', '2', '8', '6', '4', '7', '8', '3']
+>>> set(list(input()))
+aaaabbbcdaeadaacvvchssbsdbnbsvbc xvgbcvzxbn cnvzxbcv
+{'d', ' ', 'x', 's', 'g', 'n', 'z', 'h', 'c', 'b', 'a', 'v', 'e'}
+>>> a-{'d', ' ', 'x', 's', 'g', 'n', 'z', 'h', 'c', 'b', 'a', 'v', 'e'}
+{'w', 'q', 'j', 't', 'm', 'r', 'i', 'o', 'u', 'p', 'y', 'f', 'l', 'k'}
+>>> a-set(list(input()))
+abcdefghijklmnopq
+{'x', 's', 't', 'r', 'z', 'v', 'u', 'w', 'y'}
+>>> a-set(list(input()))
+abcdefghijklmnopqrstuvwxzy
+set()
+>>> a-set(list(input()))
+abcdefghijklmnopqrstuvwxzy968347t57mncbhjgxnbgxynkmmdsxhnfzmszjbfry786845^&%^$*&)&*%^#@&%^&#@%^&%75^&^&%$&
+set()
+>>> a-set(list(input()))
+
+efghijklmnopqrstuvwxzy968347t57mncbhjgxnbgxynkmmdsxhnfzmszjbfry786845^&%^$*&)&*%^#@&%^&#@%^&%75^&^&%$&
+SyntaxError: multiple statements found while compiling a single statement
+>>> a-set(list(input()))
+efghijklmnopqrstuvwxzy968347t57mncbhjgxnbgxynkmmdsxhnfzmszjbfry786845^&%^$*&)&*%^#@&%^&#@%^&%75^&^&%$&
+{'a'}
+>>> #functions
+>>> 
+>>> def sample():
+	print("hello")
+
+	
+>>> sample()
+hello
+>>> x=sample
+>>> x()
+hello
+>>> sample.__module__
+'__main__'
+>>> print.__module__
+'builtins'
+>>> def sample():
+	"its a simple function to print hello"
+	print("hello")
+
+	
+>>> sample.__doc__
+'its a simple function to print hello'
+>>> help(sample)
+Help on function sample in module __main__:
+
+sample()
+    its a simple function to print hello
+
+>>> def sample():
+	print("hello")
+	"its a simple function to print hello"
+
+	
+>>> sample.__doc__
+>>> def sample():
+	'''one upon time
+we used to
+write 5 to 6 lines
+for hello
+now dont worry call
+my function to
+get hello. and dont cry'''
+	print("hello")
+
+>>> 
+>>> sample.__doc__
+'one upon time\nwe used to\nwrite 5 to 6 lines\nfor hello\nnow dont worry call\nmy function to\nget hello. and dont cry'
+>>> help(sample)
+Help on function sample in module __main__:
+
+sample()
+    one upon time
+    we used to
+    write 5 to 6 lines
+    for hello
+    now dont worry call
+    my function to
+    get hello. and dont cry
+
+>>> from math import sin
+>>> sin.__module__
+'math'
+>>> 
+>>> 
+>>> def fun(a,b):
+	print(a+b)
+
+	
+>>> fun(12,3)
+15
+>>> fun('a','b')
+ab
+>>> fun([12,3,4],['a','b','c'])
+[12, 3, 4, 'a', 'b', 'c']
+>>> fun([12,3,4],1)
+
+>>> def fun(a=12,b=8):
+	print(a+b)
+
+	
+>>> fun(122,3)
+125
+>>> fun('a','b')
+ab
+>>> fun([12,3,4],['a','b','c'])
+[12, 3, 4, 'a', 'b', 'c']
+>>> fun()
+20
+>>> fun(1)
+9
+>>> fun(b=34,a=45)
+79
+>>> fun(b=34)
+46
+>>> fun(,34)
+SyntaxError: invalid syntax
+>>> fun(34,)
+42
+>>> a=[234,567]
+>>> fun(*a)
+801
+>>> a=(234,567)
+>>> fun(*a)
+801
+>>> a={234,567}
+>>> fun(*a)
+801
+>>> a='ab'
+>>> fun(*a)
+ab
+>>> d={'b':95689,'a':9785687}
+>>> fun(**d)
+9881376
+>>> 
+>>> 
+>>> dict(b=34,a=45)
+{'b': 34, 'a': 45}
+>>> 
+>>> def fun(a,b):
+	return a+b,a-b,a/b,a*b,a**b,a%b,a//b
+
+>>> fun(3,6)
+(9, -3, 0.5, 18, 729, 3, 0)
+>>> 12,34,56
+(12, 34, 56)
+>>> def fun(a,b):
+	return [a+b,a-b,a/b,a*b,a**b,a%b,a//b]
+
+>>> fun(3,6)
+[9, -3, 0.5, 18, 729, 3, 0]
+>>> def fun(a,b):
+	return {a+b,a-b,a/b,a*b,a**b,a%b,a//b}
+
+>>> fun(3,6)
+{0.5, 0, 3, 9, 18, 729, -3}
+>>> fun(**{'b': 34, 'a': 45})
+{1, 1.3235294117647058, 11, 161892029831473198287006104499893845058977603912353515625, 79, 1530}
+>>> 
+>>> def fun(n):
+	if n==1:
+		return 1
+	return n*fun(n-1)
+
+>>> fun(5)
+120
+>>> 
+>>> for i in str(199):
+	print(i)
+
+	
+1
+9
+9
+>>> for i in str(199):
+	print(int(i))
+
+	
+1
+9
+9
+>>> [int(i) for i in str(199)]
+[1, 9, 9]
+>>> sum([int(i) for i in str(199)])
+19
+>>> def fun(n):
+	if n>9:
+		fun(sum([int(i) for i in str(n)])
+	else:
+		    
+SyntaxError: invalid syntax
+>>> def fun(n):
+	if n>9:
+		fun(sum([int(i) for i in str(n)]))
+	else:
+		if n==1:
+			return 'magic'
+		else:
+			return 'not a magic'
+
+		
+>>> fun(199)
+>>> def fun(n):
+	if n>9:
+		return fun(sum([int(i) for i in str(n)]))
+	else:
+		if n==1:
+			return 'magic'
+		else:
+			return 'not a magic'
+
+		
+>>> fun(199)
+'magic'
+>>> 

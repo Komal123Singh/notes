@@ -1,0 +1,385 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> import re
+>>> a='Python is python'
+>>> re.findall(r'[P|p]ython',a)
+['Python', 'python']
+>>> re.findall(r'^[P|p]ython',a)
+['Python']
+>>> re.findall(r'[P|p]ython$',a)
+['python']
+>>> re.findall(r'^[P|p]ython$',a)
+[]
+>>> a='Pythonpython'
+>>> re.findall(r'^[P|p]ython$',a)
+[]
+>>> a='Python'
+>>> re.findall(r'^[P|p]ython$',a)
+['Python']
+>>> 
+>>> re.findall(r'ab+','ababaabbbab')
+['ab', 'ab', 'abbb', 'ab']
+>>> re.findall(r'ab*','ababaabbbab')
+['ab', 'ab', 'a', 'abbb', 'ab']
+>>> re.findall(r'ab?','ababaabbbab')
+['ab', 'ab', 'a', 'ab', 'ab']
+>>> 
+>>> re.findall(r'^.com$',input("enter a valid email id"))
+enter a valid email ida@a.com
+[]
+>>> re.findall(r'^\w@.com$',input("enter a valid email id"))
+enter a valid email ida@a.com
+[]
+>>> re.findall(r'^\w@\w.com$',input("enter a valid email id"))
+enter a valid email idamit.cetpa@gmail.com
+[]
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email ida@%%%.com
+[]
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email ida@a.com
+['a@a.com']
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email idhamara mail id a@a.com
+[]
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email idamit.cetpa@gmail.com
+['amit.cetpa@gmail.com']
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email idamit.cetpa@gmail.in
+['amit.cetpa@gmail.in']
+>>> re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id"))
+enter a valid email idamit.12cetpa@gmail.in
+['amit.12cetpa@gmail.in']
+>>> if re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id")):
+	print("mail sent")
+else:
+	print("check mail id")
+
+	
+enter a valid email ida
+check mail id
+>>> if re.findall(r'^\S+@\w+[.][a-z]{2,3}$',input("enter a valid email id")):
+	print("mail sent")
+else:
+	print("check mail id")
+
+	
+enter a valid email ida@a.com
+mail sent
+>>> 
+>>> a='https://127.0.0.1:8000/'
+>>> re.findall(r'\d.+\d',a)
+['127.0.0.1:8000']
+>>> 
+>>> 
+>>> #exception handling
+>>> 
+>>> a=int(input("enter a number"))
+enter a numberqw
+Traceback (most recent call last):
+  File "<pyshell#38>", line 1, in <module>
+    a=int(input("enter a number"))
+ValueError: invalid literal for int() with base 10: 'qw'
+>>> 1/0
+Traceback (most recent call last):
+  File "<pyshell#39>", line 1, in <module>
+    1/0
+ZeroDivisionError: division by zero
+>>> a.sort()
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    a.sort()
+AttributeError: 'str' object has no attribute 'sort'
+>>> import hello
+Traceback (most recent call last):
+  File "<pyshell#41>", line 1, in <module>
+    import hello
+ModuleNotFoundError: No module named 'hello'
+>>> 
+>>> 
+>>> 
+>>> try:
+enter a valid non zero number
+>>> 
+>>> 
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+except:
+	print("enter a valid non zero number")
+else:
+	print("result is",c)
+finally:
+	print("i am khaliyar")
+
+	
+enter a numbera
+enter a valid non zero number
+i am khaliyar
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+except:
+	print("enter a valid non zero number")
+else:
+	print("result is",c)
+finally:
+	print("i am khaliyar")
+
+	
+enter a number2
+enter a number4
+result is 0.5
+i am khaliyar
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+except:
+	print("enter a valid non zero number")
+else:
+	print("result is",c)
+
+	
+enter a number1
+enter a number0
+enter a valid non zero number
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	print("result is",c)
+except:
+	print("enter a valid non zero number")
+
+	
+enter a number1
+enter a number2
+result is 0.5
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	print("result is",c)
+except:
+	print("enter a valid non zero number")
+
+	
+enter a number1
+enter a number0
+enter a valid non zero number
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	print("result is",c)
+except ValueError:
+	print("enter a valid number")
+except ZeroDivisionError:
+	print("denominator must be non zero")
+
+	
+enter a number1
+enter a numberq
+enter a valid number
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	print("result is",c)
+except ValueError:
+	print("enter a valid number")
+except ZeroDivisionError:
+	print("denominator must be non zero")
+
+	
+enter a number1
+enter a number0
+denominator must be non zero
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except ValueError:
+	print("enter a valid number")
+except ZeroDivisionError:
+	print("denominator must be non zero")
+
+	
+enter a number4
+enter a number2
+Traceback (most recent call last):
+  File "<pyshell#79>", line 5, in <module>
+    c.sort()
+AttributeError: 'float' object has no attribute 'sort'
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except (ValueError,ZeroDivisionError):
+	print("denominator must be non zero")
+
+	
+enter a number1
+enter a numberq
+denominator must be non zero
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except (ValueError,ZeroDivisionError):
+	print("denominator must be non zero")
+
+	
+enter a number2
+enter a number4
+Traceback (most recent call last):
+  File "<pyshell#83>", line 5, in <module>
+    c.sort()
+AttributeError: 'float' object has no attribute 'sort'
+>>> 
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a numberq
+invalid literal for int() with base 10: 'q'
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a number1
+enter a number0
+division by zero
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	c=a/b
+	c.sort()
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a number1
+enter a number2
+'float' object has no attribute 'sort'
+>>> 
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	if a<100 or b<100:
+		raise ValueError('for low calculation use dimag')
+	c=a/b
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a number1
+enter a number2
+for low calculation use dimag
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	if a<100 or b<100:
+		raise ValueError('for low calculation use dimag')
+	c=a/b
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a number1000
+enter a number10
+for low calculation use dimag
+>>> try:
+	a=int(input("enter a number"))
+	b=int(input("enter a number"))
+	if a<100 or b<100:
+		raise ValueError('for low calculation use dimag')
+	c=a/b
+	print("result is",c)
+except Exception as e:
+	print(e)
+
+	
+enter a number1000
+enter a number100
+result is 10.0
+>>> def fun(a,b):
+	if a<100 or b<100:
+			raise ValueError('for low calculation use dimag')
+	print(a/b)
+
+	
+>>> fun('a',12)
+Traceback (most recent call last):
+  File "<pyshell#102>", line 1, in <module>
+    fun('a',12)
+  File "<pyshell#101>", line 2, in fun
+    if a<100 or b<100:
+TypeError: '<' not supported between instances of 'str' and 'int'
+>>> fun(0,12)
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    fun(0,12)
+  File "<pyshell#101>", line 3, in fun
+    raise ValueError('for low calculation use dimag')
+ValueError: for low calculation use dimag
+>>> fun(0,0)
+Traceback (most recent call last):
+  File "<pyshell#104>", line 1, in <module>
+    fun(0,0)
+  File "<pyshell#101>", line 3, in fun
+    raise ValueError('for low calculation use dimag')
+ValueError: for low calculation use dimag
+>>> def fun(a,b):
+	if a<100 or b<100:
+			raise AssertionError('for low calculation use dimag')
+	print(a/b)
+
+	
+>>> fun(1,2)
+Traceback (most recent call last):
+  File "<pyshell#107>", line 1, in <module>
+    fun(1,2)
+  File "<pyshell#106>", line 3, in fun
+    raise AssertionError('for low calculation use dimag')
+AssertionError: for low calculation use dimag
+>>> def fun(a,b):
+	assert(a>100 and b>100),'for low calculation use dimag'
+	print(a/b)
+
+	
+>>> fun(1,2)
+Traceback (most recent call last):
+  File "<pyshell#110>", line 1, in <module>
+    fun(1,2)
+  File "<pyshell#109>", line 2, in fun
+    assert(a>100 and b>100),'for low calculation use dimag'
+AssertionError: for low calculation use dimag
+>>> 
+>>> 
+>>> #

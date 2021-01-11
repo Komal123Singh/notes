@@ -1,0 +1,206 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #tkinter
+>>> 
+>>> 
+>>> from tkinter import *
+>>> 
+>>> 
+>>> a=Tk()
+>>> 
+>>> 
+>>> scr=Tk()
+>>> scr=Tk(className='my gui')
+>>> scr=Tk(className='MY GUI')
+>>> scr=Tk(className=' MY GUI')
+>>> 
+>>> 
+>>> scr=Tk(className=' MY GUI')
+>>> scr.destroy()
+>>> 
+>>> 
+>>> scr=Tk(className=' MY GUI')
+>>> l=Label(scr,text='Hello welcome',bg='blue',fg='yellow',font=('times',20,'bold'),cursor='man',relief='raised',width=200)
+>>> l.pack()
+>>> l.config(cursor='plus',width=40)
+>>> l.config(text='hello python')
+>>> l.destroy()
+>>> 
+>>> 
+>>> 
+>>> rt=Tk()
+>>> s=StringVar()
+>>> l=Label(rt,textvariable=s,bg='blue',fg='yellow',font=('times',20,'bold'),cursor='man',relief='raised',width=40)
+>>> l.pack()
+>>> v.set("my name is python and i run on anaconda")
+Traceback (most recent call last):
+  File "<pyshell#32>", line 1, in <module>
+    v.set("my name is python and i run on anaconda")
+NameError: name 'v' is not defined
+>>> s.set("my name is python and i run on anaconda")
+>>> s.get()
+'my name is python and i run on anaconda'
+>>> s.set("9863587467536")
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=StringVar()
+>>> l=Label(scr,textvariable=v,font=('times',20,'italic'))
+>>> l.pack()
+>>> v.set("876763526 masghjghjghjg092713896")
+>>> v.get()
+'876763526 masghjghjghjg092713896'
+>>> v.set("mera naam python hai")
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> l=Label(scr,bitmap='hourglass',bg='blue')
+>>> l.pack()
+>>> l.pack(side=TOP,fill=X)
+>>> l.pack(side=BOTTOM,fill=X)
+>>> l.pack(side=LEFT,fill=Y)
+>>> l.pack(side=RIGHT,fill=Y)
+>>> l.pack(fill=BOTH,expand=True)
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> img=PhotoImage(file='f:/data/python/minion.png')
+>>> l=Label(scr,image=img)
+>>> l.pack()
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> l=Label(scr,font=('times',20,'bold'))
+>>> l.pack()
+>>> def fun():
+	l.config(text='button clicked')
+
+	
+>>> b=Button(scr,activebackground="yellow",activeforeground="white",bd=10,bg='blue',fg="yellow",relief='sunken',state="active",underline="0",text='submit',command=fun)
+>>> b.pack()
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=IntVar()
+>>> l=Label(scr,font=('times',20,'bold'))
+>>> l.pack()
+>>> def fun():
+	if v.get()==10:
+		l.config(text='check button checked')
+	if v.get()==100:
+		l.config(text='check btn unchecked')
+
+		
+>>> c=Checkbutton(scr,text='I Agree',onvalue=10,offvalue=100,variable=v,command=fun)
+>>> c.pack()
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> l=Label(scr,font=('times',20,'bold'))
+>>> l.pack()
+>>> s=StringVar()
+>>> def fun():
+	if s.get()=='avo':
+		l.config(text='check btn checked')
+		b.config(state='normal')
+	if s.get()=='jao':
+		l.config(text='check btn unchecked')
+		b.config(state='disabled')
+
+		
+>>> c=Checkbutton(scr,text='hum mantey hai',onvalue='avo',offvalue='jao',variable=s,command=fun)
+>>> c.pack()
+>>> b=Button(scr,text='NEXT>',state='disabled')
+>>> b.pack()
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=DoubleVar()
+>>> l=Label(scr,font=('times',20,'bold'))
+>>> l.pack()
+>>> def fun():
+	if v.get()==1.0:
+		l.config(text='radiobutton 1 checked')
+	if v.get()==2.0:
+		l.config(text='radiobutton 2 checked')
+	if v.get()==3.0:
+		l.config(text='radiobutton 3 checked')
+
+	
+>>> r=Radiobutton(scr,text='radio-1',value=1.0,command=fun)
+>>> r.pack()
+>>> r1=Radiobutton(scr,text='radio-2',value=2.0,command=fun)
+>>> r1.pack()
+>>> r2=Radiobutton(scr,text='radio-3',value=3.0,command=fun)
+>>> r2.pack()
+>>> r.config(variable=v)
+>>> r1.config(variable=v)
+>>> r2.config(variable=v)
+>>> 
+>>> 
+>>> scr=Tk()
+>>> e=Entry(scr,bg='yellow',font=('times',20,'bold'))
+>>> e.pack()
+>>> e.get()
+'lzkhjcvjkhjkdhgd'
+>>> e.get()
+'kashfjksdgjhf'
+>>> e.delete(0)
+>>> e.delete(0,END)
+>>> e.insert(0,'hello')
+>>> e.insert(END,'python')
+>>> e.config(show='~')
+>>> e.config(show='*')
+>>> e.get()
+'ksgdshghjgsdh'
+>>> e.config(show='')
+>>> 
+>>> scr=Tk()
+>>> v=StringVar()
+>>> e=Entry(scr,font=('times',20,'bold'),textvariable=v)
+>>> e.pack()
+>>> v.trace('w',lambda *args:v.set(v.get()[:8]))
+'43504584<lambda>'
+>>> 
+>>> 
+>>> scr=Tk()
+>>> t=Text(scr,font=('times',20,'italic'))
+>>> t.pack()
+>>> t.get('1.0',END)
+'once upon a time\nbaraf fell from ac\nand hence we\nare getting thanda panni\n\n'
+>>> t.get('1.0','2.0')
+'once upon a time\n'
+>>> t.get('1.0','3.0')
+'once upon a time\nbaraf fell from ac\n'
+>>> t.get('1.0','1.5')
+'once '
+>>> t.get('1.0','1.9')
+'once upon'
+>>> t.delete('1.0')
+>>> t.delete('1.0','2.0')
+>>> t.delete('1.0',END)
+>>> t.insert('1.0','hello welcome to text')
+>>> 
+>>> scr=Tk()
+>>> l=Label(scr)
+>>> l.pack()
+>>> m=Message(scr,bg='yellow')
+>>> m.pack()
+>>> l.config(text='sjkdhnkdsfjhjgjgfhjgfhjgjhghjdsggshjdsgjgshhjasfjkgsjkagjhasghjgasfasjhgfahjkhsafjkhdshgdj')
+>>> m.config(text='sjkdhnkdsfjhjgjgfhjgfhjgjhghjdsggshjdsgjgshhjasfjkgsjkagjhasghjgasfasjhgfahjkhsafjkhdshgdj')
+>>> m.config(width=7)
+>>> m.config(width=21)
+>>> m.config(width=100)
+>>> m.config(width=1000)
+>>> m.config(width=7)
+>>> 

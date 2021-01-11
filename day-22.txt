@@ -1,0 +1,194 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+>>> 
+>>> 
+>>> from tkinter import *
+>>> scr=Tk()
+>>> l=Listbox(scr,bg='white',font=('times',20,'bold'))
+>>> l.pack()
+>>> l.insert(0,'A')
+>>> l.insert(1,'C')
+>>> l.insert(1,'B')
+>>> l.insert(3,'D')
+>>> l.insert(4,'E')
+>>> l.curselection()
+(3,)
+>>> l.get((3,))
+'D'
+>>> l.get(l.curselection())
+'D'
+>>> l.config(selectmode='multiple')
+>>> l.curselection()
+(0, 1, 2, 3, 4)
+>>> list(map(l.get,l.curselection()))
+['A', 'B', 'C', 'D', 'E']
+>>> list(map(l.get,l.curselection()))
+['A', 'C', 'E']
+>>> l.delete(0)
+>>> l.delete(0,END)
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> m=Menubutton(scr,text='file',font=('times',20,'bold'),bg='blue')
+>>> m.pack()
+>>> fm=Menu(m,tearoff=0)
+>>> m.config(menu=fm)
+>>> fm.add_command(label='open')
+>>> 
+>>> 
+>>> scr=Tk()
+>>> s=Scale(scr,from_=1,to=10)
+>>> s.pack()
+>>> s.config(tick_interval=1)
+
+>>> s.config(tick_interval=1)
+
+>>> s.config(tickinterval=1)
+>>> s.config(sliderlength=5)
+>>> s.config(orient='horiz')
+>>> s.config(resolution=0.5)
+>>> s.get()
+7.0
+>>> s.set(2)
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=StringVar()
+>>> o=OptionMenu(scr,v,*'abcde')
+>>> o.pack()
+>>> v.get()
+'a'
+>>> v.set('select a value')
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=IntVar()
+>>> o=OptionMenu(scr,v,1,2,3,4,5)
+>>> o.pack()
+>>> 
+>>> 
+>>> from tkinter.ttk import Progressbar
+>>> scr=Tk()
+>>> v=IntVar()
+>>> p=Progressbar(scr,length=200,mode='determinate',variable=v)
+>>> p.pack()
+>>> v.set(10)
+>>> v.set(40)
+>>> v.set(400)
+>>> p.config(mode='indeterminate')
+>>> v.set(40)
+>>> v.set(70)
+>>> 
+>>> 
+>>> scr=Tk()
+>>> def fun():
+	new=Toplevel(scr)
+	l=Label(new,text='new screen',font=('times',20,'bold'))
+	l.pack()
+
+	
+>>> b=Button(scr,text='click',command=fun)
+>>> b.pack()
+>>> 
+>>> 
+>>> from tkinter import messagebox
+>>> scr=Tk()
+>>> def fun():
+	messagebox.showinfo('python','welcome to sundays pratadna')
+
+	
+>>> b=Button(scr,text='click',command=fun)
+>>> b.pack()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> def fun():
+	messagebox.showerror('python','welcome to sundays pratadna')
+
+	
+>>> b=Button(scr,text='click',command=fun)
+>>> b.pack()
+>>> 
+>>> 
+>>> scr=Tk()
+>>> def fun():
+	print(messagebox.askyesnocancel('python','welcome to sundays pratadna'))
+
+	
+>>> b=Button(scr,text='click',command=fun)
+>>> b.pack()
+>>> True
+False
+None
+True
+
+>>> 
+>>> scr=Tk()
+>>> f=Frame(scr,bg='blue',widt=200,height=300)
+>>> f.grid(row=0,column=0)
+>>> f1=Frame(scr,bg='yellow',widt=200,height=300)
+>>> f.grid(row=0,column=1)
+>>> f.grid(row=0,column=0)
+>>> f1.grid(row=0,column=1)
+>>> f2=Frame(scr,bg='green',widt=200,height=300)
+>>> f2.grid(row=0,column=2)
+>>> f2.grid(row=0,column=0)
+>>> f.grid(row=0,column=2)
+>>> 
+>>> 
+>>> b=Button(f,text='click',command=fun)
+>>> b.place(x=100,y=150)
+>>> b=Button(f1,text='click',command=fun)
+>>> b.place(x=100,y=150)
+>>> b=Button(f2,text='click',command=fun)
+>>> b.place(x=100,y=150)
+>>> False
+None
+True
+
+>>> 
+>>> scr=Tk()
+>>> def fun(a):
+	print(a)
+
+	
+>>> scr.bind('<Button-1>',fun)
+'52745040fun'
+>>> scr.bind('<Button-2>',fun)
+'18475128fun'
+>>> scr.bind('<Button-3>',fun)
+'53670656fun'
+>>> 
+
+>>> 
+>>> scr=Tk()
+>>> m=Menu(scr)
+>>> m.add_command(label='refresh')
+>>> m.add_command(label='copy')
+>>> m.add_command(label='paste')
+>>> m.add_command(label='cut')
+>>> m.add_command(label='view')
+>>> def fun(a):
+	if a.num==3:
+		m.post(x=a.x,y=a.y)
+	if
+	
+SyntaxError: invalid syntax
+>>> def fun(a):
+	if a.num==3:
+		m.post(x=a.x,y=a.y)
+	if a.num==1:
+		print('left click at',a.x,a.y)
+
+		
+>>> scr.bind('<Button-1>',fun)
+'53670656fun'
+>>> scr.bind('<Button-3>',fun)
+'52744920fun'
+>>> 

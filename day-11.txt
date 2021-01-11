@@ -1,0 +1,339 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #zip
+>>> a=[1,2,3,4,5]
+>>> b=['a','b','c','d']
+>>> d=zip(a,b)
+>>> next(d)
+(1, 'a')
+>>> next(d)
+(2, 'b')
+>>> d.__next__()
+(3, 'c')
+>>> d.__next__()
+(4, 'd')
+>>> d.__next__()
+Traceback (most recent call last):
+  File "<pyshell#8>", line 1, in <module>
+    d.__next__()
+StopIteration
+>>> d=zip(a,b)
+>>> list(d)
+[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]
+>>> d=zip(a,b)
+>>> tuple(d)
+((1, 'a'), (2, 'b'), (3, 'c'), (4, 'd'))
+>>> d=zip(a,b)
+>>> set(d)
+{(4, 'd'), (1, 'a'), (3, 'c'), (2, 'b')}
+>>> 
+>>> #strings
+>>> 
+>>> a='hello'
+>>> a
+'hello'
+>>> a="hello"
+>>> a
+'hello'
+>>> a="hello's"
+>>> a
+"hello's"
+>>> 
+>>> 'hello"s'
+'hello"s'
+>>> 
+>>> a='a
+SyntaxError: EOL while scanning string literal
+>>> a='a
+SyntaxError: EOL while scanning string literal
+>>> a='''a
+b
+c
+d
+e
+'''
+>>> print(a)
+a
+b
+c
+d
+e
+
+>>> print("""a)
+b
+
+
+c""")
+a)
+b
+
+
+c
+>>> print("""a
+b
+
+
+c""")
+a
+b
+
+
+c
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> a='abcdefg'
+>>> a[0]
+'a'
+>>> a[-1]
+'g'
+>>> a[-7]
+'a'
+>>> a[5]
+'f'
+>>> a[-4]
+'d'
+>>> 
+>>> 
+>>> a[:]
+'abcdefg'
+>>> a[:3]
+'abc'
+>>> a[:-3]
+'abcd'
+>>> a[2:-2]
+'cde'
+>>> a[:-1]
+'abcdef'
+>>> a[0:-1]
+'abcdef'
+>>> a[3:-3]
+'d'
+>>> a[-5:5]
+'cde'
+>>> 
+>>> a[4:9]
+'efg'
+>>> a[::2]
+'aceg'
+>>> a[::3]
+'adg'
+>>> a[-1:]
+'g'
+>>> 
+>>> 
+>>> a[::-1]
+'gfedcba'
+>>> a[4::-1]
+'edcba'
+>>> a[600:0:-1]
+'gfedcb'
+>>> 
+>>> a[-1:0:-1]
+'gfedcb'
+>>> a[0::-1]
+'a'
+>>> a
+'abcdefg'
+>>> for i in range(0,len(a),2):
+	print(a[i:i+2])
+
+	
+ab
+cd
+ef
+g
+>>> len(a)
+7
+>>> a.__len__()
+7
+>>> max(a)
+'g'
+>>> min(a)
+'a'
+>>> sum(a)
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    sum(a)
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>> sum(int('12'))
+Traceback (most recent call last):
+  File "<pyshell#85>", line 1, in <module>
+    sum(int('12'))
+TypeError: 'int' object is not iterable
+>>> sum(int('12'),int('123'))
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    sum(int('12'),int('123'))
+TypeError: 'int' object is not iterable
+>>> sum((int('12'),int('123')))
+135
+>>> sorted(a)
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> a[0]
+'a'
+>>> a[0]='x'
+Traceback (most recent call last):
+  File "<pyshell#90>", line 1, in <module>
+    a[0]='x'
+TypeError: 'str' object does not support item assignment
+>>> del(a[0])
+Traceback (most recent call last):
+  File "<pyshell#91>", line 1, in <module>
+    del(a[0])
+TypeError: 'str' object doesn't support item deletion
+>>> 
+>>> 
+>>> a='this is a statement'
+>>> a.capitalize()
+'This is a statement'
+>>> 
+>>> 
+>>> a='THIS IS A STEMENT'
+>>> a.capitalize()
+'This is a stement'
+>>> a.casefold()
+'this is a stement'
+>>> a='this is a statement'
+>>> a.casefold()
+'this is a statement'
+>>> a.casefold.__doc__
+'Return a version of the string suitable for caseless comparisons.'
+>>> a.center(50)
+'               this is a statement                '
+>>> a.center(50,'~')
+'~~~~~~~~~~~~~~~this is a statement~~~~~~~~~~~~~~~~'
+>>> a.center(50,'>')
+'>>>>>>>>>>>>>>>this is a statement>>>>>>>>>>>>>>>>'
+>>> a.count('i')
+2
+>>> a.encode(encoding='utf-8')
+b'this is a statement'
+>>> a.encode(encoding='cp1252')
+b'this is a statement'
+>>> a.endswith('ment')
+True
+>>> a.endswith('t')
+True
+>>> a.endswith('t',5)
+True
+>>> 
+>>> a.endswith('t',5,13)
+False
+>>> a.endswith('t',5,12)
+True
+>>> a.endswith('t',5,14)
+True
+>>> print('a\tb\tc\td\te\tk')
+a	b	c	d	e	k
+>>> print('a\tb\tc\td\te\tk'.expandtabs(tabsize=64))
+a                                                               b                                                               c                                                               d                                                               e                                                               k
+>>> print('a\tb\tc\td\te\tk'.expandtabs(tabsize=0))
+abcdek
+>>> a
+'this is a statement'
+>>> a.find('t')
+0
+>>> a.find('t',1)
+11
+>>> a.find('t',12)
+13
+>>> a.find('t',14)
+18
+>>> a.find('t',19)
+-1
+>>> a.index('t')
+0
+>>> a.index('t',1)
+11
+>>> a.index('t',12)
+13
+>>> a.index('t',14)
+18
+>>> a.index('t',19\)
+	
+SyntaxError: unexpected character after line continuation character
+>>> a.index('t',19)
+Traceback (most recent call last):
+  File "<pyshell#131>", line 1, in <module>
+    a.index('t',19)
+ValueError: substring not found
+>>> 
+>>> 
+>>> a=123
+>>> b='hello'
+>>> c=123.456
+>>> 
+>>> print(a,b,c)
+123 hello 123.456
+>>> print("%d %s %f"%(a,b,c))
+123 hello 123.456000
+>>> 
+>>> print("{} {} {}".format(a,b,c))
+123 hello 123.456
+>>> if a.find('t',19)==-1:
+	print("not found")
+
+	
+Traceback (most recent call last):
+  File "<pyshell#144>", line 1, in <module>
+    if a.find('t',19)==-1:
+AttributeError: 'int' object has no attribute 'find'
+>>> if 'abc'.find('t',19)==-1:
+	print("not found")
+
+	
+not found
+>>> if 'abc'.index('t',19)==-1:
+	print("not found")
+
+	
+Traceback (most recent call last):
+  File "<pyshell#148>", line 1, in <module>
+    if 'abc'.index('t',19)==-1:
+ValueError: substring not found
+>>> print("%d %s %f"%(b,c,a))
+Traceback (most recent call last):
+  File "<pyshell#149>", line 1, in <module>
+    print("%d %s %f"%(b,c,a))
+TypeError: %d format: a number is required, not str
+>>> print("{} {} {}".format(b,c,a))
+hello 123.456 123
+>>> print("{} {} {}".format(a,b,c))
+123 hello 123.456
+>>> print("{} {} {}".format(a,b,c,'hello','welcome','to sajjanpur'))
+123 hello 123.456
+>>> 
+>>> print("{3} {3} {3}".format(a,b,c,'hello','welcome','to sajjanpur'))
+hello hello hello
+>>> print("{3} {4} {5}".format(a,b,c,'hello','welcome','to sajjanpur'))
+hello welcome to sajjanpur
+>>> l=[12,'hello
+   
+SyntaxError: EOL while scanning string literal
+>>> l=[12,'hello',56,78,'lkdhkfj']
+>>> print("{} {} {}".format(*l))
+12 hello 56
+>>> print("{} {} {}".format(l[0],l[1],l[2]))
+12 hello 56
+>>> print(l)
+[12, 'hello', 56, 78, 'lkdhkfj']
+>>> print(*l)
+12 hello 56 78 lkdhkfj
+>>> print("{} {} {}".format(*l))
+12 hello 56
+>>> print("{} {} {}".format(*'abcdefghij'))
+a b c
+>>> 
+>>> print("{m} {x} {a}".format(a='hello',m=123,x=b))
+123 hello hello
+>>> d=dict(a='hello',m=123,x=b)
+>>> d
+{'a': 'hello', 'm': 123, 'x': 'hello'}
+>>> print("{m} {x} {a}".format(**d))
+123 hello hello
+>>> print('{}{} {}{} {}{} {}'.format(*'abcdefg'))
+ab cd ef g
+>>> 

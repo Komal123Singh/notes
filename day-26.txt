@@ -1,0 +1,236 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> from pymongo import MongoClient
+>>> client=MongoClient()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from pymongo import MongoClient
+>>> client=MongoClient()
+>>> #database == journal
+>>> #table ==collections
+>>> #row==document
+>>> 
+>>> cetpa=client['july-18']
+>>> st=client.july-18.student
+SyntaxError: invalid syntax
+>>> st=client['july-18'].student
+>>> 
+>>> st.insert_one({'name':'hello','tech':'python'})
+<pymongo.results.InsertOneResult object at 0x02D47198>
+>>> st.insert_one({'_id':1,'name':'abcde','tech':'java'})
+<pymongo.results.InsertOneResult object at 0x02D471E8>
+>>> st.insert_one({'_id':2,'name':'mnop','tech':'java','parking':'a','vehicle':'car'})
+<pymongo.results.InsertOneResult object at 0x02D57058>
+>>> st.insert_one({'_id':3,'name':'xyz','tech':'python','parking':'b','vehicle':'byke','laptop':'mehnga'})
+<pymongo.results.InsertOneResult object at 0x02D57080>
+>>> st.insert_one({'_id':4,'tech':'python','parking':'b','vehicle':'byke','laptop':'ultra mehnga'})
+<pymongo.results.InsertOneResult object at 0x02D2CE90>
+>>> list(st.find())
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> list(st.find({'name':{'$exists':True}}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}]
+>>> list(st.find({'name':{'$exists':False}}))
+[{'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> list(st.find({'name':{'$eq':'hello'}}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}]
+>>> list(st.find({'tech':{'$eq':'python'},'_id':{'$gt':2}}))
+[{'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> list(st.find({'tech':{'$eq':'python'},'_id':{'$gt':2},'name':{'$exists':True}}))
+[{'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}]
+>>> 
+>>> list(st.find({}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> st.update_one({},{'$set':{'company':'cetpa'}})
+<pymongo.results.UpdateResult object at 0x02D571C0>
+>>> list(st.find({}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python', 'company': 'cetpa'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> st.update_many({},{'$set':{'company':'cetpa'}})
+<pymongo.results.UpdateResult object at 0x0291C148>
+>>> list(st.find({}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python', 'company': 'cetpa'}, {'_id': 1, 'name': 'abcde', 'tech': 'java', 'company': 'cetpa'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car', 'company': 'cetpa'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga', 'company': 'cetpa'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga', 'company': 'cetpa'}]
+>>> st.update_many({},{'$unset':{'company':'cetpa'}})
+<pymongo.results.UpdateResult object at 0x00D27418>
+>>> list(st.find({}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'mehnga'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke', 'laptop': 'ultra mehnga'}]
+>>> st.update_many({},{'$unset':{'laptop':True}})
+<pymongo.results.UpdateResult object at 0x02D2CDC8>
+>>> list(st.find({}))
+[{'_id': ObjectId('5d3034e8eb0aa7a87af13121'), 'name': 'hello', 'tech': 'python'}, {'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}]
+>>> 
+>>> 
+>>> st.delete_one({'name':{'$eq':'hello'}})
+<pymongo.results.DeleteResult object at 0x00E78A80>
+>>> list(st.find({}))
+[{'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}]
+>>> st.delete_many({'name':{'$eq':'hello'}})
+<pymongo.results.DeleteResult object at 0x02FB4238>
+>>> list(st.find({}))
+[{'_id': 1, 'name': 'abcde', 'tech': 'java'}, {'_id': 2, 'name': 'mnop', 'tech': 'java', 'parking': 'a', 'vehicle': 'car'}, {'_id': 3, 'name': 'xyz', 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}, {'_id': 4, 'tech': 'python', 'parking': 'b', 'vehicle': 'byke'}]
+>>> st.delete_many({})
+<pymongo.results.DeleteResult object at 0x02D571C0>
+>>> list(st.find({}))
+[]
+>>> 
+>>> 
+>>> from time import time,sleep
+>>> def fun(name,delay):
+	for _ in range(4):
+		print("executing {} at {} with delay {}"%(name,ctime(),delay))
+		sleep(delay)
+
+		
+>>> from time import time,sleep,ctime
+>>> 
+>>> 
+>>> def fun(name,delay):
+	for _ in range(4):
+		print("executing {} at {} with delay {}"%(name,ctime(),delay))
+		sleep(delay)
+
+		
+>>> fun('thread -1',1),fun('thread -2',1)
+Traceback (most recent call last):
+  File "<pyshell#58>", line 1, in <module>
+    fun('thread -1',1),fun('thread -2',1)
+  File "<pyshell#57>", line 3, in fun
+    print("executing {} at {} with delay {}"%(name,ctime(),delay))
+TypeError: not all arguments converted during string formatting
+>>> 
+>>> def fun(name,delay):
+	for _ in range(4):
+		print("executing {} at {} with delay {}".format(name,ctime(),delay))
+		sleep(delay)
+
+		
+>>> from time import time,sleep,ctime
+>>> 
+>>> def fun(name,delay):
+	for _ in range(4):
+		print("executing {} at {} with delay {}".format(name,ctime(),delay))
+		sleep(delay)
+
+		
+>>> fun('thread -1',1),fun('thread -2',1)
+executing thread -1 at Thu Jul 18 14:56:16 2019 with delay 1
+executing thread -1 at Thu Jul 18 14:56:17 2019 with delay 1
+executing thread -1 at Thu Jul 18 14:56:18 2019 with delay 1
+executing thread -1 at Thu Jul 18 14:56:19 2019 with delay 1
+executing thread -2 at Thu Jul 18 14:56:20 2019 with delay 1
+executing thread -2 at Thu Jul 18 14:56:21 2019 with delay 1
+executing thread -2 at Thu Jul 18 14:56:22 2019 with delay 1
+executing thread -2 at Thu Jul 18 14:56:23 2019 with delay 1
+(None, None)
+>>> import _thread
+>>> try:
+	_thread.start_new_thread(fun,('thread -1',1))
+	_thread.start_new_thread(fun,('thread -2',1))
+except:
+	pass
+
+3116executing thread -1 at Thu Jul 18 15:05:46 2019 with delay 1
+
+2584executing thread -2 at Thu Jul 18 15:05:47 2019 with delay 1
+
+>>> executing thread -1 at Thu Jul 18 15:05:48 2019 with delay 1
+executing thread -2 at Thu Jul 18 15:05:48 2019 with delay 1
+executing thread -1 at Thu Jul 18 15:05:49 2019 with delay 1executing thread -2 at Thu Jul 18 15:05:49 2019 with delay 1
+
+executing thread -1 at Thu Jul 18 15:05:50 2019 with delay 1executing thread -2 at Thu Jul 18 15:05:50 2019 with delay 1
+
+
+>>> try:
+	_thread.start_new_thread(fun,('thread -1',1))
+	_thread.start_new_thread(fun,('thread -2',1))
+except:
+	pass
+
+3508executing thread -1 at Thu Jul 18 15:06:27 2019 with delay 1
+
+4580executing thread -2 at Thu Jul 18 15:06:27 2019 with delay 1
+
+>>> executing thread -1 at Thu Jul 18 15:06:28 2019 with delay 1
+executing thread -2 at Thu Jul 18 15:06:28 2019 with delay 1
+executing thread -1 at Thu Jul 18 15:06:29 2019 with delay 1executing thread -2 at Thu Jul 18 15:06:29 2019 with delay 1
+
+executing thread -1 at Thu Jul 18 15:06:30 2019 with delay 1executing thread -2 at Thu Jul 18 15:06:30 2019 with delay 1
+
+def fun(name,delay):
+	for _ in range(4):
+		print("executing {} at {} with delay {}".format(name,ctime(),delay))
+		sleep(delay)
+
+		
+>>> def ml(n):
+	li=[]
+	for i in range(n):
+		li.append("thread-{}".format(n))
+	for i in range(n):
+		_thread.start_new_thread(fun,(li[i],1))
+
+		
+>>> ml(5)
+executing thread-5 at Thu Jul 18 15:12:18 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:18 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:18 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:18 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:18 2019 with delay 1
+>>> 
+
+
+
+
+executing thread-5 at Thu Jul 18 15:12:20 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:20 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:20 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:20 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:20 2019 with delay 1
+
+
+
+
+executing thread-5 at Thu Jul 18 15:12:21 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:21 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:21 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:21 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:21 2019 with delay 1
+
+
+
+
+executing thread-5 at Thu Jul 18 15:12:22 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:22 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:22 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:22 2019 with delay 1executing thread-5 at Thu Jul 18 15:12:22 2019 with delay 1
+
+
+
+
+
+>>> def ml(n):
+	li=[]
+	for i in range(n):
+		li.append("thread-{}".format(n))
+	for i in range(n):
+		_thread.start_new_thread(fun,(li[i],1))
+
+		
+>>> def ml(n):
+	li=[]
+	for i in range(n):
+		li.append("thread-{}".format(i))
+	for i in range(n):
+		_thread.start_new_thread(fun,(li[i],1))
+
+		
+>>> ml(5)
+executing thread-1 at Thu Jul 18 15:13:12 2019 with delay 1executing thread-0 at Thu Jul 18 15:13:12 2019 with delay 1executing thread-3 at Thu Jul 18 15:13:12 2019 with delay 1executing thread-4 at Thu Jul 18 15:13:12 2019 with delay 1executing thread-2 at Thu Jul 18 15:13:12 2019 with delay 1
+>>> 
+
+
+
+
+executing thread-1 at Thu Jul 18 15:13:13 2019 with delay 1executing thread-0 at Thu Jul 18 15:13:13 2019 with delay 1executing thread-3 at Thu Jul 18 15:13:13 2019 with delay 1executing thread-4 at Thu Jul 18 15:13:13 2019 with delay 1executing thread-2 at Thu Jul 18 15:13:13 2019 with delay 1
+
+
+
+
+executing thread-1 at Thu Jul 18 15:13:14 2019 with delay 1executing thread-0 at Thu Jul 18 15:13:14 2019 with delay 1executing thread-3 at Thu Jul 18 15:13:14 2019 with delay 1executing thread-4 at Thu Jul 18 15:13:14 2019 with delay 1executing thread-2 at Thu Jul 18 15:13:14 2019 with delay 1
+
+
+
+
+executing thread-1 at Thu Jul 18 15:13:15 2019 with delay 1executing thread-0 at Thu Jul 18 15:13:15 2019 with delay 1executing thread-3 at Thu Jul 18 15:13:15 2019 with delay 1executing thread-4 at Thu Jul 18 15:13:15 2019 with delay 1executing thread-2 at Thu Jul 18 15:13:15 2019 with delay 1
+
+
+
+
+#
+>>> import requests
+>>> 

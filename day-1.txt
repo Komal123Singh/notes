@@ -1,0 +1,302 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a=12
+>>> type(a)
+<class 'int'>
+>>> a.bit_length()
+4
+>>> a=0
+>>> a.__sizeof__()
+12
+>>> a=123
+>>> a.__sizeof__()
+14
+>>> a=32767
+>>> a.__sizeof__()
+14
+>>> a=32768
+>>> a.__sizeof__()
+16
+>>> a=2**32000
+>>> a.__sizeof__()
+4280
+>>> a=12
+>>> b=12
+>>> c=12
+>>> d=12
+>>> id(a)
+1877894416
+>>> id(b)
+1877894416
+>>> id(c)
+1877894416
+>>> id(d)
+1877894416
+>>> 
+>>> 
+>>> a=123
+>>> id(a)
+1877896192
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> a.bit_length()
+7
+>>> 
+>>> 
+>>> a=123.4
+>>> type(a)
+<class 'float'>
+>>> 
+>>> 
+>>> a.hex()
+'0x1.ed9999999999ap+6'
+>>> a.fromhex('0x1.ed9999999999ap+6')
+123.4
+>>> a.fromhex('0x1.9999999999ap+6')
+102.40000000000146
+>>> a.fromhex('0x1.999\+6')
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    a.fromhex('0x1.999\+6')
+ValueError: invalid hexadecimal floating-point string
+>>> a.fromhex('0x1.999+6')
+Traceback (most recent call last):
+  File "<pyshell#41>", line 1, in <module>
+    a.fromhex('0x1.999+6')
+ValueError: invalid hexadecimal floating-point string
+>>> a.fromhex('0x1.999p+6')
+102.390625
+>>> a.fromhex('0x1.999p+4')
+25.59765625
+>>> 
+>>> 
+>>> a=True
+>>> type(a)
+<class 'bool'>
+>>> a.bit_length()
+1
+>>> bool(-1234)
+True
+>>> bool(-123.6)
+True
+>>> 
+>>> a=2+3j
+>>> type(a)
+<class 'complex'>
+>>> a.imag
+3.0
+>>> a.real
+2.0
+>>> "hello"
+'hello'
+>>> 'a'
+'a'
+>>> a='a'
+>>> type(a)
+<class 'str'>
+>>> "hello's"
+"hello's"
+>>> 
+>>> 
+>>> #optr
+>>> 
+>>> #arth +,*.-,/,%,//floor,** power
+>>> 1+2
+3
+>>> "a"+'b'
+'ab'
+>>> 'a'.__add__('bcde')
+'abcde'
+>>> a=12
+>>> b=123
+>>> a.__add__(b)
+135
+>>> a-b
+-111
+>>> a.__sub__()
+Traceback (most recent call last):
+  File "<pyshell#73>", line 1, in <module>
+    a.__sub__()
+TypeError: expected 1 arguments, got 0
+>>> a.__sub__(b)
+-111
+>>> 2*3
+6
+>>> 'a'*3
+'aaa'
+>>> "abcd".__mul__(4)
+'abcdabcdabcdabcd'
+>>> 5/2
+2.5
+>>> 4/2
+2.0
+>>> 5//2
+2
+>>> 1.9//1
+1.0
+>>> 24/0.4
+60.0
+>>> 24//0.4
+59.0
+>>> 24/0.3
+80.0
+>>> 24//0.3
+80.0
+>>> 2**3
+8
+>>> pow(2,3)
+8
+>>> help(pow)
+Help on built-in function pow in module builtins:
+
+pow(x, y, z=None, /)
+    Equivalent to x**y (with two arguments) or x**y % z (with three arguments)
+    
+    Some types, such as ints, are able to use a more efficient algorithm when
+    invoked using the three argument form.
+
+>>> pow.__doc__
+'Equivalent to x**y (with two arguments) or x**y % z (with three arguments)\n\nSome types, such as ints, are able to use a more efficient algorithm when\ninvoked using the three argument form.'
+>>> 2**3%5
+3
+>>> pow(2,3,5)
+3
+>>> #logical optr
+>>> #==,!=,>,<,>=,<=,and,or,is,is not,in ,not in ,not
+>>> 
+>>> 1==2
+False
+>>> 'a'=='b'
+False
+>>> 'a'.__eq__('b')
+False
+>>> 'a' is 'b'
+False
+>>> 'a'.__ne__('b')
+True
+>>> 'a'!='b'
+True
+>>> 'a' is not 'b'
+True
+>>> a>b
+False
+>>> a.__gt__(b)
+False
+>>> a.__lt__(b)
+True
+>>> a.__le__(b)
+True
+>>> a.__ge__(b)
+False
+>>> a>b
+False
+>>> a<b
+True
+>>> "a" in "abcde"
+True
+>>> 1 in [1,2,3]
+True
+>>> "ac" in "abcde"
+False
+>>> "abc" in "abcde"
+True
+>>> 
+>>> "abc" not in "abcde"
+False
+>>> "ac" not in "abcde"
+True
+>>> 
+>>> "abc" not in "abcde" and "ac" not in "abcde"
+False
+>>> "abc" not in "abcde" or "ac" not in "abcde"
+True
+>>> 
+>>> 5 and 6
+6
+>>> 5 or 6
+5
+>>> 0 and 6
+0
+>>> 0 or 6
+6
+>>> 
+>>> #bitwise optr
+>>> #>>,<<,&,|,^,~
+>>> 30>>3
+3
+>>> 45>>4
+2
+>>> 49>>5
+1
+>>> 29<<3
+232
+>>> 5&6
+4
+>>> 5|6
+7
+>>> 5^6
+3
+>>> a=12
+>>> b=24
+>>> a=a^b
+>>> b=a^b
+>>> a=a^b
+>>> a
+24
+>>> b
+12
+>>> a,b=b,a
+>>> a
+12
+>>> b
+24
+>>> a,b='hello',678
+>>> a
+'hello'
+>>> b
+678
+>>> a,b=b,a
+>>> a
+678
+>>> b
+'hello'
+>>> ~123
+-124
+>>> ~12345
+-12346
+>>> ~1111111
+-1111112
+>>> ~-1234
+1233
+>>> #assignment
+>>> #lhs=rhs
+>>> #console output
+>>> print("hello")
+hello
+>>> print("hello",'welcome','to','python')
+hello welcome to python
+>>> print("hello",'welcome','to','python',sep='+++||||+++')
+hello+++||||+++welcome+++||||+++to+++||||+++python
+>>> print.__doc__
+"print(value, ..., sep=' ', end='\\n', file=sys.stdout, flush=False)\n\nPrints the values to a stream, or to sys.stdout by default.\nOptional keyword arguments:\nfile:  a file-like object (stream); defaults to the current sys.stdout.\nsep:   string inserted between values, default a space.\nend:   string appended after the last value, default a newline.\nflush: whether to forcibly flush the stream."
+>>> 
+>>> 
+>>> a=123
+>>> b='hello'
+>>> c=12345.67
+>>> print(a,b,c)
+123 hello 12345.67
+>>> a.__str__()
+'123'
+>>> print('%d %r %f'%(a,b,c))
+123 'hello' 12345.670000
+>>> print('%d %s %f'%(a,b,c))
+123 hello 12345.670000
+>>> 
+>>> input("enter some value")
+enter some value12
+'12'
+>>> 

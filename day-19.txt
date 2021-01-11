@@ -1,0 +1,287 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #file handling
+>>> 
+>>> 
+>>> 
+>>> 
+>>> a=open('f:\\data\b.txt')
+Traceback (most recent call last):
+  File "<pyshell#5>", line 1, in <module>
+    a=open('f:\\data\b.txt')
+OSError: [Errno 22] Invalid argument: 'f:\\data\x08.txt'
+>>> a=open('f:\\data\\b.txt')
+>>> a=open(r'f:\data\b.txt')
+>>> 
+>>> a=open('f:/data/b.txt')
+>>> 
+>>> a.mode
+'r'
+>>> a.name
+'f:/data/b.txt'
+
+>>> a.encoding
+'cp1252'
+>>> a.readable()
+True
+>>> a.seekable()
+True
+>>> a.writable()
+False
+>>> a.tell()
+0
+>>> a.read()
+'this is a file \n1234 kkd\nhello welcome\nto python\nyou are going to\nexperience the best pratadna'
+>>> a.read()
+''
+>>> a.tell()
+99
+>>> a.seek(0)
+0
+>>> a.tell()
+0
+>>> a.read()
+'this is a file \n1234 kkd\nhello welcome\nto python\nyou are going to\nexperience the best pratadna'
+>>> a.seek(0)
+0
+>>> a.read(10)
+'this is a '
+>>> a.read(10)
+'file \n1234'
+>>> len('file \n1234')
+10
+>>> a.read(20)
+' kkd\nhello welcome\nt'
+>>> a.tell()
+43
+>>> a.seek(0)
+0
+>>> a.read(10)
+'this is a '
+>>> a.tell()
+10
+>>> a.read(10)
+'file \n1234'
+>>> a.tell()
+21
+>>> a.seek(0)
+0
+>>> a.readline()
+'this is a file \n'
+>>> a.readline()
+'1234 kkd\n'
+>>> a.readline()
+'hello welcome\n'
+>>> a.readline()
+'to python\n'
+>>> a.readline()
+'you are going to\n'
+>>> a.readline()
+'experience the best pratadna'
+>>> a.readline()
+''
+>>> a.seek(0)
+0
+>>> a.readline(10)
+'this is a '
+>>> a.readline(10)
+'file \n'
+>>> a.seek(0)
+0
+>>> 
+>>> a.readlines()
+['this is a file \n', '1234 kkd\n', 'hello welcome\n', 'to python\n', 'you are going to\n', 'experience the best pratadna']
+>>> 
+>>> a.seek(0)
+0
+>>> a.readlines(20)
+['this is a file \n', '1234 kkd\n']
+>>> 
+>>> a.close()
+>>> 
+>>> 
+>>> a=open('f:/data/b.txt','w')
+>>> a.mode
+'w'
+>>> a.name
+'f:/data/b.txt'
+>>> a.encoding
+'cp1252'
+>>> a.readable()
+False
+>>> a.writable()
+True
+>>> a.seekable()
+True
+>>> a.write('this is a file \n1234 kkd\nhello welcome\nto python\nyou are going to\nexperience the best pratadna')
+94
+>>> a.tell()
+99
+>>> a.writelines(['\n and added by writelines','\n on windows','8.1 on intel chip'])
+>>> 
+>>> a.tell()
+155
+>>> a.seek(138)
+138
+>>> a.write('10 ')
+3
+>>> a.close()
+>>> 
+>>> a=open('f:/data/b.txt','a')
+>>> a.name
+'f:/data/b.txt'
+>>> a.mode
+'a'
+>>> a.encoding
+'cp1252'
+>>> 
+>>> a.readable()
+False
+>>> a.seekable()
+True
+>>> a.writable()
+True
+>>> 
+>>> a.tell()
+155
+>>> a.seek(0)
+0
+>>> a.tell()
+0
+>>> a.write(' and in th name of ')
+19
+>>> a.tell()
+174
+>>> 
+>>> 
+>>> a.close()
+>>> 
+>>> a=open("f:/racecar.png")
+>>> a.read()
+Traceback (most recent call last):
+  File "<pyshell#92>", line 1, in <module>
+    a.read()
+  File "C:\Users\amit\AppData\Local\Programs\Python\Python37-32\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x8f in position 44: character maps to <undefined>
+>>> 
+>>> 
+>>> a=open("f:/racecar.png",'rb')
+>>> b=open("f:/mycar.jpg",'wb')
+>>> b.write(a.read())
+5586
+>>> b.close()
+>>> 
+>>> 
+>>> a=open("f:/racecar.png",'rb')
+>>> b=open("f:/mycar.jpg",'wb')
+>>> b.write(a.read().replace('$'.encode(),'@'.encode()))
+5586
+>>> b.close()
+>>> 
+>>> 
+>>> 
+>>> open('f:/data/b.txt').read()
+'this is a file \n1234 kkd\nhello welcome\nto python\nyou are going to\nexperience the best pratadna\n and added by writelines\n on windows10  on intel chip and in th name of '
+>>> open('f:/data/b.txt').read().replace('i','$')
+'th$s $s a f$le \n1234 kkd\nhello welcome\nto python\nyou are go$ng to\nexper$ence the best pratadna\n and added by wr$tel$nes\n on w$ndows10  on $ntel ch$p and $n th name of '
+>>> a=open('f:/data/b.txt').read().replace('i','$')
+>>> open('f:/data/b.txt','w').write(a)
+167
+>>> 
+>>> open('f:/data/b.txt').read()
+'th$s $s a f$le \n1234 kkd\nhello welcome\nto python\nyou are go$ng to\nexper$ence the best pratadna\n and added by wr$tel$nes\n on w$ndows10  on $ntel ch$p and $n th name of '
+>>> open('f:/data/b.txt').read().replace('$','i')
+'this is a file \n1234 kkd\nhello welcome\nto python\nyou are going to\nexperience the best pratadna\n and added by writelines\n on windows10  on intel chip and in th name of '
+>>> a=open('f:/data/b.txt').read().replace('$','i')
+>>> 
+>>> open('f:/data/b.txt','w').write(a)
+167
+>>> 
+>>> import os
+>>> os.getcwd()
+'C:\\Users\\amit\\AppData\\Local\\Programs\\Python\\Python37-32'
+>>> os.chdir('f:/')
+>>> os.getcwd()
+'f:\\'
+>>> 
+>>> os.cpu_count
+<built-in function cpu_count>
+>>> os.cpu_count()
+4
+>>> os.curdir
+'.'
+>>> os.environ()
+Traceback (most recent call last):
+  File "<pyshell#128>", line 1, in <module>
+    os.environ()
+TypeError: '_Environ' object is not callable
+>>> os.environ
+environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'APPDATA': 'C:\\Users\\amit\\AppData\\Roaming', 'COMMONPROGRAMFILES': 'C:\\Program Files (x86)\\Common Files', 'COMMONPROGRAMFILES(X86)': 'C:\\Program Files (x86)\\Common Files', 'COMMONPROGRAMW6432': 'C:\\Program Files\\Common Files', 'COMPUTERNAME': 'PY', 'COMSPEC': 'C:\\Windows\\system32\\cmd.exe', 'FP_NO_HOST_CHECK': 'NO', 'HOME': 'C:\\Users\\amit', 'HOMEDRIVE': 'C:', 'HOMEPATH': '\\Users\\amit', 'LOCALAPPDATA': 'C:\\Users\\amit\\AppData\\Local', 'LOGONSERVER': '\\\\PY', 'NUMBER_OF_PROCESSORS': '4', 'OS': 'Windows_NT', 'PATH': 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Users\\amit\\AppData\\Local\\Programs\\Python\\Python37-32;C:\\Users\\amit\\AppData\\Local\\Programs\\Python\\Python37-32\\scripts;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.1.3\\bin;', 'PATHEXT': '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC', 'PROCESSOR_ARCHITECTURE': 'x86', 'PROCESSOR_ARCHITEW6432': 'AMD64', 'PROCESSOR_IDENTIFIER': 'Intel64 Family 6 Model 37 Stepping 5, GenuineIntel', 'PROCESSOR_LEVEL': '6', 'PROCESSOR_REVISION': '2505', 'PROGRAMDATA': 'C:\\ProgramData', 'PROGRAMFILES': 'C:\\Program Files (x86)', 'PROGRAMFILES(X86)': 'C:\\Program Files (x86)', 'PROGRAMW6432': 'C:\\Program Files', 'PSMODULEPATH': 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\PowerShell\\Modules\\', 'PUBLIC': 'C:\\Users\\Public', 'PYCHARM COMMUNITY EDITION': 'C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.1.3\\bin;', 'SESSIONNAME': 'Console', 'SYSTEMDRIVE': 'C:', 'SYSTEMROOT': 'C:\\Windows', 'TEMP': 'C:\\Users\\amit\\AppData\\Local\\Temp', 'TESSERACT': 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe', 'TMP': 'C:\\Users\\amit\\AppData\\Local\\Temp', 'USERDOMAIN': 'py', 'USERDOMAIN_ROAMINGPROFILE': 'py', 'USERNAME': 'amit', 'USERPROFILE': 'C:\\Users\\amit', 'VS120COMNTOOLS': 'C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\Common7\\Tools\\', 'WINDIR': 'C:\\Windows'})
+>>> os.getcwd()
+'f:\\'
+>>> os.getcwdb()
+
+Warning (from warnings module):
+  File "__main__", line 1
+DeprecationWarning: The Windows bytes API has been deprecated, use Unicode filenames instead
+b'f:\\'
+>>> os.getenv('path')
+'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft Visual Studio 10.0\\Common7\\IDE\\PrivateAssemblies\\;C:\\Program Files (x86)\\Microsoft SQL Server\\110\\DTS\\Binn\\;C:\\Program Files (x86)\\Windows Kits\\8.1\\Windows Performance Toolkit\\;C:\\Users\\amit\\AppData\\Local\\Programs\\Python\\Python37-32;C:\\Users\\amit\\AppData\\Local\\Programs\\Python\\Python37-32\\scripts;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2019.1.3\\bin;'
+>>> os.getlogin()
+'amit'
+>>> os.getpid()
+4052
+>>> os.getppid()
+4260
+>>> 
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> import os
+>>> os.listdir()
+['a.py', 'a1.py', 'apnamod.py', 'b.py', 'calculator.py', 'chromedriver-Darwin', 'chromedriver-Linux32', 'chromedriver-Linux64', 'chromedriver-Windows', 'debug.log', 'DLLs', 'Doc', 'etc', 'include', 'Lib', 'libs', 'LICENSE.txt', 'NEWS.txt', 'python.exe', 'python3.dll', 'python37.dll', 'pythonw.exe', 'Scripts', 'share', 'tcl', 'Tools', 'vcruntime140.dll', '__pycache__']
+>>> os.chdir('f:/')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mycar.jpg', 'mydata.csv', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.makedirs('newpython')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mycar.jpg', 'mydata.csv', 'newpython', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.mkdir('newpyt')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mycar.jpg', 'mydata.csv', 'newpyt', 'newpython', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.name
+'nt'
+>>> os.path.abspath('amit.txt')
+'f:\\amit.txt'
+>>> os.path.basename('f:\\amit.txt')
+'amit.txt'
+>>> os.path.dirname('f:\\amit.txt')
+'f:\\'
+>>> os.path.exists('f:\\amit.txt')
+False
+>>> os.remove('newpyt')
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    os.remove('newpyt')
+PermissionError: [WinError 5] Access is denied: 'newpyt'
+>>> os.remove('mycar.jpg')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mydata.csv', 'newpyt', 'newpython', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.removedirs('newpyt')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mydata.csv', 'newpython', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.rename('newpython','oldpython')
+>>> os.listdir()
+['$RECYCLE.BIN', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mydata.csv', 'oldpython', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.replace('b.txt','a.txt')
+>>> 
+>>> os.rmdir('oldpython')
+>>> os.listdir()
+['$RECYCLE.BIN', 'a.txt', 'cohn-kanade', 'data', 'devolopment', 'download4', 'downloads', 'downloads2', 'downloads3', 'driver', 'email.csv', 'emotions', 'genral software', 'image', 'mobile os', 'movies', 'mydata.csv', 'os', 'racecar.png', 'result_data.csv', 'sudheer_sir', 'System Volume Information']
+>>> os.system('calc.exe')
+-1073741510
+>>> os.system('shutdown -s')
+0
+>>> os.system('shutdown -a')
+0
+>>> 

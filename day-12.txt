@@ -1,0 +1,471 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> print("{} {} {}".format('hello',12,34))
+hello 12 34
+>>> l=['hello','welcome','to','sajjanpur']
+>>> print("{} {} {}".format(*l))
+hello welcome to
+>>> print("{1} {2} {3}".format(*l))
+welcome to sajjanpur
+>>> a
+Traceback (most recent call last):
+  File "<pyshell#4>", line 1, in <module>
+    a
+NameError: name 'a' is not defined
+>>> 
+>>> 
+>>> print("{name} {a} {b}".format(b=12,a=34,name='hello'))
+hello 34 12
+>>> d=dict(b=12,a=34,name='hello')
+>>> d
+{'b': 12, 'a': 34, 'name': 'hello'}
+>>> 
+>>> 
+>>> print("{name} {a} {b}".format(**d))
+hello 34 12
+>>> print("{name} {a} {b}".format_map(d))
+hello 34 12
+>>> 
+>>> a='abcde'
+>>> a.isalnum()
+True
+>>> a='abcde87782'
+>>> a.isalnum()
+True
+>>> a='87782'
+>>> a.isalnum()
+True
+>>> a='8778.2'
+>>> a.isalnum()
+False
+>>> a.isalpha()
+False
+>>> a='abcde'
+>>> a.isalpha()
+True
+>>> a='abcde87782'
+>>> a.isalpha()
+False
+>>> a='1234'
+>>> a.isdecimal()
+True
+>>> a.isdigit()
+True
+>>> a.isnumeric()
+True
+>>> 
+>>> a='\u00B2'
+>>> a
+'²'
+>>> a='\u00B3'
+>>> a
+'³'
+>>> a='\u00B4'
+>>> a
+'´'
+>>> a='\u00B3'
+>>> a.isdecimal()
+False
+>>> a.isdigit()
+True
+>>> a.isnumeric()
+True
+>>> a='\u00BC'
+>>> a
+'¼'
+>>> a.isdecimal()
+False
+>>> a.isdigit()
+False
+>>> a.isnumeric()
+True
+>>> a.isascii()
+False
+>>> a="adshjkf"
+>>> a.isascii()
+True
+>>> a.isidentifier()
+True
+>>> a='1dadasds'
+>>> a.isidentifier()
+False
+>>> a='_1dadasds'
+>>> a.isidentifier()
+True
+>>> a='@1dadasds'
+>>> a.isidentifier()
+False
+>>> a.islower()
+True
+>>> a='92736'
+>>> a.islower()
+False
+>>> a='92736aaay'
+>>> a.islower()
+True
+>>> a='92736aaayA'
+>>> a.islower()
+False
+>>> a.isprintable()
+True
+>>> a='92736aaayA\n'
+>>> a.isprintable()
+False
+>>> a='92736aaayA\\n'
+>>> a
+'92736aaayA\\n'
+>>> print('\n')
+
+
+>>> print('\\n')
+\n
+>>> a.isprintable()
+True
+>>> a='a       b'
+>>> a.isspace()
+False
+>>> a='         '
+>>> a.isspace()
+True
+>>> a='         \n\t'
+>>> a.isspace()
+True
+>>> a='The Times Of India'
+>>> a.istitle()
+True
+>>> a.isupper()
+False
+>>> "LKJKDJHDJ".isupper()
+True
+>>> ",".join('1234567')
+'1,2,3,4,5,6,7'
+>>> " \t ".join(['hello','welcome','to','sajjanpur'])
+'hello \t welcome \t to \t sajjanpur'
+>>> "  ".join(['hello','welcome','to','sajjanpur'])
+'hello  welcome  to  sajjanpur'
+>>> "  ".join(['hello','welcome','to','sajjanpur'])
+'hello  welcome  to  sajjanpur'
+>>> 
+>>> a='xyzabcda1234amnop'
+>>> "\t".join(['hello','welcome','to','sajjanpur'])
+'hello\twelcome\tto\tsajjanpur'
+>>> 
+>>> a
+'xyzabcda1234amnop'
+>>> a.ljust(50)
+'xyzabcda1234amnop                                 '
+>>> a.ljust(50,'@')
+'xyzabcda1234amnop@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@'
+>>> a.ljust(5,'@')
+'xyzabcda1234amnop'
+>>> a.ljust(1\5,'@')
+SyntaxError: unexpected character after line continuation character
+>>> a.ljust(15,'@')
+'xyzabcda1234amnop'
+>>> a.ljust(25,'@')
+'xyzabcda1234amnop@@@@@@@@'
+>>> 
+>>> a='HDGSHJGFDGHSFVGHD'
+>>> a.lower()
+'hdgshjgfdghsfvghd'
+>>> 
+>>> a='aabbcabbabacabacabacabaacbaac12345abababaccacacaabbaab'
+>>> a.lstrip('a')
+'bbcabbabacabacabacabaacbaac12345abababaccacacaabbaab'
+>>> a.lstrip('ab')
+'cabbabacabacabacabaacbaac12345abababaccacacaabbaab'
+>>> a.lstrip('abc')
+'12345abababaccacacaabbaab'
+>>> a.rstrip('abc')
+'aabbcabbabacabacabacabaacbaac12345'
+>>> a.strip('abc')
+'12345'
+>>> 
+>>> 
+>>> a='xyzabcda1234amnop'
+>>> a.partition('a')
+('xyz', 'a', 'bcda1234amnop')
+>>> a.partition('abc')
+('xyz', 'abc', 'da1234amnop')
+>>> 
+>>> a.rpartition('a')
+('xyzabcda1234', 'a', 'mnop')
+>>> a.replace("a","@#@$#%$$#")
+'xyz@#@$#%$$#bcd@#@$#%$$#1234@#@$#%$$#mnop'
+>>> a.partition('a')
+('xyz', 'a', 'bcda1234amnop')
+>>> a.rpartition('a')
+('xyzabcda1234', 'a', 'mnop')
+>>> a.partition('abc')
+('xyz', 'abc', 'da1234amnop')
+>>> a.rpartition('abc')
+('xyz', 'abc', 'da1234amnop')
+>>> a.rfind('a')
+12
+>>> a.\find('a')
+SyntaxError: unexpected character after line continuation character
+>>> a.find('a')
+3
+>>> a.find('ahj')
+-1
+>>> a.rfind('ahj')
+-1
+>>> 
+>>> a='123abc23amna9'
+>>> a.find('a')
+3
+>>> a.rfind('a')
+11
+>>> a.find('a',4)
+8
+>>> a.find('a',0,10)
+3
+>>> a.rfind('a',0,10)
+8
+>>> 
+>>> 
+>>> a.find('a')
+3
+>>> a.find('a',0,10)
+3
+>>> a.rfind('a',0,10)
+8
+>>> a.find('a')
+3
+>>> a.rfind('a')
+11
+>>> 
+>>> 
+>>> i=0
+>>> for j in range(a.count('a')):
+	i=a.find('a',i)
+	print(i)
+	i+=1
+
+	
+3
+8
+11
+>>> i=len(a)
+>>> for j in range(a.count('a')):
+	i=a.find('a',0,i)
+	print(i)
+	i-=1
+
+	
+3
+-1
+3
+>>> i=len(a)
+>>> for j in range(a.count('a')):
+	i=a.rfind('a',0,i)
+	print(i)
+	i-=1
+
+	
+11
+8
+3
+>>> a.rindex('a')
+11
+>>> a.index('a')
+3
+>>> a.rjust(50)
+'                                     123abc23amna9'
+>>> a.rjust(50,',')
+',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,123abc23amna9'
+>>> a='this is a stmnt'
+>>> a.split()
+['this', 'is', 'a', 'stmnt']
+>>> a='this is a stmnt\n welcome \n to \n sajjanpur\t'
+>>> a.split()
+['this', 'is', 'a', 'stmnt', 'welcome', 'to', 'sajjanpur']
+>>> a.rsplit()
+['this', 'is', 'a', 'stmnt', 'welcome', 'to', 'sajjanpur']
+>>> 
+>>> a.split(maxsplit=2)
+['this', 'is', 'a stmnt\n welcome \n to \n sajjanpur\t']
+>>> a.rsplit(maxsplit=2)
+['this is a stmnt\n welcome', 'to', 'sajjanpur']
+>>> a='helloawelcomeatoapython'
+>>> a.split('a')
+['hello', 'welcome', 'to', 'python']
+>>> a='helloawelcomeatoapython  1624 8947859'
+>>> a.split('a')
+['hello', 'welcome', 'to', 'python  1624 8947859']
+>>> 
+>>> a='''
+this
+is
+
+mahesmati
+
+
+'''
+>>> a.split()
+['this', 'is', 'mahesmati']
+>>> a.splitlines()
+['', 'this', 'is', '', 'mahesmati', '', '']
+>>> a='''
+this
+is
+
+mahesmati of bahubali and some other tribal pep
+
+
+'''
+>>> a.split()
+['this', 'is', 'mahesmati', 'of', 'bahubali', 'and', 'some', 'other', 'tribal', 'pep']
+>>> a.splitlines()
+['', 'this', 'is', '', 'mahesmati of bahubali and some other tribal pep', '', '']
+>>> a.split('\n')
+['', 'this', 'is', '', 'mahesmati of bahubali and some other tribal pep', '', '', '']
+>>> a='abc makl
+SyntaxError: EOL while scanning string literal
+>>> a='abc makl'
+>>> a.startswith('a')
+True
+>>> a.startswith('a',0)
+True
+>>> a.startswith('a',1)
+False
+>>> a.startswith('a',5)
+True
+>>> a.partition('a')
+('', 'a', 'bc makl')
+>>> a
+'abc makl'
+>>> a='JGDHxkgbjh'
+>>> a.swapcase()
+'jgdhXKGBJH'
+>>> a='THE TIMES OF INDIA'
+>>> a.title()
+'The Times Of India'
+>>> "ljdshjfgdj".upper()
+'LJDSHJFGDJ'
+>>> 
+>>> a='7052196666'
+>>> a.rjust(11)
+' 7052196666'
+>>> a.rjust(11,'0')
+'07052196666'
+>>> a.zfill(11)
+'07052196666'
+>>> a.zfill(12)
+'007052196666'
+>>> a.zfill(9\)
+	
+SyntaxError: unexpected character after line continuation character
+>>> a.zfill(9\)
+	
+SyntaxError: unexpected character after line continuation character
+>>> a.zfill(9)
+'7052196666'
+>>> a='abcdefghijklmnopqrstu'
+>>> b='0123456789!@#$%^&*()~'
+>>> len(a)
+21
+>>> len(b)
+21
+>>> str.maketrans(a,b)
+{97: 48, 98: 49, 99: 50, 100: 51, 101: 52, 102: 53, 103: 54, 104: 55, 105: 56, 106: 57, 107: 33, 108: 64, 109: 35, 110: 36, 111: 37, 112: 94, 113: 38, 114: 42, 115: 40, 116: 41, 117: 126}
+>>> ord('a')
+97
+>>> ord('0')
+48
+>>> "hello welcome to sajjanpur".translate(str.maketrans(a,b))
+'74@@% w4@2%#4 )% (0990$^~*'
+>>> '74@@% w4@2%#4 )% (0990$^~*'.translate(str.maketrans(b,a))
+'hello welcome to sajjanpur'
+>>> d={}
+>>> for i in zip('abcd','1234'):
+	print(i)
+
+	
+('a', '1')
+('b', '2')
+('c', '3')
+('d', '4')
+>>> for i in zip('abcd','1234'):
+	d[ord(i[0])]=d[ord(i[1])]
+
+	
+Traceback (most recent call last):
+  File "<pyshell#220>", line 2, in <module>
+    d[ord(i[0])]=d[ord(i[1])]
+KeyError: 49
+>>> for i in zip('abcd','1234'):
+	d[ord(i[0])]=ord(i[1])
+
+	
+>>> d
+{97: 49, 98: 50, 99: 51, 100: 52}
+>>> d='abcdabc'
+>>> d={97: 49, 98: 50, 99: 51, 100: 52}
+>>> 
+>>> a='abcdabc'
+>>> for i in a:
+	print(chr(d[ord(i)]))
+
+	
+1
+2
+3
+4
+1
+2
+3
+>>> a='python is a scripting'
+>>> for i in a.split():
+	print(i[::-1])
+
+	
+nohtyp
+si
+a
+gnitpircs
+>>> a='python is a scripting'
+>>> for i in a.split():
+	print(i[::-1],end=' ')
+
+	
+nohtyp si a gnitpircs 
+>>> [i[::-1] for i in a.split()]
+['nohtyp', 'si', 'a', 'gnitpircs']
+>>> " ".join(['nohtyp', 'si', 'a', 'gnitpircs'])
+'nohtyp si a gnitpircs'
+>>> 
+>>> a
+'python is a scripting'
+>>> " ".join([i[::-1] for i in a.split()])
+'nohtyp si a gnitpircs'
+>>> 
+>>> 
+>>> a
+'python is a scripting'
+>>> a.split()
+['python', 'is', 'a', 'scripting']
+>>> for i in ['python', 'is', 'a', 'scripting']:
+	print(i,end=' ')
+
+	
+python is a scripting 
+>>> for i in ['python', 'is', 'a', 'scripting']:
+	print(i[::-1],end=' ')
+
+	
+nohtyp si a gnitpircs 
+>>> for i in a.split():
+	print(i[::-1],end=' ')
+
+	
+nohtyp si a gnitpircs 
+>>> [i for i in a.split()]
+['python', 'is', 'a', 'scripting']
+>>> [i[::-1] for i in a.split()]
+['nohtyp', 'si', 'a', 'gnitpircs']
+>>> " ".join(['nohtyp', 'si', 'a', 'gnitpircs'])
+'nohtyp si a gnitpircs'
+>>> " ".join([i[::-1] for i in a.split()])
+'nohtyp si a gnitpircs'
+>>> 

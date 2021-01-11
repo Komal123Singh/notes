@@ -1,0 +1,363 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a=[67,'hello',90,'a',55,88,'x','m']
+>>> a[-3]
+88
+>>> a[6]
+'x'
+>>> a[-7]
+'hello'
+>>> a[4]
+55
+>>> a[-4]
+55
+>>> a[7]
+'m'
+>>> a[-1]
+'m'
+>>> 
+>>> 
+>>> 
+>>> a
+[67, 'hello', 90, 'a', 55, 88, 'x', 'm']
+>>> a[:]
+[67, 'hello', 90, 'a', 55, 88, 'x', 'm']
+>>> a[:3]
+[67, 'hello', 90]
+>>> a[3:]
+['a', 55, 88, 'x', 'm']
+>>> a[-6:]
+[90, 'a', 55, 88, 'x', 'm']
+>>> a[:-5]
+[67, 'hello', 90]
+>>> a[:-1]
+[67, 'hello', 90, 'a', 55, 88, 'x']
+>>> a[-1:]
+['m']
+>>> 
+>>> 
+>>> 
+>>> a[-2:2]
+[]
+>>> a[-5:5]
+['a', 55]
+>>> a[-7:7]
+['hello', 90, 'a', 55, 88, 'x']
+>>> 
+>>> 
+>>> a[::-1]
+['m', 'x', 88, 55, 'a', 90, 'hello', 67]
+>>> a[-5::-1]
+['a', 90, 'hello', 67]
+>>> a[5::-1]
+[88, 55, 'a', 90, 'hello', 67]
+>>> a[8000:0:-1]
+['m', 'x', 88, 55, 'a', 90, 'hello']
+>>> a[-1:0:-1]
+['m', 'x', 88, 55, 'a', 90, 'hello']
+>>> a[-2:2:-1]
+['x', 88, 55, 'a']
+>>> a[-5:5:-1]
+[]
+>>> 
+>>> 
+>>> a[-3:6:-1]
+[]
+>>> 
+>>> 
+>>> len(a)
+8
+>>> 
+>>> c=12
+>>> len(c)
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    len(c)
+TypeError: object of type 'int' has no len()
+>>> a.__len__()
+8
+>>> max(c)
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    max(c)
+TypeError: 'int' object is not iterable
+>>> max(c,123)
+123
+>>> a
+[67, 'hello', 90, 'a', 55, 88, 'x', 'm']
+>>> a=[12,3,True,False,223.4,55,666]
+>>> max(a)
+666
+>>> min(a)
+False
+>>> a=[12,0,3,True,False,223.4,55,666]
+>>> min(a)
+0
+>>> a=[12,3,True,False,223.4,55,666,0]
+>>> min(a)
+False
+>>> 
+>>> sum(a)
+960.4
+>>> sum(a,678)
+1638.4
+>>> sum(a,100)
+1060.4
+>>> 
+>>> sorted(a)
+[False, 0, True, 3, 12, 55, 223.4, 666]
+>>> a
+[12, 3, True, False, 223.4, 55, 666, 0]
+>>> sorted.__doc__
+'Return a new list containing all items from the iterable in ascending order.\n\nA custom key function can be supplied to customize the sort order, and the\nreverse flag can be set to request the result in descending order.'
+>>> sorted(a,reverse=True)
+[666, 223.4, 55, 12, 3, True, False, 0]
+>>> 
+>>> a[0]='first'
+>>> a
+['first', 3, True, False, 223.4, 55, 666, 0]
+>>> a[9]='hello'
+Traceback (most recent call last):
+  File "<pyshell#66>", line 1, in <module>
+    a[9]='hello'
+IndexError: list assignment index out of range
+>>> 
+>>> del(a[0])
+>>> a
+[3, True, False, 223.4, 55, 666, 0]
+>>> c
+12
+>>> del(c)
+>>> c
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    c
+NameError: name 'c' is not defined
+>>> a.__delitem__(0)
+>>> a
+[True, False, 223.4, 55, 666, 0]
+>>> 
+>>> 
+>>> #
+>>> 
+>>> a.append('hello')
+>>> a
+[True, False, 223.4, 55, 666, 0, 'hello']
+>>> a.append(range(5))
+>>> a
+[True, False, 223.4, 55, 666, 0, 'hello', range(0, 5)]
+>>> a.append(6)
+>>> a
+[True, False, 223.4, 55, 666, 0, 'hello', range(0, 5), 6]
+>>> a[-2]
+range(0, 5)
+>>> list(a[-2])
+[0, 1, 2, 3, 4]
+>>> 
+>>> b=a
+>>> id(a)
+43163120
+>>> id(b)
+43163120
+>>> del(a[-2])
+>>> b
+[True, False, 223.4, 55, 666, 0, 'hello', 6]
+>>> a
+[True, False, 223.4, 55, 666, 0, 'hello', 6]
+>>> 
+>>> 
+>>> a.clear()
+>>> a
+[]
+>>> b
+[]
+>>> a=[True, False, 223.4, 55, 666, 0, 'hello', 6]
+>>> del(a[:])
+>>> a
+[]
+>>> a
+[]
+>>> a=[True, False, 223.4, 55, 666, 0, 'hello', 6]
+>>> del(a)
+>>> a
+Traceback (most recent call last):
+  File "<pyshell#105>", line 1, in <module>
+    a
+NameError: name 'a' is not defined
+>>> 
+>>> a=[True, False, 223.4, 55, 666, 0, 'hello', 6]
+>>> b=a.copy()
+>>> id(a)
+43114864
+>>> id(b)
+43163320
+>>> 
+>>> a=[True,'abc', False, 223.4, 55, 'abc',666,'abc',0, 'hello','abc']
+>>> a.count('abc')
+4
+>>> a.extend('hello')
+>>> a
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o']
+>>> a.extend(range(5))
+>>> a
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4]
+>>> a+list('mnop')
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'm', 'n', 'o', 'p']
+>>> a.extend(['hello'])
+>>> a
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello']
+>>> a.extend(['hello','python','bye'])
+>>> a
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python', 'bye']
+>>> 
+>>> a.index('abc')
+1
+>>> a.index('abc')
+1
+>>> a.index('abc',2)
+5
+>>> a.index('abc',6)
+7
+>>> a.index('abc',8)
+10
+>>> a.index('abc',11)
+Traceback (most recent call last):
+  File "<pyshell#129>", line 1, in <module>
+    a.index('abc',11)
+ValueError: 'abc' is not in list
+>>> a.index('abc',2,10)
+5
+>>> a.index('abc',2,4)
+Traceback (most recent call last):
+  File "<pyshell#131>", line 1, in <module>
+    a.index('abc',2,4)
+ValueError: 'abc' is not in list
+>>> i=0
+>>> while -123:
+	i=a.index('abc',i)
+	print(i)
+	i+=1
+
+	
+1
+5
+7
+10
+Traceback (most recent call last):
+  File "<pyshell#137>", line 2, in <module>
+    i=a.index('abc',i)
+ValueError: 'abc' is not in list
+>>> 
+>>> 
+>>> i=0
+>>> for i in range(a.count('abc')):
+	i=a.index('abc',i)
+	print(i)
+	i+=1
+
+	
+1
+1
+5
+5
+>>> i=0
+>>> for j in range(a.count('abc')):
+	i=a.index('abc',i)
+	print(i)
+	i+=1
+
+	
+1
+5
+7
+10
+>>> a
+[True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python', 'bye']
+>>> a.insert(0,'first')
+>>> a
+['first', True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python', 'bye']
+>>> a.insert(10000,'first')
+>>> a
+['first', True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python', 'bye', 'first']
+>>> a.pop()
+'first'
+>>> a
+['first', True, 'abc', False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python', 'bye']
+>>> a.pop()
+'bye'
+>>> help(a.pop)
+Help on built-in function pop:
+
+pop(index=-1, /) method of builtins.list instance
+    Remove and return item at index (default last).
+    
+    Raises IndexError if list is empty or index is out of range.
+
+>>> a.pop(0)
+'first'
+>>> a.pop(0)
+True
+>>> a.pop(0)
+'abc'
+>>> a
+[False, 223.4, 55, 'abc', 666, 'abc', 0, 'hello', 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python']
+>>> a.remove('hello')
+>>> a.remove('abc')
+>>> a
+[False, 223.4, 55, 666, 'abc', 0, 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python']
+>>> a.__delitem__(a.index('abc'))
+>>> a
+[False, 223.4, 55, 666, 0, 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python']
+>>> a.index('abc')
+5
+>>> a
+[False, 223.4, 55, 666, 0, 'abc', 'h', 'e', 'l', 'l', 'o', 0, 1, 2, 3, 4, 'hello', 'hello', 'python']
+>>> a.__delitem__(5)
+>>> 
+>>> a.reverse()
+>>> a
+['python', 'hello', 'hello', 4, 3, 2, 1, 0, 'o', 'l', 'l', 'e', 'h', 0, 666, 55, 223.4, False]
+>>> id(a)
+16230880
+>>> a.reverse()
+>>> id(a)
+16230880
+>>> a=a[::-1]
+>>> id(a)
+43114864
+>>> 
+>>> a=[4,5,8,3,2,9,7,5]
+>>> a.sort()
+>>> a
+[2, 3, 4, 5, 5, 7, 8, 9]
+>>> 
+>>> a.sort(reverse=True)
+>>> 
+>>> a
+[9, 8, 7, 5, 5, 4, 3, 2]
+>>> 
+>>> 
+>>> a=[]
+>>> for i in range(1,51):
+	a.append(i)
+
+	
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> [i for i in range(1,51)]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> b=[]
+>>> [b.append(i) for i in range(1,51)]
+[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+>>> b
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> [i for i in range(1,51)]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> c=[]
+>>> c.extend(range(1,51))
+>>> c
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> d=list(range(1,51))
+>>> d
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> 

@@ -1,0 +1,207 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> for i in range(1,11):
+	if i<=5:
+		print(' '*(5-i)+'*'*i)
+	else:
+		print('*'*(11-i))
+
+		
+    *
+   **
+  ***
+ ****
+*****
+*****
+****
+***
+**
+*
+>>> for i in range(1,6):
+	print(" "*(5-i)+'*'*i)
+else:
+	for i in range(5,0,-1):
+		print('*'*i)
+
+		
+
+>>> for i in range(1,5):
+	print(i,end=' ')
+else:
+	print("for khatam")
+
+	
+1 2 3 4 for khatam
+>>> for i in range(1,5):
+	print(i,end=' ')
+	break
+else:
+	print("for khatam")
+
+	
+1 
+>>> 
+>>> 
+>>> for i in range(2,7):
+	if 7%i==0:
+		print("composite")
+		break
+else:
+	print("prime")
+
+	
+prime
+>>> for i in range(2,8):
+	if 8%i==0:
+		print("composite")
+		break
+else:
+	print("prime")
+
+	
+composite
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number101
+prime
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number102
+composite
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number101
+prime
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number13
+prime
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number12
+composite
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number15
+composite
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number17
+prime
+>>> 
+ RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/apnamod.py 
+enter a number101
+prime
+>>> 
+>>> 
+>>> 
+>>> a=['start',12,34,'hello',25,'true','last']
+>>> print('\n'*20)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> a
+['start', 12, 34, 'hello', 25, 'true', 'last']
+>>> a[0]
+'start'
+>>> a[-7]
+'start'
+>>> a[-2]
+'true'
+>>> a[-1]
+'last'
+>>> a[3]
+'hello'
+>>> a[-4]
+'hello'
+>>> a[9]
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    a[9]
+IndexError: list index out of range
+>>> a[-8]
+Traceback (most recent call last):
+  File "<pyshell#50>", line 1, in <module>
+    a[-8]
+IndexError: list index out of range
+>>> a[-2]=True
+>>> a
+['start', 12, 34, 'hello', 25, True, 'last']
+>>> a[:3]
+['start', 12, 34]
+>>> a[0:3]
+['start', 12, 34]
+>>> a[3:]
+['hello', 25, True, 'last']
+>>> a[3:6789]
+['hello', 25, True, 'last']
+>>> a[3:6]
+['hello', 25, True]
+>>> a[-5:]
+[34, 'hello', 25, True, 'last']
+>>> a[-900:-1]
+['start', 12, 34, 'hello', 25, True]
+>>> a[-900:]
+['start', 12, 34, 'hello', 25, True, 'last']
+>>> a[-900:-1]
+['start', 12, 34, 'hello', 25, True]
+>>> a[:]
+['start', 12, 34, 'hello', 25, True, 'last']
+>>> a[::2]
+['start', 34, 25, 'last']
+>>> a[-5::2]
+[34, 25, 'last']
+>>> a[-1:]
+['last']
+>>> a[2:-2]
+[34, 'hello', 25]
+>>> a[5:-5]
+[]
+>>> a[-4:3]
+[]
+>>> a[-4:5]
+['hello', 25]
+>>> a[-4:4]
+['hello']
+>>> a[-3:4]
+[]
+>>> a[::-1]
+['last', True, 25, 'hello', 34, 12, 'start']
+>>> 'amit'[::-1]
+'tima'
+>>> a
+['start', 12, 34, 'hello', 25, True, 'last']
+>>> 
+>>> a[-2::-1]
+[True, 25, 'hello', 34, 12, 'start']
+>>> a[5::-1]
+[True, 25, 'hello', 34, 12, 'start']
+>>> a[5:0:-1]
+[True, 25, 'hello', 34, 12]
+>>> a[-3::-1]
+[25, 'hello', 34, 12, 'start']
+>>> a[::-2]
+['last', 25, 34, 'start']
+>>> a[::-7]
+['last']
+>>> a[::-6]
+['last', 'start']
+>>> 

@@ -1,0 +1,336 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> [i for i in range(1,51)]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+>>> 
+>>> 
+>>> a=[]
+>>> for i in range(1,101):
+	if i%2!=0 and i%3!=0:
+		a.append(i)
+
+		
+>>> a
+[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49, 53, 55, 59, 61, 65, 67, 71, 73, 77, 79, 83, 85, 89, 91, 95, 97]
+>>> [i for i in range(1,101) if i%2!=0 and i%3!=0]
+[1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49, 53, 55, 59, 61, 65, 67, 71, 73, 77, 79, 83, 85, 89, 91, 95, 97]
+>>> a=[12,'abc',67,'hello','abc',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> a.count('abc')
+4
+>>> 
+>>> a.remove('abc')
+>>> a
+[12, 67, 'hello', 'abc', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> a.append('abc')
+>>> a
+[12, 67, 'hello', 'abc', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6, 'abc']
+>>> 
+>>> 
+>>> a=[12,'abc',67,'hello','abc',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(a.count('abc')):
+	a.remove('abc')
+	a.append('abc')
+
+	
+>>> a
+[12, 67, 'hello', 77, 88, 99, 'python', 3, 4, 5, 6, 'abc', 'abc', 'abc', 'abc']
+>>> a=[12,'abc',67,'hello','abc',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(a.count('abc')):
+	a.append(a.pop(a.index('abc')))
+
+	
+>>> a
+[12, 67, 'hello', 77, 88, 99, 'python', 3, 4, 5, 6, 'abc', 'abc', 'abc', 'abc']
+>>> 
+>>> a=[1,0,1,0,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,0]
+>>> a.sort()
+>>> a
+[0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+>>> 
+>>> a=[12,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> 
+>>> type(a)
+<class 'list'>
+>>> type(a)==list
+True
+>>> type(a)==tuple
+False
+>>> a[0]
+12
+>>> type(a[0])
+<class 'int'>
+>>> type(a[0])==int
+True
+>>> a[3]
+'abc'
+>>> type(a[3])==int
+False
+>>> type(a[3])==str
+True
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		print(a[i])
+
+		
+abc
+hello
+abc
+cython
+jython
+abc
+python
+abc
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a[i])
+		a.remove(a[i])
+
+		
+>>> a
+['abc', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a.pop(i))
+
+		
+>>> a
+['abc', 'python', 'abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 3, 4, 5, 6]
+>>> 
+>>> 
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		print(a[i],a)
+		a.insert(0,a[i])
+		print(a[i],a)
+		a.remove(a[i])
+
+		
+abc [12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+(2+3j) ['abc', 12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+hello ['abc', 12, True, 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+67 ['hello', 'abc', 12, True, 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['hello', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+hello ['abc', 'hello', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+cython ['abc', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['cython', 'abc', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+jython ['cython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+cython ['jython', 'cython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+99 ['abc', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+python ['abc', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['python', 'abc', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['python', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 'abc', 'python', 'abc', 3, 4, 5, 6]
+python ['abc', 'python', 'jython', 'abc', 12, True, 'abc', 'hello', 'abc', 'cython', 'jython', 77, 88, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> 
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		print(a[i],a)
+		x=a.pop(i)
+		a.insert(0,x)
+		print(a[i],a)
+
+		
+abc [12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+(2+3j) ['abc', 12, True, (2+3j), 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+hello ['abc', 12, True, (2+3j), 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+67 ['hello', 'abc', 12, True, (2+3j), 67, 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['hello', 'abc', 12, True, (2+3j), 67, 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+67 ['abc', 'hello', 'abc', 12, True, (2+3j), 67, 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+cython ['abc', 'hello', 'abc', 12, True, (2+3j), 67, 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+67 ['cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+jython ['cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+67 ['jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+abc ['jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+99 ['abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'python', 'abc', 3, 4, 5, 6]
+python ['abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'python', 'abc', 3, 4, 5, 6]
+99 ['python', 'abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'abc', 3, 4, 5, 6]
+abc ['python', 'abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 'abc', 3, 4, 5, 6]
+99 ['abc', 'python', 'abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 3, 4, 5, 6]
+>>> 
+>>> 
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		m=a[i]
+		a.remove(a[i])
+		a.insert(0,m)
+
+		
+>>> a
+['abc', 'python', 'jython', 'cython', 'hello', 12, True, (2+3j), 67, 'abc', 77, 88, 99, 'abc', 'abc', 3, 4, 5, 6]
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a[i])
+		a.remove(a[i+1])
+
+		
+>>> a
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> j=0
+>>> for i in range(len(a)):
+	if type(a[j])==str:
+		a.insert(0,a[j])
+		j+=1
+		a.remove(a[j])
+	else:
+		j-=1
+
+		
+>>> a
+['abc', 'abc', 'abc', 'abc', 12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc']
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a[i])
+		a.remove(a[i+1])
+
+		
+>>> 
+>>> a
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> 
+>>> 
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a[i])
+		a.remove(a[i+1])
+
+		
+>>> a
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> 
+=============================== RESTART: Shell ===============================
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a[i])
+		a.remove(a[i+1])
+
+		
+>>> a
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> 
+>>> 
+>>> 
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> 
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		print(a)
+		a.insert(0,a[i])	
+		a.remove(a[i+1])
+
+		
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> 
+=============================== RESTART: Shell ===============================
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	print(a)
+	if type(a[i])==str:
+		print(a)
+		a.insert(0,a[i])
+		a.remove(a[i+1])
+
+		
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+[12, True, (2+3j), 'abc', 67, 'hello', 'abc', 'cython', 'jython', 77, 88, 99, 'abc', 'python', 'abc', 3, 4, 5, 6]
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.insert(0,a.pop(i))
+
+		
+>>> a
+['abc', 'python', 'abc', 'jython', 'cython', 'abc', 'hello', 'abc', 12, True, (2+3j), 67, 77, 88, 99, 3, 4, 5, 6]
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.append(a[i])
+		a.remove(a[i])
+
+		
+>>> a
+[12, True, (2+3j), 67, 'jython', 77, 88, 99, 'python', 3, 4, 5, 6, 'hello', 'abc', 'abc', 'abc', 'abc', 'cython']
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> for i in range(len(a)):
+	if type(a[i])==str:
+		a.append(a.pop(i))
+
+		
+>>> a
+[12, True, (2+3j), 67, 'abc', 'jython', 77, 88, 99, 'python', 3, 4, 5, 6, 'hello', 'abc', 'abc', 'abc', 'cython']
+>>> a=[12,True,2+3j,'abc',67,'hello','abc','cython','jython',77,88,99,'abc','python','abc',3,4,5,6]
+>>> j=0
+>>> for i in range(len(a)):
+	if type(a[j])==str:
+		a.append(a.pop(j))
+	else:
+		j+=1
+
+		
+>>> a
+[12, True, (2+3j), 67, 77, 88, 99, 3, 4, 5, 6, 'abc', 'hello', 'abc', 'cython', 'jython', 'abc', 'python', 'abc']
+>>> j
+11
+>>> i
+18
+>>> 
+>>> a=[12,45,'123','678',99,45,67,'345',3333,'6666']
+>>> 
+>>> sum([int(i)**len(str(153)) for i in str(153)])
+153
+>>> if 153==sum([int(i)**len(str(153)) for i in str(153)]):
+	print("armstrong")
+
+	
+armstrong
+>>> if 152==sum([int(i)**len(str(152)) for i in str(152)]):
+	print("armstrong")
+
+	
+>>> 

@@ -1,0 +1,437 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #console output
+>>> #print function
+>>> print("hello")
+hello
+>>> print('hello')
+hello
+>>> a=12
+>>> b='hello'
+>>> c=123.4
+>>> print(a,b,c)
+12 hello 123.4
+>>> a.__str__()
+'12'
+>>> b.__str__()
+'hello'
+>>> c.__str__()
+'123.4'
+>>> print('hello','welcome','to'+'python')
+hello welcome topython
+>>> print('hello','welcome','to','python',sep='+++````++')
+hello+++````++welcome+++````++to+++````++python
+>>> 
+>>> 
+>>> #console input
+>>> input('enter some value')
+enter some value123
+'123'
+>>> int(input('enter some value'))
+enter some value123
+123
+>>> float(input('enter some value'))
+enter some value12
+12.0
+>>> float('123.4')
+123.4
+>>> int('123.4')
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    int('123.4')
+ValueError: invalid literal for int() with base 10: '123.4'
+>>> int(input('enter some value'))
+enter some value123.4
+Traceback (most recent call last):
+  File "<pyshell#21>", line 1, in <module>
+    int(input('enter some value'))
+ValueError: invalid literal for int() with base 10: '123.4'
+>>> 
+>>> bool(input('enter some value'))
+enter some value
+False
+>>> bool(input('enter some value'))
+enter some valuea
+True
+>>> bool(input('enter some value'))
+enter some value 
+True
+>>> a=123
+>>> type(a)
+<class 'int'>
+>>> b=123.5678
+>>> type(b)
+<class 'float'>
+>>> int(b)
+123
+>>> b.__str__()
+'123.5678'
+>>> a.__str__()
+'123'
+>>> int('123')
+123
+>>> int(float('123.5678'))
+123
+>>> int('123.5678')
+Traceback (most recent call last):
+  File "<pyshell#35>", line 1, in <module>
+    int('123.5678')
+ValueError: invalid literal for int() with base 10: '123.5678'
+>>> 
+>>> 
+>>> complex(input('enter some value'))
+enter some value2+3j
+(2+3j)
+>>> eval('1+2*3')
+7
+>>> 
+>>> eval(input("enter a equ\n"))
+enter a equ
+1+2*3/4*5**5
+4688.5
+>>> eval(input("enter a equ\n"))
+enter a equ
+sin(1)
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    eval(input("enter a equ\n"))
+  File "<string>", line 1, in <module>
+NameError: name 'sin' is not defined
+>>> sin(1)
+Traceback (most recent call last):
+  File "<pyshell#43>", line 1, in <module>
+    sin(1)
+NameError: name 'sin' is not defined
+>>> from math import sin
+>>> sin(1)
+0.8414709848078965
+>>> eval(input("enter a equ\n"))
+enter a equ
+sin(2)
+0.9092974268256817
+>>> 
+>>> #cond stmnts
+>>> bin(12)
+'0b1100'
+>>> hex(12)
+'0xc'
+>>> oct(12)
+'0o14'
+>>> ord('q')
+113
+>>> ord('a')
+97
+>>> ord('A')
+65
+>>> #cond stmnts
+>>> if 1==2:
+	print('true')
+	print("welcome")
+       else:
+	       
+SyntaxError: unindent does not match any outer indentation level
+>>> if 1==2:
+	print('true')
+	print("welcome")
+       else:
+	       
+SyntaxError: unindent does not match any outer indentation level
+>>> if 1==2:
+	print('true')
+	print("welcome")else:
+		
+SyntaxError: invalid syntax
+>>> if 1==2:
+	print('true')
+	print("welcome")
+else:
+	print("false")
+	print("bye")
+
+	
+false
+bye
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+false
+bye
+>>> a
+Traceback (most recent call last):
+  File "<pyshell#68>", line 1, in <module>
+    a
+NameError: name 'a' is not defined
+>>> 
+>>> 
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a b or c
+a
+option A selected
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a b or c
+C
+option C selected
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a b or c
+aA
+option A selected
+>>> 
+>>> 
+>>> #for if we have iterations
+>>> for i in 'abcde':
+	print('hello',i)
+
+	
+hello a
+hello b
+hello c
+hello d
+hello e
+>>> i
+'e'
+>>> for i in 'abcde':
+	print('hello',i,end=' ')
+
+	
+hello a hello b hello c hello d hello e 
+>>> for i in 'abcde':
+	print('hello',i,end=' agla ')
+
+	
+hello a agla hello b agla hello c agla hello d agla hello e agla 
+>>> for i in 'abcde':
+	print('hello',i,end='\n\n')
+
+	
+hello a
+
+hello b
+
+hello c
+
+hello d
+
+hello e
+
+>>> #genrator function range
+>>> #range(start=0,stop,step=+1)
+>>> 
+>>> range(5)
+range(0, 5)
+>>> list(range(5))
+[0, 1, 2, 3, 4]
+>>> list(range(1,5))
+[1, 2, 3, 4]
+>>> list(range(1,6))
+[1, 2, 3, 4, 5]
+>>> list(range(1,6,2))
+[1, 3, 5]
+>>> list(range(1,6,1))
+[1, 2, 3, 4, 5]
+>>> list(range(1,6,2))
+[1, 3, 5]
+>>> list(range(1,6,3))
+[1, 4]
+>>> list(range(5,1))
+[]
+>>> list(range(5,1,-1))
+[5, 4, 3, 2]
+>>> list(range(5,1,0))
+Traceback (most recent call last):
+  File "<pyshell#97>", line 1, in <module>
+    list(range(5,1,0))
+ValueError: range() arg 3 must not be zero
+>>> list(range(5,1,+2))
+[]
+>>> 
+>>> for i in range(5):
+	print(i,end=' ')
+
+	
+0 1 2 3 4 
+>>> i
+4
+>>> d=iter('abcde')
+>>> type(d)
+<class 'str_iterator'>
+>>> next(d)
+'a'
+>>> next(d)
+'b'
+>>> next(d)
+'c'
+>>> next(d)
+'d'
+>>> next(d)
+'e'
+>>> next(d)
+Traceback (most recent call last):
+  File "<pyshell#111>", line 1, in <module>
+    next(d)
+StopIteration
+>>> for i in range(5):
+	for j in range(3):
+		print("hello",end=' ')
+
+		
+hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+>>> for i in range(5):
+	for j in range(3):
+		for k in range(2):
+			print("hello",end=' ')
+
+			
+hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+>>> for i in range(5):
+	for j in range(3):
+		for k in range(j):
+			print("hello",end=' ')
+
+			
+hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+>>> 
+>>> 
+>>> for i in range(5):
+	print(i,end=' ')
+for j in range(4,-1,-1):
+	
+SyntaxError: invalid syntax
+>>> for i in range(5):
+	print(i,end=' ')
+else:
+	print("for khatam")
+
+	
+0 1 2 3 4 for khatam
+>>> for i in range(5):
+	print(i,end=' ')
+else:
+	for i in range(4,-1,-1):
+		print(i,end=' ')
+
+		
+0 1 2 3 4 4 3 2 1 0 
+>>> for i in range(5):
+	print(i,end=' ')
+else:
+	for i in range(4,-1,-1):
+		print(i,end=' ')
+	else:
+		for i in 'abcde':
+			print(i,end=' ')
+
+			
+0 1 2 3 4 4 3 2 1 0 a b c d e 
+>>> 
+>>> #while cond
+>>> i=0
+>>> while i<5:
+	print(i,end=' ')
+	i+=1
+
+	
+0 1 2 3 4 
+>>> i
+5
+>>> i=0
+>>> while i<5:
+	j=0
+	while j<3:
+		print('hello',end=' ')
+		j+=1
+	i+=1
+
+	
+hello hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+>>> i=0
+>>> while i<5:
+	print(i,end=' ')
+	i+=1
+else:
+	while i>=0:
+		print(i,end=' ')
+		i-=1
+
+		
+0 1 2 3 4 5 4 3 2 1 0 
+>>> i
+-1
+>>> for i in range(1,100):
+	if i==2:
+		continue
+	if i==3:
+		pass
+	if i==4:
+		break
+	print(i)
+
+	
+1
+3
+>>> for i in range(5):
+	continue
+	print(i,end=' ')
+
+	
+>>> i
+4
+>>> for i in range(5):
+	break
+	print(i,end=' ')
+
+	
+>>> i
+0
+>>> for i in range(5):
+	pass
+	print(i,end=' ')
+
+	
+0 1 2 3 4 
+>>> while 1:
+	pass
+
+Traceback (most recent call last):
+  File "<pyshell#175>", line 2, in <module>
+    pass
+KeyboardInterrupt
+>>> for i in range(1,6):
+	for j in range(1,i+1):
+		print('*',end='')
+	print()
+
+	
+*
+**
+***
+****
+*****
+>>> for i in range(1,6):
+	print('*'*i)
+
+	
+*
+**
+***
+****
+*****
+>>> "a"*5
+'aaaaa'
+>>> i
+5
+>>> '*'i
+SyntaxError: invalid syntax
+>>> '*'*i
+'*****'
+>>> for i in range(5,0,-1):
+	print('*'*i)
+
+	
+*****
+****
+***
+**
+*
+>>> 

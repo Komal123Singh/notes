@@ -1,0 +1,134 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #polymor
+>>> 
+>>> 
+>>> 
+>>> 
+>>> #polymor
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+
+		
+>>> a=123
+>>> d=Sample(123,456)
+>>> a
+123
+>>> d
+<__main__.Sample object at 0x02CD2CB0>
+>>> print(a)
+123
+>>> print(d)
+<__main__.Sample object at 0x02CD2CB0>
+>>> str(a)
+'123'
+>>> str(d)
+'<__main__.Sample object at 0x02CD2CB0>'
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __str__(s):
+		print(s.a,s.b)
+
+		
+>>> e=Sample(123,456)
+>>> e
+<__main__.Sample object at 0x03048CB0>
+>>> print(e)
+123 456
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    print(e)
+TypeError: __str__ returned non-string (type NoneType)
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __str__(s):
+		return '{} {}'.format(s.a,s.b)
+
+	
+>>> e=Sample(123,456)
+>>> e
+<__main__.Sample object at 0x03048DD0>
+>>> print(e)
+123 456
+>>> str(e)
+'123 456'
+>>> e.__str__()
+'123 456'
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __str__(s):
+		return 'str {} {}'.format(s.a,s.b)
+	def __repr__(s):
+		return 'repr {} {}'.format(s.a,s.b)
+
+	
+>>> d=Sample(123,456)
+>>> d
+repr 123 456
+>>> print(d)
+str 123 456
+>>> str(d)
+'str 123 456'
+>>> d.__str__()
+'str 123 456'
+>>> d.__repr__()
+'repr 123 456'
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __repr__(s):
+		return 'repr {} {}'.format(s.a,s.b)
+
+	
+>>> r=Sample('hello','python')
+>>> r
+repr hello python
+>>> print(r)
+repr hello python
+>>> str(r)
+'repr hello python'
+>>> r.__str__()
+'repr hello python'
+>>> r.__repr__()
+'repr hello python'
+>>> r==r
+True
+>>> r+r
+Traceback (most recent call last):
+  File "<pyshell#51>", line 1, in <module>
+    r+r
+TypeError: unsupported operand type(s) for +: 'Sample' and 'Sample'
+>>> r>r
+Traceback (most recent call last):
+  File "<pyshell#52>", line 1, in <module>
+    r>r
+TypeError: '>' not supported between instances of 'Sample' and 'Sample'
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __repr__(s):
+		return 'repr {} {}'.format(s.a,s.b)
+	def __add__(s,t):
+		return Sample(s.a+t.a,s.b+t.b)
+	def __sub__(s,t):
+		return Sample(s.a-t.a,s.b-t.b)
+	def __mul__(s,t):
+		return Sample(s.a*t.a,s.b*t.b)
+
+	
+>>> d=Sample(2,4)
+>>> e=Sample(20,40)
+>>> d+e
+repr 22 44
+>>> m=d+e
+>>> 

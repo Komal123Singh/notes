@@ -1,0 +1,423 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> 
+>>> 
+>>> #classes
+>>> class Sample:
+	a=0
+	def fun(self):
+		print("hello")
+
+		
+>>> d=Sample()
+>>> d.fun()
+hello
+>>> class Sample:
+	a=0
+	def fun():
+		print("hello")
+
+		
+>>> x=Sample()
+>>> x.fun()
+Traceback (most recent call last):
+  File "<pyshell#13>", line 1, in <module>
+    x.fun()
+TypeError: fun() takes 0 positional arguments but 1 was given
+>>> class Sample:
+	a=0
+	def fun(s):
+		print("hello")
+
+		
+>>> e=Sample()
+>>> e.fun()
+hello
+>>> e.a
+0
+>>> 
+>>> 
+>>> 
+>>> class Sample:
+	a=0
+	def fun(s):
+		print("hello")
+
+		
+>>> d=Sample()
+>>> d.a
+0
+>>> Sample.a
+0
+>>> id(Sample.a)
+1801413712
+>>> id(d.a)
+1801413712
+>>> 
+>>> id(Sample.fun)
+55685960
+>>> id(d.fun)
+17370408
+>>> class Sample:
+	a=0
+	def fun(s):
+		print("hello",s)
+
+		
+>>> e=Sample()
+>>> e
+<__main__.Sample object at 0x03152C90>
+>>> e.fun()
+hello <__main__.Sample object at 0x03152C90>
+>>> e.a
+0
+>>> e.a='welcome'
+>>> id(Sample.a)
+1801413712
+>>> id(e.a)
+55580800
+>>> class Sample:
+	a=0
+	def fun(s):
+		print("hello",s.a)
+
+		
+>>> m=Sample()
+>>> m.a
+0
+>>> m.fun()
+hello 0
+>>> m.a=7885
+>>> m.fun()
+hello 7885
+>>> Sample.fun(m)
+hello 7885
+>>> 
+>>> 
+>>> class Sample:
+	'its a simple class hoti'
+	a=0
+	def fun(s):
+		print("hello",s.a)
+
+		
+>>> Sample.__doc__
+'its a simple class hoti'
+>>> Sample.__module__
+'__main__'
+>>> Sample.__dict__
+mappingproxy({'__module__': '__main__', '__doc__': 'its a simple class hoti', 'a': 0, 'fun': <function Sample.fun at 0x0351BBB8>, '__dict__': <attribute '__dict__' of 'Sample' objects>, '__weakref__': <attribute '__weakref__' of 'Sample' objects>})
+>>> 
+>>> amit=Sample()
+>>> amit.__dict__
+{}
+>>> amit.fun()
+hello 0
+>>> amit.a='python'
+>>> amit.fun()
+hello python
+>>> amit.__dict__
+{'a': 'python'}
+>>> Sample.__dict__
+mappingproxy({'__module__': '__main__', '__doc__': 'its a simple class hoti', 'a': 0, 'fun': <function Sample.fun at 0x0351BBB8>, '__dict__': <attribute '__dict__' of 'Sample' objects>, '__weakref__': <attribute '__weakref__' of 'Sample' objects>})
+>>> 
+>>> class Sample:
+	def fun(a):
+		print("hello",s.a)
+	def fun1(s,x):
+		s.a=x
+		s.fun()
+
+		
+>>> d=Sample()
+>>> d.fun1('python is cython')
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    d.fun1('python is cython')
+  File "<pyshell#72>", line 6, in fun1
+    s.fun()
+  File "<pyshell#72>", line 3, in fun
+    print("hello",s.a)
+NameError: name 's' is not defined
+>>> class Sample:
+	def fun(s):
+		print("hello",s.a)
+	def fun1(s,x):
+		s.a=x
+		s.fun()
+
+		
+>>> d=Sample()
+>>> d.fun1('ajay id dev gun')
+hello ajay id dev gun
+>>> d.__dict__
+{'a': 'ajay id dev gun'}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> class Sample:
+	def _fun(s):
+		print("hello",s._a)
+	def fun1(s,x):
+		s._a=x
+		s._fun()
+
+		
+>>> d=Sample()
+>>> d.fun1(123)
+hello 123
+>>> d._a
+123
+>>> d._fun()
+hello 123
+>>> d.__dict__
+{'_a': 123}
+>>> class Sample:
+	def _fun(s):
+		print("hello",s._a)
+	def fun1(s,x):
+		s._a=x
+		s._fun()
+
+		
+>>> d=Sample()
+>>> d.fun1(56)
+hello 56
+>>> d.__dict__
+{'_a': 56}
+>>> d._a
+56
+>>> class Sample:
+	def __fun(s):
+		print("hello",s.__a)
+	def fun1(s,x):
+		s.__a=x
+		s.__fun()
+
+		
+>>> d=Sample(678)
+Traceback (most recent call last):
+  File "<pyshell#99>", line 1, in <module>
+    d=Sample(678)
+TypeError: Sample() takes no arguments
+>>> d=Sample()
+>>> d.fun1(7675)
+hello 7675
+>>> d.__a
+Traceback (most recent call last):
+  File "<pyshell#102>", line 1, in <module>
+    d.__a
+AttributeError: 'Sample' object has no attribute '__a'
+>>> 
+>>> 
+>>> #constructor
+>>> 
+>>> 
+>>> class Sample:
+	def __init__(s):
+		print("hello")
+
+		
+>>> Sample.__mro__
+(<class '__main__.Sample'>, <class 'object'>)
+>>> 
+>>> 
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+
+>>> d=Sample(123,456)
+>>> d.__dict__
+{'a': 123, 'b': 456}
+>>> id(d)
+55581744
+>>> d.__init__('hello','python')
+>>> id(d)
+55581744
+>>> d.__dict__
+{'a': 'hello', 'b': 'python'}
+>>> d=Sample(123,456)
+>>> id(d)
+55579152
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __del__(s):
+		print("in class Sample")
+
+		
+>>> Sample()
+in class Sample
+Traceback (most recent call last):
+  File "<pyshell#131>", line 1, in <module>
+    Sample()
+TypeError: __init__() missing 2 required positional arguments: 'x' and 'y'
+>>> d=Sample(12,34)
+>>> del(d)
+in class Sample
+>>> 
+>>> d=Sample(12,34)
+>>> d.__del__()
+in class Sample
+>>> d
+<__main__.Sample object at 0x03501210>
+>>> del(d)
+>>> d=Sample(12,34)
+>>> d.a
+in class Sample
+12
+>>> 
+>>> 
+>>> 
+>>> #inheritance
+>>> 
+>>> 
+>>> class A:
+	def fun(s):
+		print("in class A")
+
+		
+>>> class B(A):
+	def fun1(s):
+		print('in class b')
+
+		
+>>> c=B()
+>>> c.fun()
+in class A
+>>> c.fun1()
+in class b
+>>> class Res:
+	def __init__(s,x):
+		s.a=x
+	def result(s):
+		if s.a==s.r:
+			print("its a ",s.num)
+		elsE:
+			
+SyntaxError: invalid syntax
+>>> pclass Res:
+	def __init__(s,x):
+		s.a=x
+	def result(s):
+		if s.a==s.r:
+			print("its a ",s.num)
+		else:
+			
+SyntaxError: invalid syntax
+>>> class Res:
+	def __init__(s,x):
+		s.a=x
+	def result(s):
+		if s.a==s.r:
+			print("its a ",s.num)
+		else:
+			print("its not a",s.num)
+
+			
+>>> class Arms(Res):
+	def arm(s):
+		s.r=sum([int(i)**len(str(s.a)) for i in str(s.a)])
+		s.num='armstrong'
+
+		
+>>> class Arms(Res):
+	def arm(s):
+		s.r=sum([int(i)**len(str(s.a)) for i in str(s.a)])
+		s.num='armstrong'
+		s.result()
+
+		
+>>> 
+>>> class Res:
+	def __init__(s,x):
+		s.a=x
+	def result(s):
+		if s.a==s.r:
+			print("its a ",s.num)
+		else:
+			print("its not a",s.num)
+
+			
+>>> class Arms(Res):
+	def arm(s):
+		s.r=sum([int(i)**len(str(s.a)) for i in str(s.a)])
+		s.num='armstrong'
+		s.result()
+
+		
+>>> d=Arms(153)
+in class Sample
+>>> d.a
+153
+>>> d.__dict__
+{'a': 153}
+>>> d.arm()
+its a  armstrong
+>>> d.__dict__
+{'a': 153, 'r': 153, 'num': 'armstrong'}
+>>> class Pallin(Res):
+	def pall(s):
+		s.r=int(str(s.a)[::-1])
+		s.num='Pallindome'
+		s.result()
+
+		
+>>> t=Pallin(121)
+>>> t.pall()
+its a  Pallindome
+>>> d.arm()
+its a  armstrong
+>>> 
+>>> 
+>>> class Res:
+	def __init__(s,x):
+		s._a=x
+	def _result(s):
+		if s._a==s.r:
+			print("its a ",s.num)
+		else:
+			print("its not a",s.num)
+
+			
+>>> class Arms(Res):
+	def arm(s):
+		s.r=sum([int(i)**len(str(s._a)) for i in str(s._a)])
+		s.num='armstrong'
+		s._result()
+
+		
+>>> q=Arms(678)
+>>> q.arm()
+its not a armstrong
+>>> class Res:
+	def __init__(s,x):
+		s.__a=x
+	def __result(s):
+		if s.__a==s.r:
+			print("its a ",s.num)
+		else:
+			print("its not a",s.num)
+
+			
+>>> class Arms(Res):
+	def arm(s):
+		s.r=sum([int(i)**len(str(s.__a)) for i in str(s.__a)])
+		s.num='armstrong'
+		s.__result()
+
+		
+>>> q=Arms(678)
+>>> q.arm()
+Traceback (most recent call last):
+  File "<pyshell#209>", line 1, in <module>
+    q.arm()
+  File "<pyshell#207>", line 3, in arm
+    s.r=sum([int(i)**len(str(s.__a)) for i in str(s.__a)])
+AttributeError: 'Arms' object has no attribute '_Arms__a'
+>>> 
+>>> 
+>>> 

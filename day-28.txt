@@ -1,0 +1,589 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #polymorphism
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __repr__(s):
+		return '{},{}'.format(s.a,s.b)
+	def __add__(s,t):
+		return Sample(s.a+t.a,s.b+t.b)
+	def __sub__(s,t):
+		return Sample(s.a-t.a,s.b-t.b)
+	def __mul__(s,t):
+		return Sample(s.a*t.a,s.b*t.b)
+	def __eq__(s,t):
+		return s.a*s.b==t.a*t.b
+	def __ne__(s,t):
+		return s.a*s.b!=t.a*t.b
+	def __gt__(s,t):
+		return s.a*s.b>t.a*t.b
+	def __lt__(s,t):
+		return s.a*s.b<t.a*t.b
+	def __ge__(s,t):
+		return s.a*s.b>=t.a*t.b
+	def __le__(s,t):
+		return s.a*s.b<=t.a*t.b
+
+	
+>>> a=Sample(12,3)
+>>> b=Sample(11,22)
+>>> a+b
+23,25
+>>> a-b
+1,-19
+>>> a*b
+132,66
+>>> a==b
+False
+>>> a>b
+False
+>>> a<b
+True
+>>> a>=b
+False
+>>> a<=b
+True
+>>> a is not b
+True
+>>> 
+>>> 
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __len__(s):
+		return 67
+	def __sizeof__(s):
+		return 100
+
+	
+>>> a=Sample(1,2)
+>>> len(a)
+67
+>>> leen(b)
+
+>>> len(b)
+
+>>> 
+>>> 
+>>> a.c
+Traceback (most recent call last):
+  File "<pyshell#41>", line 1, in <module>
+    a.c
+AttributeError: 'Sample' object has no attribute 'c'
+>>> a.c=123
+>>> a.c
+123
+>>> a.__setattr__('x','hello')
+>>> a.x
+'hello'
+>>> a.__getattribute__('a')
+1
+>>> a.__getattribute__('x')
+'hello'
+>>> a.__getattribute__('c')
+123
+>>> a.__delattr__('c')
+>>> a.__delattr__('x')
+>>> a.__delattr__('b')
+>>> a.__delattr__('a')
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		print("hello")
+
+		
+>>> d=Sample()
+Traceback (most recent call last):
+  File "<pyshell#55>", line 1, in <module>
+    d=Sample()
+TypeError: __init__() missing 2 required positional arguments: 'x' and 'y'
+>>> d=Sample(2,5)
+hello
+hello
+>>> d.__dict__
+{}
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		print("hello")
+		super(Sample,s).__setattr__(name,value)
+
+		
+>>> d=Sample(2,5)
+hello
+hello
+>>> d.__dict__
+{'a': 2, 'b': 5}
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		print("hello")
+		super(Sample,s).__setattr__(name,value)
+	def __getattribute__(s,name):
+		print("bye")
+
+		
+>>> d=Sample(2,5)
+hello
+hello
+>>> d.__dict__
+bye
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		print("hello")
+		super(Sample,s).__setattr__(name,value)
+	def __getattribute__(s,name):
+		print("bye")
+		super(Sample,s).__getattribute__(name)
+
+		
+>>> d=Sample(2,5)
+hello
+hello
+>>> d.__dict__
+bye
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		print("hello")
+		super(Sample,s).__setattr__(name,value)
+	def __getattribute__(s,name):
+		print("bye")
+		return super(Sample,s).__getattribute__(name)
+
+	
+>>> d=Sample(2,5)
+hello
+hello
+>>> d.__dict__
+bye
+{'a': 2, 'b': 5}
+>>> class Sample:
+	def __init__(s,x,y):
+		s.a=x
+		s.b=y
+	def __setattr__(s,name,value):
+		if type(value)==int:
+			super(Sample,s).__setattr__(name,value)
+		else:
+			print("we accept only inteegers")
+	def __getattribute__(s,name):
+		print("bye")
+		return super(Sample,s).__getattribute__(name)
+
+	
+>>> d=Sample(2,5)
+>>> d=Sample(2,'hello')
+we accept only inteegers
+>>> d=Sample(2,2.5)
+we accept only inteegers
+>>> 
+>>> 
+>>> 
+>>> class A:
+	def fun(s):
+		print("in class A")
+
+		
+>>> class B(A):
+	def fun1(s):
+		print("in class B")
+
+		
+>>> class C(B):
+	def fun2(s):
+		print("in class C")
+
+		
+>>> d=C()
+>>> C.__mro__
+(<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+>>> class A:
+	def fun(s):
+		print("in class A")
+
+		
+>>> class B(A):
+	def fun(s):
+		print("in class B")
+
+		
+>>> class C(B):
+	def fun(s):
+		print("in class C")
+
+		
+>>> d=C()
+>>> d.fun()
+in class C
+>>> 
+>>> 
+>>> 
+>>> class A:
+	def fun(s):
+		print("in class A")
+
+		
+>>> class B:
+	def fun(s):
+		print("in class B")
+
+		
+>>> class C(B,A):
+	def fun(s):
+		print("in class C")
+
+		
+>>> C.__mro__
+(<class '__main__.C'>, <class '__main__.B'>, <class '__main__.A'>, <class 'object'>)
+>>> B.__mro__
+(<class '__main__.B'>, <class 'object'>)
+>>> class B:
+	def fun(s):
+		print("in class B")
+		super(B,s).fun()
+
+		
+>>> class C(B,A):
+	def fun(s):
+		print("in class C")
+		super(s,fun)
+
+		
+>>> d=C()
+>>> d.fun()
+in class C
+Traceback (most recent call last):
+  File "<pyshell#125>", line 1, in <module>
+    d.fun()
+  File "<pyshell#123>", line 4, in fun
+    super(s,fun)
+NameError: name 'fun' is not defined
+>>> class C(B,A):
+	def fun(s):
+		print("in class C")
+		super(C,s).fun()
+
+		
+>>> d=C()
+>>> d.fun()
+in class C
+in class B
+in class A
+>>> t=B()
+>>> t.fun()
+in class B
+Traceback (most recent call last):
+  File "<pyshell#131>", line 1, in <module>
+    t.fun()
+  File "<pyshell#120>", line 4, in fun
+    super(B,s).fun()
+AttributeError: 'super' object has no attribute 'fun'
+>>> 
+>>> 
+>>> #decorator of a class
+>>> 
+>>> class Dec:
+	def __call__(s):
+		print("welcome to decorator")
+
+		
+>>> t=Dec()
+>>> t()
+welcome to decorator
+>>> 
+>>> class Dec:
+	def __init__(s,fun):
+		s.func=fun
+	def __call__(s):
+		print("welcome to decorator")
+		s.func()
+		print("out of decorator")
+
+		
+>>> def hello():
+	print("in hello func")
+
+	
+>>> p=Dec(hello)
+>>> p()
+welcome to decorator
+in hello func
+out of decorator
+>>> p__dict__
+Traceback (most recent call last):
+  File "<pyshell#152>", line 1, in <module>
+    p__dict__
+NameError: name 'p__dict__' is not defined
+>>> p.__dict__
+{'func': <function hello at 0x02C2A4F8>}
+>>> class Dec:
+	def __init__(s,fun):
+		s.func=fun
+	def __call__(s):
+		print("welcome to decorator")
+		s.func()
+		print("out of decorator")
+
+		
+>>> hello()
+in hello func
+>>> p()
+welcome to decorator
+in hello func
+out of decorator
+>>> class Dec:
+	def __init__(s,fun):
+		s.func=fun
+	def __call__(s):
+		print("welcome to decorator")
+		s.func()
+		print("out of decorator")
+
+		
+>>> @Dec
+def myfun():
+	print("in func myfun")
+
+	
+>>> myfun
+<__main__.Dec object at 0x02C27AF0>
+>>> myfun.__dict__
+{'func': <function myfun at 0x02C2A6A8>}
+>>> myfun()
+welcome to decorator
+in func myfun
+out of decorator
+>>> myfun.func()
+in func myfun
+>>> 
+>>> 
+>>> 
+>>> import smtplib
+>>> client=smtplib.SMTP('smtp.gmail.com',587)
+>>> client.ehlo()
+(250, b'smtp.gmail.com at your service, [122.163.228.164]\nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+>>> client.starttls()
+(220, b'2.0.0 Ready to start TLS')
+>>> client.ehlo()
+(250, b'smtp.gmail.com at your service, [122.163.228.164]\nSIZE 35882577\n8BITMIME\nAUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+>>> client('amit.cetpa@gmail.com','bkthakur')
+Traceback (most recent call last):
+  File "<pyshell#176>", line 1, in <module>
+    client('amit.cetpa@gmail.com','bkthakur')
+TypeError: 'SMTP' object is not callable
+>>> client.login('amit.cetpa@gmail.com','bkthakur')
+(235, b'2.7.0 Accepted')
+>>> client.sendmail('amit.cetpa@gmail.com','amitcs010@gmail.com','hello sent via python')
+{}
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+=============================== RESTART: Shell ===============================
+>>> from email.mime.multipart import MIMEMultipart
+>>> from email.mime.text import MIMEText
+>>> from email.mime.base import MIMEBase
+>>> import email
+>>> import smtplib
+>>> 
+>>> mail=MIMEMultipart()
+>>> mail['from']='amit.cetpa@gmail.com'
+>>> mail['to']='amitcs010@gmail.com'
+>>> mail['subject']='mail using SMTPLIB'
+>>> mail.attach(MIMEText("hello a new mail composed by smtp"))
+>>> 
+>>> at=MIMEBase('application','octet-stream')
+>>> at.set_payload(open('f:/data/python/back1.jpg','rb').read())
+>>> email.encoders.encode_base64(at)
+>>> at.add_header('Content-disposition','attachments; filename="amit.png"')
+>>> mail.attach(at)
+>>> 
+>>> 
+>>> c=smtplib.SMTP('smtp.gmail.com',587)
+>>> c.starttls()
+(220, b'2.0.0 Ready to start TLS')
+>>> c.login("amit.cetpa@gmail.com','bkthakur')
+	
+SyntaxError: EOL while scanning string literal
+>>> c.login("amit.cetpa@gmail.com",'bkthakur')
+(235, b'2.7.0 Accepted')
+>>> client.sendmail('amit.cetpa@gmail.com','amitcs010@gmail.com',mail.as_string())
+Traceback (most recent call last):
+  File "<pyshell#207>", line 1, in <module>
+    client.sendmail('amit.cetpa@gmail.com','amitcs010@gmail.com',mail.as_string())
+NameError: name 'client' is not defined
+>>> c.sendmail('amit.cetpa@gmail.com','amitcs010@gmail.com',mail.as_string())
+{}
+>>> 
+=============================== RESTART: Shell ===============================
+>>> #multithreading
+>>> 
+>>> 
+>>> from time import ctime,sleep
+>>> 
+>>> def fun(n,d):
+	for i in range(4):
+		print("executing {} at {}".format(n,ctime))
+		sleep(d)
+
+		
+>>> import _thread
+>>> try:
+	_thread.start_new_thread(fun,('thread-1',1))
+	_thread.start_new_thread(fun,('thread-1',1))
+except:
+	pass
+
+5892executing thread-1 at <built-in function ctime>
+
+1048executing thread-1 at <built-in function ctime>
+
+>>> executing thread-1 at <built-in function ctime>
+executing thread-1 at <built-in function ctime>
+executing thread-1 at <built-in function ctime>executing thread-1 at <built-in function ctime>
+
+executing thread-1 at <built-in function ctime>executing thread-1 at <built-in function ctime>
+
+
+>>> def fun(n,d):
+	for i in range(4):
+		print("executing {} at {}".format(n,ctime()))
+		sleep(d)
+
+		
+>>> try:
+	_thread.start_new_thread(fun,('thread-1',1))
+	_thread.start_new_thread(fun,('thread-1',1))
+except:
+	pass
+
+1636executing thread-1 at Sat Jul 20 15:39:17 2019
+
+1492executing thread-1 at Sat Jul 20 15:39:17 2019
+
+>>> executing thread-1 at Sat Jul 20 15:39:18 2019
+executing thread-1 at Sat Jul 20 15:39:18 2019
+executing thread-1 at Sat Jul 20 15:39:19 2019executing thread-1 at Sat Jul 20 15:39:19 2019
+
+executing thread-1 at Sat Jul 20 15:39:20 2019executing thread-1 at Sat Jul 20 15:39:20 2019
+
+try:
+	_thread.start_new_thread(fun,('thread-1',1))
+	_thread.start_new_thread(fun,('thread-2',1))
+except:
+	pass
+
+6176executing thread-1 at Sat Jul 20 15:39:40 2019
+
+4668executing thread-2 at Sat Jul 20 15:39:40 2019
+
+>>> executing thread-1 at Sat Jul 20 15:39:41 2019
+executing thread-2 at Sat Jul 20 15:39:41 2019
+executing thread-1 at Sat Jul 20 15:39:42 2019executing thread-2 at Sat Jul 20 15:39:42 2019
+
+executing thread-1 at Sat Jul 20 15:39:43 2019executing thread-2 at Sat Jul 20 15:39:43 2019
+
+
+>>> 
+>>> import threading
+>>> 
+>>> class Myth(threading.Thread):
+	def __init__(s,fun,*arg):
+		threading.Thread.__init__()
+		s.func=fun
+		s.ar=arg
+
+		
+>>> d=Myth(a,b)
+
+>>> d=Myth('a','b')
+
+>>> class Myth(threading.Thread):
+	def __init__(s,fun,*arg):
+		threading.Thread.__init__(s)
+		s.func=fun
+		s.ar=arg
+	def run(s):
+		print("started executing thread {}".format(s.ar))
+		s.func(*s.ar)
+		print("terminated executing thread {}".format(s.ar))
+
+		
+>>> try:
+	t=Myth(fun,'thread-1',1)
+	t1=Myth(fun,'thread-2',1)
+	t.start()
+	t1.start()
+	t.join()
+	t.join()
+except:
+	pass
+
+started executing thread ('thread-1', 1)started executing thread ('thread-2', 1)
+
+executing thread-1 at Sat Jul 20 15:48:25 2019executing thread-2 at Sat Jul 20 15:48:25 2019
+
+executing thread-1 at Sat Jul 20 15:48:26 2019executing thread-2 at Sat Jul 20 15:48:26 2019
+
+executing thread-1 at Sat Jul 20 15:48:27 2019executing thread-2 at Sat Jul 20 15:48:27 2019
+
+executing thread-1 at Sat Jul 20 15:48:28 2019executing thread-2 at Sat Jul 20 15:48:28 2019
+
+terminated executing thread ('thread-1', 1)terminated executing thread ('thread-2', 1)
+
+>>> lock=threading.Lock()
+>>> class Myth(threading.Thread):
+	def __init__(s,fun,*arg):
+		threading.Thread.__init__(s)
+		s.func=fun
+		s.ar=arg
+	def run(s):
+		print("started executing thread {}".format(s.ar))
+		lock.acquire_lock()
+		s.func(*s.ar)
+		lock.release_lock()
+		print("terminated executing thread {}".format(s.ar))
+
+		
+>>> try:
+	t=Myth(fun,'thread-1',1)
+	t1=Myth(fun,'thread-2',1)
+	t.start()
+	t1.start()
+	t.join()
+	t1.join()
+except:
+	pass
+
+started executing thread ('thread-1', 1)started executing thread ('thread-2', 1)
+
+executing thread-1 at Sat Jul 20 15:51:28 2019
+executing thread-1 at Sat Jul 20 15:51:29 2019
+executing thread-1 at Sat Jul 20 15:51:30 2019
+executing thread-1 at Sat Jul 20 15:51:31 2019
+terminated executing thread ('thread-1', 1)executing thread-2 at Sat Jul 20 15:51:32 2019
+
+executing thread-2 at Sat Jul 20 15:51:33 2019
+executing thread-2 at Sat Jul 20 15:51:34 2019
+executing thread-2 at Sat Jul 20 15:51:35 2019
+terminated executing thread ('thread-2', 1)
+>>> 
+>>> 
+>>> 

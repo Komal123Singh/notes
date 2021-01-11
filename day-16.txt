@@ -1,0 +1,383 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> #lambda
+>>> #syntax lambda inputs:output
+>>> 
+>>> a=lambda r:3.14*r**2
+>>> a(2)
+12.56
+>>> a=lambda x,y:(x+y,x-y,x*y,x/y,x**y)
+>>> a(2,4)
+(6, -2, 8, 0.5, 16)
+>>> #genrator
+>>> def fun():
+	return 'amit'
+	return 'python'
+	return 'hello'
+
+>>> fun()
+'amit'
+>>> def fun():
+	yield 'amit'
+	yield 'python'
+	yield 'hello'
+
+	
+>>> d=fun()
+>>> type(d)
+<class 'generator'>
+>>> next(d)
+'amit'
+>>> next(d)
+'python'
+>>> next(d)
+'hello'
+>>> next(d)
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    next(d)
+StopIteration
+>>> d=fun()
+>>> d.__next__()
+'amit'
+>>> d.__next__()
+'python'
+>>> d.__next__()
+'hello'
+>>> d.__next__()
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    d.__next__()
+StopIteration
+>>> d=fun()
+>>> list(d)
+['amit', 'python', 'hello']
+>>> d=fun()
+>>> tuple(d)
+('amit', 'python', 'hello')
+>>> d=fun()
+>>> set(d)
+{'python', 'amit', 'hello'}
+>>> set(d)
+set()
+>>> 
+>>> 
+>>> 
+>>> def fun(n):
+	a=-1
+	b=1
+	l=[]
+	for i in range(n):
+		a,b=b,a+b
+		l.append(b)
+	return l
+
+>>> fun(10)
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		a,b=b,a+b
+		return b
+
+	
+>>> fun(10)
+0
+>>> fun(1000000)
+0
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		a,b=b,a+b
+		yield b
+
+		
+>>> x=fun(10)
+>>> list(x)
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		a,b=b,a+b
+		yield b
+
+		
+>>> x=fun(1000000)
+>>> next(x)
+0
+>>> next(x)
+1
+>>> next(x)
+1
+>>> next(x)
+2
+>>> next(x)
+3
+>>> next(x)
+5
+>>> del(x)
+>>> x=fun(1000000)
+>>> next(x)
+0
+>>> next(x)
+1
+>>> next(x),next(x),next(x),next(x),next(x)
+(1, 2, 3, 5, 8)
+>>> next(x)
+13
+>>> next(x)
+21
+>>> next(x)
+34
+>>> 
+>>> def fun(n):
+	if n==1:
+		return 1
+	return n*fun(n-1)
+
+>>> d=[8,5,6,7,13,15,14,3,12,16,27,28,18,8,17,16,]
+>>> for i in d[:4]:
+	print(fun(i))
+
+	
+
+>>> [fun(i) for i in d]
+[40320, 120, 720, 5040, 6227020800, 1307674368000, 87178291200, 6, 479001600, 20922789888000, 10888869450418352160768000000, 304888344611713860501504000000, 6402373705728000, 40320, 355687428096000, 20922789888000]
+>>> d=map(fun,d)
+>>> next(d)
+40320
+>>> next(d)
+120
+>>> next(d)
+720
+>>> next(d)
+5040
+>>> list(d)
+[6227020800, 1307674368000, 87178291200, 6, 479001600, 20922789888000, 10888869450418352160768000000, 304888344611713860501504000000, 6402373705728000, 40320, 355687428096000, 20922789888000]
+>>> 
+>>> 
+>>> input().split()
+1 2 3 4 5 6 7 8 
+['1', '2', '3', '4', '5', '6', '7', '8']
+>>> for i in input().split():
+	print(int(i)**2)
+
+	
+1 2 3
+1
+4
+9
+>>> [int(i) for i in input().split()]
+1 2 3 4
+[1, 2, 3, 4]
+>>> 
+>>> list(map(int,input().split()))
+1 2 34 5 6 7 8 9 90
+[1, 2, 34, 5, 6, 7, 8, 9, 90]
+>>> def fun(a,b):
+	for i in range(1,min(a,b)+1):
+		if a%i==0 and b%i==0:
+			hcf=i
+	return hcf,(a*b)//hcf
+
+>>> fun(5,15)
+(5, 15)
+>>> fun(6,21)
+(3, 42)
+>>> fun(18,21)
+(3, 126)
+>>> def fun(a,b):
+	for i in range(1,min(a,b)+1):
+		if a%i==0 and b%i==0:
+			hcf=i
+	return hcf,(a*b)//hcf
+
+>>> d
+<map object at 0x03318DD0>
+>>> d=[8,5,6,7,13,15,14,3,12,16,27,28,18,8,17,16,]
+>>> e=[12,43,56,78,5,4,3,22,33,44]
+>>> 
+>>> list(map(fun,d,e))
+[(4, 24), (1, 215), (2, 168), (1, 546), (1, 65), (1, 60), (1, 42), (1, 66), (3, 132), (4, 176)]
+>>> [fun(*i) for i in zip(d,e)]
+[(4, 24), (1, 215), (2, 168), (1, 546), (1, 65), (1, 60), (1, 42), (1, 66), (3, 132), (4, 176)]
+>>> d
+[8, 5, 6, 7, 13, 15, 14, 3, 12, 16, 27, 28, 18, 8, 17, 16]
+>>> def fun(n):
+	return n%2==0
+
+>>> fun(12)
+True
+>>> fun(11)
+False
+>>> [i for i in d if fun(i)]
+[8, 6, 14, 12, 16, 28, 18, 8, 16]
+>>> 
+>>> d=filter(fun,d)
+>>> next(d)
+8
+>>> next(d)
+6
+>>> next(d)
+14
+>>> d=[8, 5, 6, 7, 13, 15, 14, 3, 12, 16, 27, 28, 18, 8, 17, 16]
+>>> list(filter(fun,d))
+[8, 6, 14, 12, 16, 28, 18, 8, 16]
+>>> list(filter(lambda i:i%2==0,d))
+[8, 6, 14, 12, 16, 28, 18, 8, 16]
+>>> list(filter(lambda i:all(i%j for j in range(2,i)),d))
+[5, 7, 13, 3, 17]
+>>> list(filter(lambda i:all(i%j for j in range(2,i)),range(2,int(input()))))
+100
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+>>> 
+>>> 
+>>> from functools import reduce
+>>> reduce(lambda x,y:x*y,range(1,6))
+120
+>>> reduce.__doc__
+'reduce(function, sequence[, initial]) -> value\n\nApply a function of two arguments cumulatively to the items of a sequence,\nfrom left to right, so as to reduce the sequence to a single value.\nFor example, reduce(lambda x, y: x+y, [1, 2, 3, 4, 5]) calculates\n((((1+2)+3)+4)+5).  If initial is present, it is placed before the items\nof the sequence in the calculation, and serves as a default when the\nsequence is empty.'
+>>> factorial=lambda i:reduce(lambda x,y:x*y,range(1,i+1))
+>>> factorial(7)
+5040
+>>> #iter
+>>> 
+>>> d
+[8, 5, 6, 7, 13, 15, 14, 3, 12, 16, 27, 28, 18, 8, 17, 16]
+>>> next(d)
+Traceback (most recent call last):
+  File "<pyshell#142>", line 1, in <module>
+    next(d)
+TypeError: 'list' object is not an iterator
+>>> i=iter(d)
+>>> type(i)
+<class 'list_iterator'>
+>>> d=(8, 5, 6, 7, 13, 15, 14, 3, 12, 16, 27, 28, 18, 8, 17, 16)
+>>> i=iter(d)
+>>> type(i)
+<class 'tuple_iterator'>
+>>> i=iter('abcde')
+>>> type(i)
+<class 'str_iterator'>
+>>> i=iter({1,2,3,4})
+>>> type(i)
+<class 'set_iterator'>
+>>> 
+>>> 
+>>> next(i)
+1
+>>> next(i)
+2
+>>> next(i)
+3
+>>> next(i)
+4
+>>> next(i)
+Traceback (most recent call last):
+  File "<pyshell#158>", line 1, in <module>
+    next(i)
+StopIteration
+>>> i=iter({1,2,3,4})
+>>> list(i)
+[1, 2, 3, 4]
+>>> 
+>>> #nesting of functions
+>>> 
+>>> def fun():
+	print("in func")
+	def fun1():
+		print("in fun1")
+	def fun2():
+		print("in fun2")
+	fun2()
+	fun1()
+
+	
+>>> fun()
+in func
+in fun2
+in fun1
+>>> def fun():
+	print("in fun")
+	def fun1():
+		print("in fun1")
+		def fun2():
+			print("in fun2")
+			def fun3():
+				print("in fun3")
+			fun3()
+		fun2()
+	fun1()
+
+	
+>>> fun()
+in fun
+in fun1
+in fun2
+in fun3
+>>> def fun():
+	print("in fun")
+	def fun1():
+		print("in fun1")
+		def fun2():
+			print("in fun2")
+			def fun3():
+				print("in fun3")
+			return fun3
+		return fun2
+	return fun1
+
+>>> fun()
+in fun
+<function fun.<locals>.fun1 at 0x037C4228>
+>>> fun()()
+in fun
+in fun1
+<function fun.<locals>.fun1.<locals>.fun2 at 0x037CB660>
+>>> fun()()()
+in fun
+in fun1
+in fun2
+<function fun.<locals>.fun1.<locals>.fun2.<locals>.fun3 at 0x037C4228>
+>>> fun()()()()
+in fun
+in fun1
+in fun2
+in fun3
+>>> #decorator
+>>> def fun(x):
+	print("in fun")
+	x()
+
+	
+>>> def hello():
+	print("in hello func")
+
+	
+>>> fun(hello)
+in fun
+in hello func
+>>> 
+>>> @fun
+def hello():
+	print("in hello func")
+
+	
+in fun
+in hello func
+>>> def fun(x):
+	print("in fun")
+	x()
+
+	
+>>> @fun
+def my():
+	print("i am in decorator")
+
+	
+in fun
+i am in decorator
+>>> 

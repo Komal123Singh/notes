@@ -1,0 +1,345 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a=int(input("enter a number\n"))
+enter a number
+5
+>>> for i in range(1,a+1):
+	for j in range(1,11):
+		print(i,'x',j,'=',i*j,sep='',end='||')
+	print()
+
+	
+
+>>> for i in range(1,a+1):
+	for j in range(1,11):
+		print('%dx%d=%d'%(i,j,i*j)end='||')
+	print()
+	
+SyntaxError: invalid syntax
+>>> 
+>>> for i in range(1,a+1):
+	for j in range(1,11):
+		print('%dx%d=%d'%(i,j,i*j),end='||')
+	print()
+
+	
+1x1=1||1x2=2||1x3=3||1x4=4||1x5=5||1x6=6||1x7=7||1x8=8||1x9=9||1x10=10||
+2x1=2||2x2=4||2x3=6||2x4=8||2x5=10||2x6=12||2x7=14||2x8=16||2x9=18||2x10=20||
+3x1=3||3x2=6||3x3=9||3x4=12||3x5=15||3x6=18||3x7=21||3x8=24||3x9=27||3x10=30||
+4x1=4||4x2=8||4x3=12||4x4=16||4x5=20||4x6=24||4x7=28||4x8=32||4x9=36||4x10=40||
+5x1=5||5x2=10||5x3=15||5x4=20||5x5=25||5x6=30||5x7=35||5x8=40||5x9=45||5x10=50||
+>>> t=[]
+>>> for i in range(1,a+1):
+	for j in range(1,11):
+		t.append('%dx%d=%d'%(i,j,i*j))
+
+		
+>>> t
+['1x1=1', '1x2=2', '1x3=3', '1x4=4', '1x5=5', '1x6=6', '1x7=7', '1x8=8', '1x9=9', '1x10=10', '2x1=2', '2x2=4', '2x3=6', '2x4=8', '2x5=10', '2x6=12', '2x7=14', '2x8=16', '2x9=18', '2x10=20', '3x1=3', '3x2=6', '3x3=9', '3x4=12', '3x5=15', '3x6=18', '3x7=21', '3x8=24', '3x9=27', '3x10=30', '4x1=4', '4x2=8', '4x3=12', '4x4=16', '4x5=20', '4x6=24', '4x7=28', '4x8=32', '4x9=36', '4x10=40', '5x1=5', '5x2=10', '5x3=15', '5x4=20', '5x5=25', '5x6=30', '5x7=35', '5x8=40', '5x9=45', '5x10=50']
+>>> t=[]
+>>> for i in range(1,int(input())+1):
+	for j in range(1,11):
+		t.append('%dx%d=%d'%(i,j,i*j))
+
+		
+10
+>>> t
+
+>>> q=['%dx%d=%d'%(i,j,i*j) for i in range(1,int(input())+1) for j in range(1,11)]
+5
+>>> q
+['1x1=1', '1x2=2', '1x3=3', '1x4=4', '1x5=5', '1x6=6', '1x7=7', '1x8=8', '1x9=9', '1x10=10', '2x1=2', '2x2=4', '2x3=6', '2x4=8', '2x5=10', '2x6=12', '2x7=14', '2x8=16', '2x9=18', '2x10=20', '3x1=3', '3x2=6', '3x3=9', '3x4=12', '3x5=15', '3x6=18', '3x7=21', '3x8=24', '3x9=27', '3x10=30', '4x1=4', '4x2=8', '4x3=12', '4x4=16', '4x5=20', '4x6=24', '4x7=28', '4x8=32', '4x9=36', '4x10=40', '5x1=5', '5x2=10', '5x3=15', '5x4=20', '5x5=25', '5x6=30', '5x7=35', '5x8=40', '5x9=45', '5x10=50']
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+102
+composite
+>>> [7%i for i in range(2,7)]
+[1, 1, 3, 2, 1]
+>>> [7%i==0 for i in range(2,7)]
+[False, False, False, False, False]
+>>> [7%i!=0 for i in range(2,7)]
+[True, True, True, True, True]
+>>> all([True, True, True, True, True])
+True
+>>> all([7%i!=0 for i in range(2,7)])
+True
+>>> all(7%i!=0 for i in range(2,7))
+True
+>>> all(49%i!=0 for i in range(2,49))
+False
+>>> [49%i!=0 for i in range(2,49)]
+[True, True, True, True, True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]
+>>> 
+>>> 
+>>> 
+>>> [7%i!=0 for i in range(2,7)]
+[True, True, True, True, True]
+>>> [8%i!=0 for i in range(2,8)]
+[False, True, False, True, True, True]
+>>> [9%i!=0 for i in range(2,9)]
+[True, False, True, True, True, True, True]
+>>> all([True, False, True, True, True, True, True])
+False
+>>> all([True, True, True, True, True])
+True
+>>> all([7%i!=0 for i in range(2,7)])
+True
+>>> all([8%i!=0 for i in range(2,8)])
+False
+>>> all(8%i!=0 for i in range(2,8))
+False
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+117
+composite
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+119
+composite
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+1312
+composite
+>>> 
+>>> for a in range(2,int(input())):
+	if all(a%i!=0 for i in range(2,a//2+1)):
+		print(a,end=' ')
+
+		
+100
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 
+>>> for a in range(2,int(input())):
+	if all(a%i!=0 for i in range(2,a//2+1)):
+		print(a,end=' ')
+
+		
+200
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 151 157 163 167 173 179 181 191 193 197 199 
+>>> m=[]
+>>> for a in range(2,int(input())):
+	if all(a%i!=0 for i in range(2,a//2+1)):
+		m.append(a)
+
+		
+200
+>>> m
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+101
+prime
+>>> all(2%i!=0 for i in range(2,2))
+True
+>>> all(3%i!=0 for i in range(2,3))
+True
+>>> all(4%i!=0 for i in range(2,4))
+False
+>>> for a in range(1,11):
+	all(a%i!=0 for i in range(2,a))
+
+	
+True
+True
+True
+False
+True
+False
+True
+False
+False
+False
+>>> for a in range(1,11):
+	if all(a%i!=0 for i in range(2,a)):
+		print("prime",a)
+
+		
+prime 1
+prime 2
+prime 3
+prime 5
+prime 7
+>>> for a in range(1,11):
+	if all(a%i!=0 for i in range(2,a)):
+		print(a,end=' ')
+
+		
+1 2 3 5 7 
+>>> for a in range(2,11):
+	if all(a%i!=0 for i in range(2,a)):
+		print(a,end=' ')
+
+		
+2 3 5 7 
+>>> for a in range(2,int(input())+1):
+	if all(a%i!=0 for i in range(2,a)):
+		print(a,end=' ')
+
+		
+10
+2 3 5 7 
+>>> l=[]
+>>> for a in range(2,int(input())+1):
+	if all(a%i!=0 for i in range(2,a)):
+		l.append(a)
+
+		
+10
+>>> l
+[2, 3, 5, 7]
+>>> [a for a in range(2,int(input())+1) if all(a%i!=0 for i in range(2,a))]
+100
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+>>> 
+>>> 
+>>> s=0
+>>> for i in str(153):
+	s=s+int(i)
+
+	
+>>> s
+9
+>>> s=0
+>>> for i in str(153):
+	s=s+int(i)**3
+
+	
+>>> s
+153
+>>> s=0
+>>> for i in str(153):
+	s=s+int(i)**len(str(153))
+
+	
+>>> s
+153
+>>> x=153
+>>> s=0
+>>> for i in str(x):
+	s=s+int(i)**len(str(x))
+
+	
+>>> s
+153
+>>> if s==x:
+	print("arm")
+else:
+	print("not arm")
+
+	
+arm
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+153
+arm
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+407
+arm
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+370
+arm
+>>> 
+>>> [int(i)**len(str(153)) for i in str(153)]
+[1, 125, 27]
+>>> sum([int(i)**len(str(153)) for i in str(153)])
+153
+>>> for i in str(153):
+	print(i)
+
+	
+1
+5
+3
+>>> [i for i in str(153)]
+['1', '5', '3']
+>>> [int(i) for i in str(153)]
+[1, 5, 3]
+>>> [int(i)**3 for i in str(153)]
+[1, 125, 27]
+>>> [int(i)**len(str(153)) for i in str(153)]
+[1, 125, 27]
+>>> 
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+153
+arm
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+370
+arm
+>>> 
+=== RESTART: C:/Users/amit/AppData/Local/Programs/Python/Python37-32/a.py ===
+enter a number
+371
+arm
+>>> if a==sum([int(i)**len(str(a)) for i in str(a)]):
+	print("arm")
+else:
+	print("not arm")
+
+	
+arm
+>>> a=340
+>>> if a==sum([int(i)**len(str(a)) for i in str(a)]):
+	print("arm")
+else:
+	print("not arm")
+
+	
+not arm
+>>> for i in range(1,100000):
+	if a==sum([int(i)**len(str(a)) for i in str(a)]):
+		print("arm",a,end='+++')
+
+		
+>>> for a in range(1,100000):
+	if a==sum([int(i)**len(str(a)) for i in str(a)]):
+		print("arm",a,end='+++')
+
+		
+arm 1+++arm 2+++arm 3+++arm 4+++arm 5+++arm 6+++arm 7+++arm 8+++arm 9+++arm 153+++arm 370+++arm 371+++arm 407+++arm 1634+++arm 8208+++arm 9474+++arm 54748+++arm 92727+++arm 93084+++
+>>> for a in range(1,100000):
+	if a==sum([int(i)**len(str(a)) for i in str(a)]):
+		print(a,end=' ')
+
+		
+1 2 3 4 5 6 7 8 9 153 370 371 407 1634 8208 9474 54748 92727 93084 
+>>> [a for a in range(1,100000) if a==sum([int(i)**len(str(a)) for i in str(a)])]
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 370, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084]
+>>> 

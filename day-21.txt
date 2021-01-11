@@ -1,0 +1,215 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> from tkinter import *
+>>> scr=Tk()
+>>> l=Listbox(scr)
+>>> l.pack()
+>>> l.insert(0,'A')
+>>> l.insert(1,'B')
+>>> l.insert(2,'C')
+>>> l.insert(3,'D')
+>>> l.insert(4,'E')
+>>> l.curselection()
+(2,)
+>>> l.get(l.curselection())
+'C'
+>>> l.get(l.curselection())
+'A'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> l=Listbox(scr)
+>>> l.pack()
+>>> l.insert(0,'A')
+>>> l.insert(1,'B')
+>>> l.insert(2,'C')
+>>> l.insert(3,'D')
+>>> l.insert(4,'E')
+>>> l.curselection()
+(4,)
+>>> l.get(l.curselection())
+'E'
+>>> l.get(l.curselection())
+'B'
+>>> 
+>>> 
+>>> scr=Tk()
+>>> v=StringVar()
+>>> l=[1,2,3,4,5,6,7,8,9]
+>>> o=OptionMenu(scr,v,*l)
+>>> l.pack()
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    l.pack()
+AttributeError: 'list' object has no attribute 'pack'
+>>> o.pack()
+>>> v.get()
+'4'
+>>> v.get()
+'7'
+>>> scr=Tk()
+>>> v=StringVar()
+>>> l=["Python",'Java','ML','DL','Django']
+>>> o=OptionMenu(scr,v,*l)
+>>> o.pack()
+>>> o.set(l[0])
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    o.set(l[0])
+AttributeError: 'OptionMenu' object has no attribute 'set'
+>>> v.set(l[0])
+>>> v.get()
+'Java'
+>>> v.get()
+'Django'
+>>> 
+>>> 
+>>> 
+>>> from PIL import ImageTk,Image
+>>> 
+>>> scr=Tk()
+>>> i=ImageTk.PhotoImage(Image.open(r'C:\Users\amit\Pictures\ecom2.jpg'))
+>>> l=Label(scr,image=i)
+>>> l.pack()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from PIL import ImageTk,Image
+>>> import PIL
+>>> 
+>>> 
+>>> 
+>>> 
+>>> scr=Tk()
+>>> c=Canvas(scr,bg='white',width=300,height=300)
+>>> c.pack()
+>>> c.create_arc((10,10,100,100),start=0,extent=90)
+1
+>>> c.create_arc((10,10,100,100),start=0,extent=90,outline='blue')
+2
+>>> c.create_arc((10,10,100,100),start=0,extent=90,outline='blue',fill='yellow')
+3
+>>> c.create_arc((10,10,100,100),start=90,extent=270,outline='blue',fill='green')
+4
+>>> c.create_line(10,110,100,110,100,200,200,200)
+5
+>>> c.create_line(10,110,100,110,100,200,200,200,fill='green')
+6
+>>> c.create_oval((100,10,200,200))
+7
+>>> c.create_oval((100,10,200,200),fill='blue')
+8
+>>> c.create_polygon(10,110,100,110,100,200)
+9
+>>> c.create_rectangle((200,10,200,200))
+10
+>>> c.create_rectangle((200,10,300,200))
+11
+>>> c.create_text(150,150,'Python',font=('times',20,'italic'))
+Traceback (most recent call last):
+  File "<pyshell#81>", line 1, in <module>
+    c.create_text(150,150,'Python',font=('times',20,'italic'))
+  File "C:\Users\amit\AppData\Local\Programs\Python\Python37-32\lib\tkinter\__init__.py", line 2504, in create_text
+    return self._create('text', args, kw)
+  File "C:\Users\amit\AppData\Local\Programs\Python\Python37-32\lib\tkinter\__init__.py", line 2480, in _create
+    *(args + self._options(cnf, kw))))
+_tkinter.TclError: unknown option "Python"
+>>> c.create_text(150,150,text='Python',font=('times',20,'italic'))
+13
+>>> c.create_text(150,150,text='Python',font=('times',20,'italic'),fill='white')
+14
+>>> c.create_bitmap(150,240,bitmap='question')
+15
+>>> 
+>>> scr=Tk()
+>>> c=Canvas(scr,bg='white',width=300,height=300)
+>>> c.pack()
+>>> c.create_line(0,150,300,150)
+1
+>>> c.create_line(150,0,150,300)
+2
+>>> img=PhotoImage('f:/racecar.png')
+>>> c.create_image(150,150,anchor=NW,image=img)
+3
+>>> c.create_image(150,150,anchor=NW,image=img)
+4
+>>> c.create_image(10,10,anchor=NW,image=img)
+5
+>>> 
+>>> 
+>>> scr=Tk()
+>>> 
+=============================== RESTART: Shell ===============================
+>>> 
+>>> 
+>>> from tkinter import *
+>>> scr=Tk()
+>>> c=Canvas(scr,bg='white',width=300,height=300)
+>>> c.pack()
+>>> c.create_line(0,150,300,150)
+1
+>>> c.create_line(150,0,150,300)
+2
+>>> img=PhotoImage(file='f:/racecar.png')
+>>> c.create_image(150,150,anchor=NW,image=img)
+3
+>>> c.create_image(150,150,anchor=NE,image=img)
+4
+>>> c.create_image(150,150,anchor=SE,image=img)
+5
+>>> c.create_image(150,150,anchor=SW,image=img)
+6
+>>> c.create_image(150,150,anchor=CENTER,image=img)
+7
+>>> c.create_image(150,150,anchor=E,image=img)
+8
+>>> c.create_image(150,150,anchor=W,image=img)
+9
+>>> c.create_image(150,150,anchor=N,image=img)
+10
+>>> c.create_image(0,0,anchor=NW,image=img)
+11
+>>> c.create_bitmap(100,100,bitmap="question")
+12
+>>> c.create_bitmap(100,20,bitmap="question")
+13
+>>> 
+>>> 
+>>> 
+>>> 
+>>> from tkinter import filedialog
+>>> scr=Tk()
+>>> m=Menu(scr)
+>>> scr.config(bg='blue')
+>>> scr.config(menu=m)
+>>> fm=Menu(m,tearoff=False)
+>>> m.add_cascade(label='file',menu=fm)
+>>> fm.add_command(label='open',command=lambda :print(filedialog.askdirectory()))
+>>> 
+
+>>> fm.add_command(label='open1',command=lambda :print(filedialog.askopenfile()))
+>>> 
+
+>>> fm.add_command(label='open1',command=lambda :print(filedialog.askopenfilename()))
+>>> fm.add_command(label='open2',command=lambda :print(filedialog.askopenfilenames()))
+>>> fm.add_command(label='open3',command=lambda :print(filedialog.askopenfiles()))
+>>> fm.add_separator()
+>>> fm.add_command(label='save',command=lambda :print(filedialog.asksaveasfile()))
+>>> fm.add_command(label='save1',command=lambda :print(filedialog.asksaveasfilename()))
+>>> 
+
+>>> sb=Menu(fm)
+>>> sb.add_command(label='project',command=lambda :print("recent project"))
+>>> sb.add_command(label='file',command=lambda :print("recent file"))
+>>> sb.add_command(label='module',command=lambda :print("recent module"))
+>>> fm.add_cascade(label='recent',menu=sb)
+>>> 
+>>> fm.add_checkbutton(label='check')
+>>> fm.add_radiobutton(label='radio1')
+>>> fm.add_radiobutton(label='radio2')
+>>> 

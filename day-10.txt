@@ -1,0 +1,478 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> set.__doc__
+'set() -> new empty set object\nset(iterable) -> new set object\n\nBuild an unordered collection of unique elements.'
+>>> 
+>>> s={}
+>>> type(s)
+<class 'dict'>
+>>> s=set()
+>>> type(s)
+<class 'set'>
+>>> s={2,6,7,8,5,4,3,2,1,2,3,34,4,5,6,7,7,8,9,9,0,0,9,8,7,7,6,6,5,45,4,4}
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 45}
+>>> s[0]
+Traceback (most recent call last):
+  File "<pyshell#8>", line 1, in <module>
+    s[0]
+TypeError: 'set' object is not subscriptable
+>>> max(s)
+45
+>>> min(s)
+0
+>>> sum(s)
+124
+>>> sorted(s)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 34, 45]
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 45}
+>>> len(s)
+12
+>>> s.__len__()
+12
+>>> 
+>>> s.add(')
+      
+SyntaxError: EOL while scanning string literal
+>>> s.add('hello')
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 45, 'hello'}
+>>> s.add('hello12')
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> s.clear()
+>>> s
+set()
+>>> s={0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> 
+>>> a=s
+>>> id(a)
+52003824
+>>> id(s)
+52003824
+>>> a=s.copy()
+>>> 
+>>> id(a)
+52003224
+>>> id(s)
+52003824
+>>> 
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> 
+>>> s.difference(x)
+{0, 34, 'hello12', 45, 'hello'}
+>>> x.difference(s)
+{4444, 333, 222, 1111}
+>>> s-x
+{0, 34, 'hello12', 45, 'hello'}
+>>> s+x
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    s+x
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+>>> s-x
+{0, 34, 'hello12', 45, 'hello'}
+>>> x-s
+{4444, 333, 222, 1111}
+>>> s.difference(x)
+{0, 34, 'hello12', 45, 'hello'}
+>>> x.difference(s)
+{4444, 333, 222, 1111}
+>>> 
+>>> 
+>>> id(x)
+52003104
+>>> x=x.difference(s)
+>>> id(x)
+52004544
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> x.difference_update(s)
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> id(x)
+52004544
+>>> x
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 333, 1111, 4444, 222}
+>>> x.difference_update(s)
+>>> id(x)
+52004544
+>>> x=x.difference(s)
+>>> id(x)
+52003104
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> 
+>>> id(x)
+52004544
+>>> id(s)
+52003824
+>>> x=
+SyntaxError: invalid syntax
+>>> x=x-s
+>>> id(x)
+52003104
+>>> 
+>>> 
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> id(x)
+52004544
+>>> x.difference_update(s)
+>>> id(x)
+52004544
+>>> x
+{333, 1111, 4444, 222}
+>>> 
+>>> 
+>>> s.discard('hello')
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45}
+>>> s.discard('hello')
+>>> s.discard('hello')
+>>> s.discard('hello')
+>>> s.discard.__doc__
+'Remove an element from a set if it is a member.\n\nIf the element is not a member, do nothing.'
+>>> s.remove('hello12')
+>>> s.remove('hello12')
+Traceback (most recent call last):
+  File "<pyshell#90>", line 1, in <module>
+    s.remove('hello12')
+KeyError: 'hello12'
+>>> 
+>>> s.intersection(x)
+set()
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> s={0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45}
+>>> s.intersection(x)
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> x.intersection(s)
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> x.intersection_update(s)
+>>> x
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> 
+>>> x.isdisjoint(s)
+False
+>>> y={983278678532647}
+>>> x.isdisjoint(y)
+True
+>>> y={983278678532647,1}
+>>> x.isdisjoint(y)
+False
+>>> x.issubset(x)
+True
+>>> x.issubset(s)
+True
+>>> s.issubset(x)
+False
+>>> s.issuperset(x)
+True
+>>> s.issuperset(s)
+True
+>>> x.issuperset(s)
+False
+>>> x
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> x.pop()
+1
+>>> x
+{2, 3, 4, 5, 6, 7, 8, 9}
+>>> x.pop()
+2
+>>> x
+{3, 4, 5, 6, 7, 8, 9}
+>>> x.pop()
+3
+>>> x
+{4, 5, 6, 7, 8, 9}
+>>> x.pop()
+4
+>>> x
+{5, 6, 7, 8, 9}
+>>> x.pop()
+5
+>>> x.pop.__doc__
+'Remove and return an arbitrary set element.\nRaises KeyError if the set is empty.'
+>>> x={'a',2,'l'}
+>>> x.pop()
+2
+>>> 
+>>> s
+{0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45}
+
+>>> x={1,2,4,3,6,5,7,8,9,1111,222,333,4444}
+>>> s={0, 1, 2, 3, 4, 5, 6, 7, 8, 34, 9, 'hello12', 45, 'hello'}
+>>> 
+>>> x.symmetric_difference(s)
+{0, 34, 'hello12', 45, 333, 'hello', 1111, 4444, 222}
+>>> x.symmetric_difference_update(s)
+>>> x
+{0, 34, 'hello12', 333, 45, 'hello', 1111, 4444, 222}
+>>> x.union(s)
+{0, 1, 2, 3, 4, 'hello12', 5, 6, 7, 8, 9, 333, 1111, 4444, 222, 34, 45, 'hello'}
+>>> sorted({0, 1, 2, 3, 4, 'hello12', 5, 6, 7, 8, 9, 333, 1111, 4444, 222, 34, 45, 'hello'})
+Traceback (most recent call last):
+  File "<pyshell#133>", line 1, in <module>
+    sorted({0, 1, 2, 3, 4, 'hello12', 5, 6, 7, 8, 9, 333, 1111, 4444, 222, 34, 45, 'hello'})
+TypeError: '<' not supported between instances of 'str' and 'int'
+>>> s={'a',1,'b'}
+>>> s.pop()
+1
+>>> s={'a','d','b'}
+>>> s.pop()
+'b'
+>>> s={'a','d','b','e'}
+>>> s.pop()
+'e'
+>>> s={'a',12,'d','b','e'}
+>>> s.pop()
+'a'
+>>> s.update('hello")
+	 
+SyntaxError: EOL while scanning string literal
+>>> s.update('hello')
+>>> s
+{'l', 'e', 'b', 12, 'h', 'o', 'd'}
+>>> s.update(range(100,105))
+>>> s
+{'l', 100, 101, 102, 103, 'e', 104, 'b', 12, 'h', 'o', 'd'}
+>>> s.add(range(100,105))
+>>> s
+{'l', 100, 101, 102, 103, 'e', 104, range(100, 105), 'b', 12, 'h', 'o', 'd'}
+>>> s+s
+Traceback (most recent call last):
+  File "<pyshell#149>", line 1, in <module>
+    s+s
+TypeError: unsupported operand type(s) for +: 'set' and 'set'
+>>> 
+>>> s={2,3,4,(22,33,44,55),78}
+>>> s={2,3,4,[22,33,44,55],78}
+Traceback (most recent call last):
+  File "<pyshell#152>", line 1, in <module>
+    s={2,3,4,[22,33,44,55],78}
+TypeError: unhashable type: 'list'
+>>> s={2,3,4,{'a':56},78}
+Traceback (most recent call last):
+  File "<pyshell#153>", line 1, in <module>
+    s={2,3,4,{'a':56},78}
+TypeError: unhashable type: 'dict'
+>>> TypeError: unhashable type: 'dict'
+SyntaxError: invalid syntax
+>>> 
+>>> 
+>>> 
+>>> d=('a',[1,2,3,4],78)
+>>> d[1].extend('hello765236578')
+>>> d
+('a', [1, 2, 3, 4, 'h', 'e', 'l', 'l', 'o', '7', '6', '5', '2', '3', '6', '5', '7', '8'], 78)
+>>> 
+>>> 
+>>> #zip
+>>> a=[1,2,3,4,5]
+>>> b=('a','b','c','d')
+>>> c={'cs','ec','me'}
+>>> c
+{'cs', 'me', 'ec'}
+>>> for i in zip(a,b,c):
+	print(i)
+
+	
+(1, 'a', 'cs')
+(2, 'b', 'me')
+(3, 'c', 'ec')
+>>> d=zip(a,b,c)
+>>> next(d)
+(1, 'a', 'cs')
+>>> next(d)
+(2, 'b', 'me')
+>>> next(d)
+(3, 'c', 'ec')
+>>> next(d)
+Traceback (most recent call last):
+  File "<pyshell#175>", line 1, in <module>
+    next(d)
+StopIteration
+>>> d=zip(a,b,c)
+>>> d.__next__()
+(1, 'a', 'cs')
+>>> d.__next__()
+(2, 'b', 'me')
+>>> d.__next__()
+(3, 'c', 'ec')
+>>> d.__next__()
+Traceback (most recent call last):
+  File "<pyshell#180>", line 1, in <module>
+    d.__next__()
+StopIteration
+>>> d=zip(a,b,c)
+>>> list(d)
+[(1, 'a', 'cs'), (2, 'b', 'me'), (3, 'c', 'ec')]
+>>> list(d)
+[]
+>>> d=zip(a,b,c)
+>>> tuple(d)
+((1, 'a', 'cs'), (2, 'b', 'me'), (3, 'c', 'ec'))
+>>> tuple(d)
+()
+>>> d=zip(a,b,c)
+>>> set(d)
+{(2, 'b', 'me'), (1, 'a', 'cs'), (3, 'c', 'ec')}
+>>> 
+>>> 
+>>> s=[8,6,4,2,0]
+>>> a=[1,2,3,4,5]
+>>> for i,j in zip(a,s):
+	print('*'*i+' '*j+'*'*i)
+
+	
+*        *
+**      **
+***    ***
+****  ****
+**********
+>>> for i in zip(a,s):
+	print(i)
+
+	
+(1, 8)
+(2, 6)
+(3, 4)
+(4, 2)
+(5, 0)
+>>> for i,j in zip(a,s):
+	print(i,j)
+
+	
+1 8
+2 6
+3 4
+4 2
+5 0
+>>> for i,j in zip(a,s):
+	print('*'*i+' '*j+'*'*i)
+
+	
+*        *
+**      **
+***    ***
+****  ****
+**********
+>>> a=['a','bcd','m','a','x','m','bcd','a','x','bcd']
+>>> dict.fromkeys(a)
+{'a': None, 'bcd': None, 'm': None, 'x': None}
+>>> for i in enumerate(dict.fromkeys(a)):
+	print(i)
+
+	
+(0, 'a')
+(1, 'bcd')
+(2, 'm')
+(3, 'x')
+>>> a=['a','bcd','m','a','x','m','bcd','a','x','bcd']
+>>> d=dict.fromkeys(a)
+>>> d
+{'a': None, 'bcd': None, 'm': None, 'x': None}
+>>> for i in enumerate(d):
+	print(i)
+
+	
+
+>>> for i,j in enumerate(d):
+	d[j]=i
+
+	
+>>> d
+{'a': 0, 'bcd': 1, 'm': 2, 'x': 3}
+>>> 
+>>> 
+>>> 
+>>> a=['a','bcd','m','a','x','m','bcd','a','x','bcd']
+>>> d=dict.fromkeys(a)
+>>> d
+{'a': None, 'bcd': None, 'm': None, 'x': None}
+>>> n=0
+>>> for i in d:
+	print(i)
+
+	
+
+>>> for i in d:
+	d[i]=n
+	n+=1
+
+	
+>>> d
+{'a': 0, 'bcd': 1, 'm': 2, 'x': 3}
+>>> 
+>>> a[0]
+'a'
+>>> d['a']
+0
+>>> d[a[0]]
+0
+>>> a[0]=d[a[0]]
+>>> a
+[0, 'bcd', 'm', 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[1]=d[a[1]]
+>>> a
+[0, 1, 'm', 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[2]=d[a[2]]
+>>> a
+[0, 1, 2, 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[3]=d[a[3]]
+>>> a
+[0, 1, 2, 0, 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> 
+>>> 
+>>> a=['a','bcd','m','a','x','m','bcd','a','x','bcd']
+>>> d=dict.fromkeys(a)
+>>> d
+{'a': None, 'bcd': None, 'm': None, 'x': None}
+>>> n=0
+>>> for i in d:
+	d[i]=n
+	n+=1
+
+	
+>>> d
+{'a': 0, 'bcd': 1, 'm': 2, 'x': 3}
+>>> for i in range(len(a)):
+	a[i]=d[a[i]]
+
+	
+>>> a
+[0, 1, 2, 0, 3, 2, 1, 0, 3, 1]
+>>> d['a']
+0
+>>> d
+{'a': 0, 'bcd': 1, 'm': 2, 'x': 3}
+>>> a=['a','bcd','m','a','x','m','bcd','a','x','bcd']
+>>> a[0]
+'a'
+>>> d['a']
+0
+>>> d[a[0]]
+0
+>>> a[0]=d[a[0]]
+>>> a
+[0, 'bcd', 'm', 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[1]=d[a[1]]
+>>> a
+[0, 1, 'm', 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[2]=d[a[2]]
+>>> a
+[0, 1, 2, 'a', 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> a[3]=d[a[3]]
+>>> a
+[0, 1, 2, 0, 'x', 'm', 'bcd', 'a', 'x', 'bcd']
+>>> 

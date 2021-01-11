@@ -1,0 +1,3 @@
+from selenium import webdriver
+client=webdriver.Chrome('e:/chr/74/chromedriver_win32/chromedriver.exe')
+client.get("www.google.com")

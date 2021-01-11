@@ -1,0 +1,303 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a=[[1,2,3],[4,5,6,7],[5,5,5,55,]]
+>>> a[0][0]
+1
+>>> a[0]
+[1, 2, 3]
+>>> a[0][0]
+1
+>>> a[:][0]
+[1, 2, 3]
+>>> a[:]
+[[1, 2, 3], [4, 5, 6, 7], [5, 5, 5, 55]]
+>>> a[:][0]
+[1, 2, 3]
+>>> print(a)
+[[1, 2, 3], [4, 5, 6, 7], [5, 5, 5, 55]]
+>>> print(*a)
+[1, 2, 3] [4, 5, 6, 7] [5, 5, 5, 55]
+>>> a=['hello','cython','python','jython']
+>>> 
+>>> print(a)
+['hello', 'cython', 'python', 'jython']
+>>> print(*a)
+hello cython python jython
+>>> print(*a,sep='+++')
+hello+++cython+++python+++jython
+>>> 
+>>> 
+>>> #tuple
+>>> a=()
+>>> type(a)
+<class 'tuple'>
+>>> a=(1)
+>>> type(a)
+<class 'int'>
+>>> a=(1,)
+>>> type(a)
+<class 'tuple'>
+>>> 
+>>> 
+>>> a=('hello',12,23,34,45,67,'bye','end')
+>>> type(a)
+<class 'tuple'>
+>>> a[-1]
+'end'
+>>> a[-4]
+45
+>>> a[3]
+34
+>>> a[-5]
+34
+>>> 
+>>> a[-3]
+67
+>>> 
+>>> 
+>>> a
+('hello', 12, 23, 34, 45, 67, 'bye', 'end')
+>>> a[:3]
+('hello', 12, 23)
+>>> a[3:]
+(34, 45, 67, 'bye', 'end')
+>>> 
+>>> a[-4000::2]
+('hello', 23, 45, 'bye')
+>>> a[-1:]
+('end',)
+>>> a[:-1]
+('hello', 12, 23, 34, 45, 67, 'bye')
+>>> a[-2:-3]
+()
+>>> a[5:-5]
+()
+>>> a[-2:2]
+()
+>>> 
+>>> a
+('hello', 12, 23, 34, 45, 67, 'bye', 'end')
+>>> 
+>>> a[::-1]
+('end', 'bye', 67, 45, 34, 23, 12, 'hello')
+>>> a[900:0:-1]
+('end', 'bye', 67, 45, 34, 23, 12)
+>>> a[-2:2:-1]
+('bye', 67, 45, 34)
+>>> a[-3::-3]
+(67, 23)
+>>> 
+>>> a[0::-300]
+('hello',)
+>>> a[-1:0:-1]
+('end', 'bye', 67, 45, 34, 23, 12)
+>>> a[0:-1]
+('hello', 12, 23, 34, 45, 67, 'bye')
+>>> 
+>>> 
+>>> 
+>>> #
+>>> len(a)
+8
+>>> a.__len__()
+8
+>>> a
+('hello', 12, 23, 34, 45, 67, 'bye', 'end')
+>>> a=(True, 12, 23, 34, 45, 67)
+>>> max(a)
+67
+>>> min(a)
+True
+>>> sum(a)
+182
+>>> sorted(a)
+[True, 12, 23, 34, 45, 67]
+>>> sorted.__doc__
+'Return a new list containing all items from the iterable in ascending order.\n\nA custom key function can be supplied to customize the sort order, and the\nreverse flag can be set to request the result in descending order.'
+>>> 
+>>> 
+>>> a[0]
+True
+>>> a[0]='amit'
+Traceback (most recent call last):
+  File "<pyshell#72>", line 1, in <module>
+    a[0]='amit'
+TypeError: 'tuple' object does not support item assignment
+>>> del(a[0])
+Traceback (most recent call last):
+  File "<pyshell#73>", line 1, in <module>
+    del(a[0])
+TypeError: 'tuple' object doesn't support item deletion
+>>> 
+>>> 
+>>> a=(True,1,6,7,8,1,1,9,8,7,1)
+>>> a.count(1)
+5
+>>> a.index(1)
+0
+>>> a.index(True)
+0
+>>> a.index(True,1)
+1
+>>> 
+>>> a=(True,'mnop',1,6,'mnop',7,8,'mnop',1,1,9,8,7,1)
+>>> a.index('mnop')
+1
+>>> a.index('mnop',2)
+4
+>>> a.index('mnop',5)
+7
+>>> a.index('mnop',8)
+Traceback (most recent call last):
+  File "<pyshell#86>", line 1, in <module>
+    a.index('mnop',8)
+ValueError: tuple.index(x): x not in tuple
+>>> a.index('mnop',2,10)
+4
+>>> a=(i for i in range(1,10))
+>>> type(a)
+<class 'generator'>
+>>> 
+>>> #dict
+>>> d={}
+>>> 
+>>> type(d)
+<class 'dict'>
+>>> 
+>>> d={1:'hello welcome','Two':[12,34,5,56],345.6:(22,33,44,55),False:123455,2+3j:{'name':'hello'}}
+>>> d
+{1: 'hello welcome', 'Two': [12, 34, 5, 56], 345.6: (22, 33, 44, 55), False: 123455, (2+3j): {'name': 'hello'}}
+>>> d[1]
+'hello welcome'
+>>> d[1].upper()
+'HELLO WELCOME'
+>>> d[1].sort()
+Traceback (most recent call last):
+  File "<pyshell#100>", line 1, in <module>
+    d[1].sort()
+AttributeError: 'str' object has no attribute 'sort'
+>>> d['Two']
+[12, 34, 5, 56]
+>>> d['Two'][0]
+12
+>>> d['Two'].sort()
+>>> d
+{1: 'hello welcome', 'Two': [5, 12, 34, 56], 345.6: (22, 33, 44, 55), False: 123455, (2+3j): {'name': 'hello'}}
+>>> d[345.6]
+(22, 33, 44, 55)
+>>> d[345.6][-1]
+55
+>>> d[False]
+123455
+>>> d[False]**3
+1881594571421375
+>>> d[2+3j]
+{'name': 'hello'}
+>>> d[2+3j]['name']='phunshuk '
+>>> d
+{1: 'hello welcome', 'Two': [5, 12, 34, 56], 345.6: (22, 33, 44, 55), False: 123455, (2+3j): {'name': 'phunshuk '}}
+>>> d[2+3j]='python'
+>>> d
+{1: 'hello welcome', 'Two': [5, 12, 34, 56], 345.6: (22, 33, 44, 55), False: 123455, (2+3j): 'python'}
+>>> 
+>>> d[34]='new word'
+>>> d
+{1: 'hello welcome', 'Two': [5, 12, 34, 56], 345.6: (22, 33, 44, 55), False: 123455, (2+3j): 'python', 34: 'new word'}
+>>> 
+>>> 
+>>> d={]
+SyntaxError: invalid syntax
+>>> d={}
+>>> d
+{}
+>>> d[1]=2
+>>> d['one']=2
+>>> d
+{1: 2, 'one': 2}
+>>> 
+>>> 
+>>> 
+>>> d={1:'one',1:77576,1:'hello',2:'bye',1:'welcome'}
+>>> d
+{1: 'welcome', 2: 'bye'}
+>>> 
+>>> 
+>>> d={1:'hello',False:'bye',True:'welcome',0:'bool false'}
+>>> d
+{1: 'welcome', False: 'bool false'}
+>>> d[True]
+'welcome'
+>>> d[1]
+'welcome'
+>>> d[0]
+'bool false'
+>>> d[False]
+'bool false'
+>>> 
+>>> 
+>>> dict(a=12,b=345,c=678,d=[12,34,56])
+{'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56]}
+>>> dict(a=12,b=345,c=678,d=[12,34,56],d='hello')
+SyntaxError: keyword argument repeated
+>>> dict(a=12,b=345,c=678,d=[12,34,56],e='hello')
+{'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello'}
+>>> dict(a=12,b=345,c=678,d=[12,34,56],e='hello',1='bye')
+SyntaxError: keyword can't be an expression
+>>> dict(a=12,b=345,c=678,d=[12,34,56],e='hello',_1='bye')
+{'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello', '_1': 'bye'}
+>>> 1=23
+SyntaxError: can't assign to literal
+>>> _1=23
+>>> _1
+23
+>>> d={'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello', '_1': 'bye'}
+>>> 
+>>> 
+>>> len(d)
+6
+>>> d.__len__()
+6
+>>> max(d)
+'e'
+>>> ord('e')
+101
+>>> chr(97)
+'a'
+>>> 
+>>> min(d)
+'_1'
+>>> sorted(d)
+['_1', 'a', 'b', 'c', 'd', 'e']
+>>> sorted(d,reverse=True)
+['e', 'd', 'c', 'b', 'a', '_1']
+>>> del('_1')
+SyntaxError: can't delete literal
+>>> d
+{'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello', '_1': 'bye'}
+>>> del(d['_1'])
+>>> d
+{'a': 12, 'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello'}
+>>> d.__delitem__('a')
+>>> d
+{'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello'}
+>>> 
+>>> 
+>>> a=d
+>>> d.clear()
+>>> d
+{}
+>>> a
+{}
+>>> d={'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello'}
+>>> a=d.copy()
+>>> id(a)
+55867024
+>>> id(d)
+55867888
+>>> d.fromkeys('abcde')
+{'a': None, 'b': None, 'c': None, 'd': None, 'e': None}
+>>> d
+{'b': 345, 'c': 678, 'd': [12, 34, 56], 'e': 'hello'}
+>>> d.fromkeys('abcde','kuch aur')
+{'a': 'kuch aur', 'b': 'kuch aur', 'c': 'kuch aur', 'd': 'kuch aur', 'e': 'kuch aur'}
+>>> 

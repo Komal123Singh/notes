@@ -1,0 +1,224 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		a,b=b,a+b
+		print(b)
+
+		
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		a,b=b,a+b
+		print(b,end=' ')
+
+		
+>>> fun(10)
+0 1 1 2 3 5 8 13 21 34 
+>>> def fun(n):
+	a=-1
+	b=1
+	for i in range(n):
+		c=a+b
+		a=b
+		b=c
+		print(b,end=' ')
+
+		
+>>> 
+>>> fun(10)
+0 1 1 2 3 5 8 13 21 34 
+>>> def fun(a=-1,b=1,n):
+	if n==0:
+		return None
+	
+SyntaxError: non-default argument follows default argument
+>>> def fun(n,a=-1,b=1):
+	if n==0:
+		return None
+	print(a+b)
+	fun(n-1,b,a+b)
+
+	
+>>> def fun(n,a=-1,b=1):
+	if n==0:
+		return None
+	print(a+b,end=' ')
+	fun(n-1,b,a+b)
+
+	
+>>> fun(10)
+0 1 1 2 3 5 8 13 21 34 
+>>> 
+>>> def fun(n):
+	if n==1:
+		return 1
+	return n*fun(n-1)
+
+>>> fun(5)
+120
+>>> fun(1000)
+
+>>> 
+>>> 
+>>> 
+>>> a=12
+>>> def fun():
+	print(a)
+
+	
+>>> fun()
+12
+>>> def fun():
+	a+=1
+	print(a)
+
+	
+>>> fun()
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    fun()
+  File "<pyshell#41>", line 2, in fun
+    a+=1
+UnboundLocalError: local variable 'a' referenced before assignment
+>>> def fun():
+	global a
+	a+=1
+	print(a)
+
+	
+>>> fun()
+13
+>>> a
+13
+>>> a=123
+>>> fun()
+124
+>>> def fun(x):
+	x.sort()
+
+	
+>>> a=[3,2,5,4,7,6,9,8,10]
+>>> fun(a)
+>>> a
+[2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> 
+>>> 
+>>> a=12
+>>> def fun(x):
+	print(id(x))
+	x+=1
+	print(id(x))
+
+	
+>>> id(a)
+1821271312
+>>> fun(a)
+1821271312
+1821271328
+>>> def fun(x):
+	print(id(x))
+	x.sort()
+	print(id(x))
+
+	
+>>> a=[3,2,5,4,7,6,9,8,10]
+>>> id(a)
+51824200
+>>> fun(a)
+51824200
+51824200
+>>> 
+>>> 
+>>> #multiple arguments
+>>> 
+>>> def fun(*a):
+	print(a)
+
+	
+>>> fun(1,3,2,4,5,'hello',6,7,8,90,'bye','end')
+(1, 3, 2, 4, 5, 'hello', 6, 7, 8, 90, 'bye', 'end')
+>>> def fun(*a):
+	print(a[:5])
+
+	
+>>> 
+>>> fun(1,3,2,4,5,'hello',6,7,8,90,'bye','end')
+(1, 3, 2, 4, 5)
+>>> 
+>>> #multiple keyword arguments KWARGS
+>>> from tkinter import *
+>>> scr=Tk()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> def fun(**b):
+	print(b)
+
+	
+>>> fun(a=12,b=34,c=56,d=[12,3,4,],e=(862784567,98367))
+{'a': 12, 'b': 34, 'c': 56, 'd': [12, 3, 4], 'e': (862784567, 98367)}
+>>> 
+>>> d={'end':'o836','sep':'+++'}
+>>> print("hello","welcome",'deepak',**d)
+hello+++welcome+++deepako836
+>>> 
+>>> print("hello","welcome",'deepak',end='0000',sep='++++')
+hello++++welcome++++deepak0000
+>>> print("hello","welcome",'deepak',sep='++++',end='98978')
+hello++++welcome++++deepak98978
+>>> def fun(*a,**b):
+	print(b,a)
+
+	
+>>> fun(1,3,2,4,5,'hello',6,7,8,90,'bye','end',a=12,b=34,c=56,d=[12,3,4,],e=(862784567,98367))
+{'a': 12, 'b': 34, 'c': 56, 'd': [12, 3, 4], 'e': (862784567, 98367)} (1, 3, 2, 4, 5, 'hello', 6, 7, 8, 90, 'bye', 'end')
+>>> #advance function
+>>> 
+>>> #lambda
+>>> #syntax lambda inputs:output
+>>> 
+>>> 
+>>> a=lambda r:3.14*r**2
+>>> 
+>>> a(4)
+50.24
+>>> m=[('a',34,12.3),('z',3,1.3),('m',1234,1)]
+>>> max(m)
+('z', 3, 1.3)
+>>> min(a)
+Traceback (most recent call last):
+  File "<pyshell#114>", line 1, in <module>
+    min(a)
+TypeError: 'function' object is not iterable
+>>> min(m)
+('a', 34, 12.3)
+>>> sorted(m)
+[('a', 34, 12.3), ('m', 1234, 1), ('z', 3, 1.3)]
+>>> m=[('a',34,12.3),('z',3,1.3),('m',1234,1)]
+>>> max(m,key=lambda i:i[1])
+('m', 1234, 1)
+>>> min(m,key=lambda i:i[1])
+('z', 3, 1.3)
+>>> max(m,key=lambda i:i[2])
+('a', 34, 12.3)
+>>> min(m,key=lambda i:i[2])
+('m', 1234, 1)
+>>> max(m,key=lambda i:i[0])
+('z', 3, 1.3)
+>>> d={'a':123,'b':45,'c':1324,'d':789}
+>>> max(d)
+'d'
+>>> max(d,key=d.get)
+'c'
+>>> max(d,key=lambda key:d.get(key))
+'c'
+>>> max(d,key=lambda key:d[key]))
+SyntaxError: invalid syntax
+>>> max(d,key=lambda key:d[key])
+'c'
+>>> 

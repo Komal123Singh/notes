@@ -1,0 +1,336 @@
+Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 21:26:53) [MSC v.1916 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> a='abaaabbb111b222nm333m3m3mm'
+>>> a='abaaabbb111b222nm333mmmmm3m3mm'
+>>> st=0
+>>> for i in range(len(a)):
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	if diff>1:
+		print(a[st:st+diff+1])
+		st+=diff
+	else:
+		st+=1
+
+		
+aaab
+bbb1
+111b
+222n
+333m
+mmmmm3
+mm
+Traceback (most recent call last):
+  File "<pyshell#11>", line 2, in <module>
+    diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+IndexError: string index out of range
+>>> a='abaaabbb111b222nm333mmmmm3m3mm'
+>>> st=0
+>>> for i in range(len(a)):
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+aaa
+bbb
+111
+222
+333
+mmmmm
+mm
+Traceback (most recent call last):
+  File "<pyshell#15>", line 2, in <module>
+    diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+IndexError: string index out of range
+>>> 
+>>> a='abaaabbb111b222nm333mmmmm3m3mm'
+>>> st=0
+>>> len(a[st:])
+30
+>>> len(a[st:].lstrip(a[st]))
+29
+>>> a[st:]
+'abaaabbb111b222nm333mmmmm3m3mm'
+>>> a[st]
+'a'
+>>> a[st:].lstrip(a[st])
+'baaabbb111b222nm333mmmmm3m3mm'
+>>> len(a[st:])-len(a[st:].lstrip(a[st]))
+1
+>>> st+=1
+>>> len(a[st:])-len(a[st:].lstrip(a[st]))
+1
+>>> st+=1
+>>> st
+2
+>>> a[st]
+'a'
+>>> a[st:]
+'aaabbb111b222nm333mmmmm3m3mm'
+>>> len(a[st:])-len(a[st:].lstrip(a[st]))
+3
+>>> a[st:st+3]
+'aaa'
+>>> st+=3
+>>> st=0
+>>> for i in range(len(a)):
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	print(a[st:],a[st:].lstrip(a[st]),diff,st)
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+abaaabbb111b222nm333mmmmm3m3mm baaabbb111b222nm333mmmmm3m3mm 1 0
+baaabbb111b222nm333mmmmm3m3mm aaabbb111b222nm333mmmmm3m3mm 1 1
+aaabbb111b222nm333mmmmm3m3mm bbb111b222nm333mmmmm3m3mm 3 2
+aaa
+bbb111b222nm333mmmmm3m3mm 111b222nm333mmmmm3m3mm 3 5
+bbb
+111b222nm333mmmmm3m3mm b222nm333mmmmm3m3mm 3 8
+111
+b222nm333mmmmm3m3mm 222nm333mmmmm3m3mm 1 11
+222nm333mmmmm3m3mm nm333mmmmm3m3mm 3 12
+222
+nm333mmmmm3m3mm m333mmmmm3m3mm 1 15
+m333mmmmm3m3mm 333mmmmm3m3mm 1 16
+333mmmmm3m3mm mmmmm3m3mm 3 17
+333
+mmmmm3m3mm 3m3mm 5 20
+mmmmm
+3m3mm m3mm 1 25
+m3mm 3mm 1 26
+3mm mm 1 27
+mm  2 28
+mm
+Traceback (most recent call last):
+  File "<pyshell#36>", line 2, in <module>
+    diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+IndexError: string index out of range
+>>> for i in range(len(a)):
+	if st>len(a):
+		break
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	#print(a[st:],a[st:].lstrip(a[st]),diff,st)
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+Traceback (most recent call last):
+  File "<pyshell#38>", line 4, in <module>
+    diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+IndexError: string index out of range
+>>> st=0
+>>> for i in range(len(a)):
+	if st>len(a):
+		break
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	#print(a[st:],a[st:].lstrip(a[st]),diff,st)
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+aaa
+bbb
+111
+222
+333
+mmmmm
+mm
+Traceback (most recent call last):
+  File "<pyshell#41>", line 4, in <module>
+    diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+IndexError: string index out of range
+>>> for i in range(len(a)):
+	if st>len(a)-1:
+		break
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	#print(a[st:],a[st:].lstrip(a[st]),diff,st)
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+>>> st=0
+>>> for i in range(len(a)):
+	if st>len(a)-1:
+		break
+	diff=(len(a[st:])-len(a[st:].lstrip(a[st])))
+	#print(a[st:],a[st:].lstrip(a[st]),diff,st)
+	if diff>1:
+		print(a[st:st+diff])
+		st+=diff
+	else:
+		st+=1
+
+		
+
+>>> a='mr.john has bills of 1243 , 789.56 , 456.78 , 66666'
+>>> '789.6'.isdecimal()
+False
+>>> '789.6'.isdigit()
+False
+>>> '789.6'.isnumeric()
+False
+>>> '789.6'.replace('.','')
+'7896'
+>>> '789.6'.replace('.','').isdecimal()
+True
+>>> '7896'.replace('.','').isdecimal()
+True
+>>> '789.6'.replace('.','').isdecimal()
+True
+>>> a.split()
+['mr.john', 'has', 'bills', 'of', '1243', ',', '789.56', ',', '456.78', ',', '66666']
+>>> for i in a.split():
+	print(i)
+
+	
+mr.john
+has
+bills
+of
+1243
+,
+789.56
+,
+456.78
+,
+66666
+>>> for i in a.split():
+	print(i.replace('.','').isdigit())
+
+	
+False
+False
+False
+False
+True
+False
+True
+False
+True
+False
+True
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		print(i)
+
+		
+1243
+789.56
+456.78
+66666
+>>> s=0
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		s+=float(i)
+
+		
+>>> s
+69155.34
+>>> for i in a.split():
+	if i.isdigit():
+		print(i)
+
+		
+1243
+66666
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		print(i)
+
+		
+1243
+789.56
+456.78
+66666
+>>> a='1234.56'
+>>> a.isnumeric()
+False
+>>> a.replace('.','')
+'123456'
+>>> a
+'1234.56'
+>>> a.replace('.','').isnumeric()
+True
+>>> a
+'1234.56'
+>>> a='123456'
+>>> a.replace('.','').isnumeric()
+True
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		print(i)
+
+		
+123456
+>>> a='mr.john has bills of 1243 , 789.56 , 456.78 , 66666'
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		print(i)
+
+		
+1243
+789.56
+456.78
+66666
+>>> s=0
+>>> for i in a.split():
+	if i.replace('.','').isdigit():
+		s+=float(i)
+
+		
+>>> s
+69155.34
+>>> x=[int(i) for i in input().split()[:10]]
+1 2 3 4 5 6 7  89 1 234 55 66 77 88 99
+>>> x
+[1, 2, 3, 4, 5, 6, 7, 89, 1, 234]
+>>> max(x),min(x),sum(x)/len(x)
+(234, 1, 35.2)
+>>> input().split()
+1 2 3 4 5  6 7 8 9 
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+>>> input().split()[:10]
+1 2 3 4 5 6 7 8 9 10 11 12
+['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+>>> for i in input().split()[:10]:
+	print(int(i))
+
+	
+
+>>> for i in input().split()[:10]:
+	print(int(i))
+
+	
+1 2 3 4 5 6 7 8 9 10 11
+
+>>> [int(i) for i in input().split()[:10]]
+1 2 3 4 5 6 7 8 9 10
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> x=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> eval('print("hello")')
+hello
+>>> 
+>>> 
+>>> chr(65)
+'A'
+>>> chr(97)
+'a'
+>>> chr(122)
+'z'
+>>> 
